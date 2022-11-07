@@ -141,6 +141,8 @@
             // LeftTwist
             // 
             this.LeftTwist.CausesValidation = false;
+            this.LeftTwist.DotColor = "Black";
+            this.LeftTwist.FrameColor = "#0000FF";
             this.LeftTwist.Location = new System.Drawing.Point(3, 272);
             this.LeftTwist.Maximum = 0;
             this.LeftTwist.Name = "LeftTwist";
@@ -150,6 +152,7 @@
             // RightTwist
             // 
             this.RightTwist.CausesValidation = false;
+            this.RightTwist.FrameColor = "#0000FF";
             this.RightTwist.Location = new System.Drawing.Point(3, 272);
             this.RightTwist.Maximum = 0;
             this.RightTwist.Name = "RightTwist";

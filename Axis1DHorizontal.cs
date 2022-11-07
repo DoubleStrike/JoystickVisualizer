@@ -11,8 +11,12 @@ using System.Windows.Forms;
 
 namespace JoystickVisualizer {
     public partial class Axis1DHorizontal : UserControl {
-        int MaxRightPosition = 0;
-        int m_Value = 32767;
+        private const int BORDER_THICKNESS = 4;
+
+        private int MaxRightPosition = 0;
+        private int m_Value = 32767;
+        private Color m_DotColor = Color.Black;
+        private Color m_FrameColor = Color.Blue;
 
         #region Public Properties
         [Description("Sets the Minimum value"),
@@ -45,6 +49,24 @@ namespace JoystickVisualizer {
                 this.Update();
             }
         }
+
+        [Description("HTML color code of the frame color"),
+                Category("Control Defaults"),
+                DefaultValue("#0000ff"),
+                Browsable(true)]
+        public string FrameColor {
+            get { return ColorTranslator.ToHtml(m_FrameColor); }
+            set { m_FrameColor = (value == "") ? Color.Aquamarine : ColorTranslator.FromHtml(value); }
+        }
+
+        [Description("HTML color code of the dot color"),
+                Category("Control Defaults"),
+                DefaultValue("#000000"),
+                Browsable(true)]
+        public string DotColor {
+            get { return ColorTranslator.ToHtml(m_DotColor); }
+            set { m_DotColor = (value == "") ? Color.Black : ColorTranslator.FromHtml(value); }
+        }
         #endregion Public Properties
 
 
@@ -55,11 +77,20 @@ namespace JoystickVisualizer {
         }
 
         private void Axis1D_Paint(object sender, PaintEventArgs e) {
-            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
-            System.Drawing.Graphics formGraphics;
-            formGraphics = this.CreateGraphics();
-            formGraphics.FillEllipse(myBrush, new Rectangle(MapValueToRange(), 0, this.Height, this.Height));
-            myBrush.Dispose();
+
+            SolidBrush dotBrush = new SolidBrush(m_DotColor);
+            //SolidBrush frameBrush = new SolidBrush(m_FrameColor);
+            Pen framePen = new Pen(m_FrameColor, BORDER_THICKNESS);
+            Graphics formGraphics = this.CreateGraphics();
+
+            // Draw the frame
+            //formGraphics.FillRectangle(frameBrush, new Rectangle(0, 0, this.Width, this.Height));
+            formGraphics.DrawRectangle(framePen, new Rectangle(0, 0, this.Width, this.Height));
+
+            // Draw the dot
+            formGraphics.FillEllipse(dotBrush, new Rectangle(MapValueToRange(), 0, this.Height, this.Height));
+
+            dotBrush.Dispose();
             formGraphics.Dispose();
         }
 
