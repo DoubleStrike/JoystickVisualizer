@@ -1,5 +1,5 @@
 ﻿namespace JoystickVisualizer {
-    partial class Form1 {
+    partial class JoystickStatus {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -26,14 +26,14 @@
             this.components = new System.ComponentModel.Container();
             this.PollingTimer = new System.Windows.Forms.Timer(this.components);
             this.PanelLeft = new System.Windows.Forms.Panel();
-            this.LeftStickX = new System.Windows.Forms.HScrollBar();
-            this.LeftStickY = new System.Windows.Forms.VScrollBar();
             this.LeftStickZ = new System.Windows.Forms.HScrollBar();
+            this.LeftStickY = new System.Windows.Forms.VScrollBar();
+            this.LeftStickX = new System.Windows.Forms.HScrollBar();
             this.lblLeftStick = new System.Windows.Forms.Label();
             this.PanelRight = new System.Windows.Forms.Panel();
-            this.RightStickX = new System.Windows.Forms.HScrollBar();
-            this.RightStickY = new System.Windows.Forms.VScrollBar();
             this.RightStickZ = new System.Windows.Forms.HScrollBar();
+            this.RightStickY = new System.Windows.Forms.VScrollBar();
+            this.RightStickX = new System.Windows.Forms.HScrollBar();
             this.lblRightStick = new System.Windows.Forms.Label();
             this.PanelLeft.SuspendLayout();
             this.PanelRight.SuspendLayout();
@@ -57,13 +57,13 @@
             this.PanelLeft.Size = new System.Drawing.Size(308, 296);
             this.PanelLeft.TabIndex = 0;
             // 
-            // LeftStickX
+            // LeftStickZ
             // 
-            this.LeftStickX.Location = new System.Drawing.Point(24, 143);
-            this.LeftStickX.Maximum = 65535;
-            this.LeftStickX.Name = "LeftStickX";
-            this.LeftStickX.Size = new System.Drawing.Size(250, 17);
-            this.LeftStickX.TabIndex = 1;
+            this.LeftStickZ.Location = new System.Drawing.Point(24, 278);
+            this.LeftStickZ.Maximum = 65535;
+            this.LeftStickZ.Name = "LeftStickZ";
+            this.LeftStickZ.Size = new System.Drawing.Size(250, 17);
+            this.LeftStickZ.TabIndex = 3;
             // 
             // LeftStickY
             // 
@@ -73,13 +73,13 @@
             this.LeftStickY.Size = new System.Drawing.Size(17, 250);
             this.LeftStickY.TabIndex = 2;
             // 
-            // LeftStickZ
+            // LeftStickX
             // 
-            this.LeftStickZ.Location = new System.Drawing.Point(24, 278);
-            this.LeftStickZ.Maximum = 65535;
-            this.LeftStickZ.Name = "LeftStickZ";
-            this.LeftStickZ.Size = new System.Drawing.Size(250, 17);
-            this.LeftStickZ.TabIndex = 3;
+            this.LeftStickX.Location = new System.Drawing.Point(24, 143);
+            this.LeftStickX.Maximum = 65535;
+            this.LeftStickX.Name = "LeftStickX";
+            this.LeftStickX.Size = new System.Drawing.Size(250, 17);
+            this.LeftStickX.TabIndex = 1;
             // 
             // lblLeftStick
             // 
@@ -104,13 +104,13 @@
             this.PanelRight.Size = new System.Drawing.Size(308, 296);
             this.PanelRight.TabIndex = 1;
             // 
-            // RightStickX
+            // RightStickZ
             // 
-            this.RightStickX.Location = new System.Drawing.Point(32, 143);
-            this.RightStickX.Maximum = 65535;
-            this.RightStickX.Name = "RightStickX";
-            this.RightStickX.Size = new System.Drawing.Size(250, 17);
-            this.RightStickX.TabIndex = 3;
+            this.RightStickZ.Location = new System.Drawing.Point(32, 277);
+            this.RightStickZ.Maximum = 65535;
+            this.RightStickZ.Name = "RightStickZ";
+            this.RightStickZ.Size = new System.Drawing.Size(250, 17);
+            this.RightStickZ.TabIndex = 5;
             // 
             // RightStickY
             // 
@@ -120,13 +120,13 @@
             this.RightStickY.Size = new System.Drawing.Size(17, 250);
             this.RightStickY.TabIndex = 4;
             // 
-            // RightStickZ
+            // RightStickX
             // 
-            this.RightStickZ.Location = new System.Drawing.Point(32, 277);
-            this.RightStickZ.Maximum = 65535;
-            this.RightStickZ.Name = "RightStickZ";
-            this.RightStickZ.Size = new System.Drawing.Size(250, 17);
-            this.RightStickZ.TabIndex = 5;
+            this.RightStickX.Location = new System.Drawing.Point(32, 143);
+            this.RightStickX.Maximum = 65535;
+            this.RightStickX.Name = "RightStickX";
+            this.RightStickX.Size = new System.Drawing.Size(250, 17);
+            this.RightStickX.TabIndex = 3;
             // 
             // lblRightStick
             // 
@@ -139,7 +139,7 @@
             this.lblRightStick.Text = "Right Stick";
             this.lblRightStick.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // Form1
+            // JoystickStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -147,8 +147,8 @@
             this.Controls.Add(this.PanelRight);
             this.Controls.Add(this.PanelLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "JoystickStatus";
+            this.Text = "Joystick Status";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.PanelLeft.ResumeLayout(false);

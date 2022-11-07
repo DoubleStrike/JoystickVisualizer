@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JoystickVisualizer {
-    public partial class Form1 : Form {
+    public partial class JoystickStatus : Form {
         #region Private members
         // VKB's device names - complete with weird extra spaces
         private const string GLADIATOR_LEFT_NAME = " VKBsim Gladiator EVO  L  ";
@@ -39,7 +39,7 @@ namespace JoystickVisualizer {
         private JoystickUpdate[] dataRightStick;
         #endregion Private members
 
-        public Form1() {
+        public JoystickStatus() {
             InitializeComponent();
 
             directInput = new DirectInput();
