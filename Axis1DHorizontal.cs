@@ -12,6 +12,7 @@ using System.Windows.Forms;
 namespace JoystickVisualizer {
     public partial class Axis1DHorizontal : UserControl {
         private const int BORDER_THICKNESS = 4;
+        private const int CROSSHAIR_THICKNESS = 1;
 
         private int MaxRightPosition = 0;
         private int m_Value = 32767;
@@ -21,6 +22,7 @@ namespace JoystickVisualizer {
         private SolidBrush dotBrush;
         private SolidBrush frameBrush;
         private Pen framePen;
+        private Pen crosshairsPen;
 
         #region Public Properties
         [Description("Sets the current value"),
@@ -73,6 +75,7 @@ namespace JoystickVisualizer {
             dotBrush = new SolidBrush(m_DotColor);
             frameBrush = new SolidBrush(m_FrameColor);
             framePen = new Pen(m_FrameColor, BORDER_THICKNESS);
+            crosshairsPen = new Pen(m_FrameColor, CROSSHAIR_THICKNESS);
 
             CalculateMaxPosition();
         }
@@ -83,6 +86,9 @@ namespace JoystickVisualizer {
                 //e.Graphics.FillRectangle(frameBrush, new Rectangle(0, 0, this.Width, this.Height));
                 e.Graphics.DrawRectangle(framePen, new Rectangle(0, 0, this.Width, this.Height));
             }
+
+            // Draw centering crosshair
+            e.Graphics.DrawLine(crosshairsPen, this.Width / 2, 0, this.Width / 2, this.Height);
 
             // Draw the dot
             e.Graphics.FillEllipse(dotBrush, new Rectangle(MapValueToRange(m_Value), 0, this.Height, this.Height));
