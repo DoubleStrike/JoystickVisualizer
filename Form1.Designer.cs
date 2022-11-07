@@ -26,11 +26,13 @@
             this.components = new System.ComponentModel.Container();
             this.PollingTimer = new System.Windows.Forms.Timer(this.components);
             this.PanelLeft = new System.Windows.Forms.Panel();
+            this.LeftStickY = new System.Windows.Forms.VScrollBar();
+            this.LeftStickX = new System.Windows.Forms.HScrollBar();
+            this.lblLeftStick = new System.Windows.Forms.Label();
             this.PanelRight = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.lblRightStick = new System.Windows.Forms.Label();
+            this.RightStickY = new System.Windows.Forms.VScrollBar();
+            this.RightStickX = new System.Windows.Forms.HScrollBar();
             this.PanelLeft.SuspendLayout();
             this.PanelRight.SuspendLayout();
             this.SuspendLayout();
@@ -44,60 +46,78 @@
             // PanelLeft
             // 
             this.PanelLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PanelLeft.Controls.Add(this.vScrollBar1);
-            this.PanelLeft.Controls.Add(this.hScrollBar1);
-            this.PanelLeft.Controls.Add(this.label1);
+            this.PanelLeft.Controls.Add(this.LeftStickY);
+            this.PanelLeft.Controls.Add(this.LeftStickX);
+            this.PanelLeft.Controls.Add(this.lblLeftStick);
             this.PanelLeft.Location = new System.Drawing.Point(12, 12);
             this.PanelLeft.Name = "PanelLeft";
             this.PanelLeft.Size = new System.Drawing.Size(308, 296);
             this.PanelLeft.TabIndex = 0;
             // 
+            // LeftStickY
+            // 
+            this.LeftStickY.Location = new System.Drawing.Point(142, 29);
+            this.LeftStickY.Maximum = 65535;
+            this.LeftStickY.Name = "LeftStickY";
+            this.LeftStickY.Size = new System.Drawing.Size(17, 250);
+            this.LeftStickY.TabIndex = 2;
+            // 
+            // LeftStickX
+            // 
+            this.LeftStickX.Location = new System.Drawing.Point(24, 143);
+            this.LeftStickX.Maximum = 65535;
+            this.LeftStickX.Name = "LeftStickX";
+            this.LeftStickX.Size = new System.Drawing.Size(250, 17);
+            this.LeftStickX.TabIndex = 1;
+            // 
+            // lblLeftStick
+            // 
+            this.lblLeftStick.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblLeftStick.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLeftStick.Location = new System.Drawing.Point(3, 0);
+            this.lblLeftStick.Name = "lblLeftStick";
+            this.lblLeftStick.Size = new System.Drawing.Size(300, 29);
+            this.lblLeftStick.TabIndex = 0;
+            this.lblLeftStick.Text = "Left Stick";
+            this.lblLeftStick.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // PanelRight
             // 
             this.PanelRight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PanelRight.Controls.Add(this.label2);
+            this.PanelRight.Controls.Add(this.RightStickY);
+            this.PanelRight.Controls.Add(this.RightStickX);
+            this.PanelRight.Controls.Add(this.lblRightStick);
             this.PanelRight.Location = new System.Drawing.Point(401, 12);
             this.PanelRight.Name = "PanelRight";
             this.PanelRight.Size = new System.Drawing.Size(308, 296);
             this.PanelRight.TabIndex = 1;
             // 
-            // label1
+            // lblRightStick
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(300, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Left Stick";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblRightStick.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblRightStick.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRightStick.Location = new System.Drawing.Point(3, 0);
+            this.lblRightStick.Name = "lblRightStick";
+            this.lblRightStick.Size = new System.Drawing.Size(300, 31);
+            this.lblRightStick.TabIndex = 2;
+            this.lblRightStick.Text = "Right Stick";
+            this.lblRightStick.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label2
+            // RightStickY
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(300, 31);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Right Stick";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.RightStickY.Location = new System.Drawing.Point(151, 31);
+            this.RightStickY.Maximum = 65535;
+            this.RightStickY.Name = "RightStickY";
+            this.RightStickY.Size = new System.Drawing.Size(17, 250);
+            this.RightStickY.TabIndex = 4;
             // 
-            // hScrollBar1
+            // RightStickX
             // 
-            this.hScrollBar1.Location = new System.Drawing.Point(3, 149);
-            this.hScrollBar1.Maximum = 65535;
-            this.hScrollBar1.Name = "hScrollBar1";
-            this.hScrollBar1.Size = new System.Drawing.Size(300, 17);
-            this.hScrollBar1.TabIndex = 1;
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(138, 29);
-            this.vScrollBar1.Maximum = 65535;
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 265);
-            this.vScrollBar1.TabIndex = 2;
+            this.RightStickX.Location = new System.Drawing.Point(32, 143);
+            this.RightStickX.Maximum = 65535;
+            this.RightStickX.Name = "RightStickX";
+            this.RightStickX.Size = new System.Drawing.Size(250, 17);
+            this.RightStickX.TabIndex = 3;
             // 
             // Form1
             // 
@@ -122,10 +142,12 @@
         private System.Windows.Forms.Timer PollingTimer;
         private System.Windows.Forms.Panel PanelLeft;
         private System.Windows.Forms.Panel PanelRight;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
-        private System.Windows.Forms.HScrollBar hScrollBar1;
+        private System.Windows.Forms.Label lblLeftStick;
+        private System.Windows.Forms.Label lblRightStick;
+        private System.Windows.Forms.VScrollBar LeftStickY;
+        private System.Windows.Forms.HScrollBar LeftStickX;
+        private System.Windows.Forms.VScrollBar RightStickY;
+        private System.Windows.Forms.HScrollBar RightStickX;
     }
 }
 
