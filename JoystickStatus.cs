@@ -54,8 +54,8 @@ namespace JoystickVisualizer {
             RightStickX.Maximum = RightStickY.Maximum = RightStickZ.Maximum= 65535;
             RightStickX.Value = RightStickY.Value = RightStickZ.Value = 65535 / 2;
 
-            axis1D1.Value = 32767;
-            axis1D1.Maximum = 65535;
+            LeftTwist.Value = 32767;
+            LeftTwist.Maximum = 65535;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -152,11 +152,11 @@ namespace JoystickVisualizer {
                         break;
                     case JoystickOffset.RotationZ:
                         LeftStickZ.Value = state.Value;
-                        axis1D1.Value = state.Value;
+                        LeftTwist.Value = state.Value;
                         break;
                 }
 
-                Debug.WriteLine($"Left: '{state}'");
+                //Debug.WriteLine($"Left: '{state}'");
             }
 
             foreach (JoystickUpdate state in dataRightStick) {
@@ -172,7 +172,7 @@ namespace JoystickVisualizer {
                         break;
                 }
 
-                Debug.WriteLine($"Right: '{state}'");
+                //Debug.WriteLine($"Right: '{state}'");
             }
 
             // Sleep for the defined delay
