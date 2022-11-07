@@ -26,17 +26,16 @@
             this.components = new System.ComponentModel.Container();
             this.PollingTimer = new System.Windows.Forms.Timer(this.components);
             this.PanelLeft = new System.Windows.Forms.Panel();
-            this.LeftTwist = new JoystickVisualizer.Axis1DHorizontal();
-            this.LeftStickZ = new System.Windows.Forms.HScrollBar();
             this.LeftStickY = new System.Windows.Forms.VScrollBar();
             this.LeftStickX = new System.Windows.Forms.HScrollBar();
             this.lblLeftStick = new System.Windows.Forms.Label();
             this.PanelRight = new System.Windows.Forms.Panel();
-            this.RightStickZ = new System.Windows.Forms.HScrollBar();
             this.RightStickY = new System.Windows.Forms.VScrollBar();
             this.RightStickX = new System.Windows.Forms.HScrollBar();
             this.lblRightStick = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.LeftTwist = new JoystickVisualizer.Axis1DHorizontal();
+            this.RightTwist = new JoystickVisualizer.Axis1DHorizontal();
             this.PanelLeft.SuspendLayout();
             this.PanelRight.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -52,7 +51,6 @@
             // 
             this.PanelLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelLeft.Controls.Add(this.LeftTwist);
-            this.PanelLeft.Controls.Add(this.LeftStickZ);
             this.PanelLeft.Controls.Add(this.LeftStickY);
             this.PanelLeft.Controls.Add(this.LeftStickX);
             this.PanelLeft.Controls.Add(this.lblLeftStick);
@@ -61,23 +59,6 @@
             this.PanelLeft.Name = "PanelLeft";
             this.PanelLeft.Size = new System.Drawing.Size(308, 296);
             this.PanelLeft.TabIndex = 0;
-            // 
-            // LeftTwist
-            // 
-            this.LeftTwist.CausesValidation = false;
-            this.LeftTwist.Location = new System.Drawing.Point(24, 199);
-            this.LeftTwist.Maximum = 0;
-            this.LeftTwist.Name = "LeftTwist";
-            this.LeftTwist.Size = new System.Drawing.Size(200, 40);
-            this.LeftTwist.TabIndex = 4;
-            // 
-            // LeftStickZ
-            // 
-            this.LeftStickZ.Location = new System.Drawing.Point(24, 278);
-            this.LeftStickZ.Maximum = 65535;
-            this.LeftStickZ.Name = "LeftStickZ";
-            this.LeftStickZ.Size = new System.Drawing.Size(250, 17);
-            this.LeftStickZ.TabIndex = 3;
             // 
             // LeftStickY
             // 
@@ -109,7 +90,7 @@
             // PanelRight
             // 
             this.PanelRight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PanelRight.Controls.Add(this.RightStickZ);
+            this.PanelRight.Controls.Add(this.RightTwist);
             this.PanelRight.Controls.Add(this.RightStickY);
             this.PanelRight.Controls.Add(this.RightStickX);
             this.PanelRight.Controls.Add(this.lblRightStick);
@@ -118,14 +99,6 @@
             this.PanelRight.Name = "PanelRight";
             this.PanelRight.Size = new System.Drawing.Size(308, 296);
             this.PanelRight.TabIndex = 1;
-            // 
-            // RightStickZ
-            // 
-            this.RightStickZ.Location = new System.Drawing.Point(32, 277);
-            this.RightStickZ.Maximum = 65535;
-            this.RightStickZ.Name = "RightStickZ";
-            this.RightStickZ.Size = new System.Drawing.Size(250, 17);
-            this.RightStickZ.TabIndex = 5;
             // 
             // RightStickY
             // 
@@ -165,6 +138,24 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(690, 326);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
+            // LeftTwist
+            // 
+            this.LeftTwist.CausesValidation = false;
+            this.LeftTwist.Location = new System.Drawing.Point(3, 272);
+            this.LeftTwist.Maximum = 0;
+            this.LeftTwist.Name = "LeftTwist";
+            this.LeftTwist.Size = new System.Drawing.Size(300, 19);
+            this.LeftTwist.TabIndex = 4;
+            // 
+            // RightTwist
+            // 
+            this.RightTwist.CausesValidation = false;
+            this.RightTwist.Location = new System.Drawing.Point(3, 272);
+            this.RightTwist.Maximum = 0;
+            this.RightTwist.Name = "RightTwist";
+            this.RightTwist.Size = new System.Drawing.Size(300, 19);
+            this.RightTwist.TabIndex = 5;
+            // 
             // JoystickStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,12 +183,11 @@
         private System.Windows.Forms.Label lblRightStick;
         private System.Windows.Forms.HScrollBar LeftStickX;
         private System.Windows.Forms.VScrollBar LeftStickY;
-        private System.Windows.Forms.HScrollBar LeftStickZ;
         private System.Windows.Forms.HScrollBar RightStickX;
         private System.Windows.Forms.VScrollBar RightStickY;
-        private System.Windows.Forms.HScrollBar RightStickZ;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Axis1DHorizontal LeftTwist;
+        private Axis1DHorizontal RightTwist;
     }
 }
 

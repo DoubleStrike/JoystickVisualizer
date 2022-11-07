@@ -45,17 +45,14 @@ namespace JoystickVisualizer {
             directInput = new DirectInput();
 
             // Setup left stick UI
-            LeftStickX.Minimum = LeftStickY.Minimum = LeftStickZ.Minimum = 0;
-            LeftStickX.Maximum = LeftStickY.Maximum = LeftStickZ.Maximum = 65535;
-            LeftStickX.Value = LeftStickY.Value = LeftStickZ.Value = 65535 / 2;
+            LeftStickX.Minimum = LeftStickY.Minimum = 0;
+            LeftStickX.Maximum = LeftStickY.Maximum = 65535;
+            LeftStickX.Value = LeftStickY.Value = 65535 / 2;
 
             // Setup right stick UI
-            RightStickX.Minimum = RightStickY.Minimum = RightStickZ.Minimum = 0;
-            RightStickX.Maximum = RightStickY.Maximum = RightStickZ.Maximum= 65535;
-            RightStickX.Value = RightStickY.Value = RightStickZ.Value = 65535 / 2;
-
-            LeftTwist.Value = 32767;
-            LeftTwist.Maximum = 65535;
+            RightStickX.Minimum = RightStickY.Minimum = 0;
+            RightStickX.Maximum = RightStickY.Maximum = 65535;
+            RightStickX.Value = RightStickY.Value = 65535 / 2;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -151,7 +148,6 @@ namespace JoystickVisualizer {
                         LeftStickY.Value = state.Value;
                         break;
                     case JoystickOffset.RotationZ:
-                        LeftStickZ.Value = state.Value;
                         LeftTwist.Value = state.Value;
                         break;
                 }
@@ -168,7 +164,7 @@ namespace JoystickVisualizer {
                         RightStickY.Value = state.Value;
                         break;
                     case JoystickOffset.RotationZ:
-                        RightStickZ.Value = state.Value;
+                        RightTwist.Value = state.Value;
                         break;
                 }
 
