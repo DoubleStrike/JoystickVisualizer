@@ -22,24 +22,6 @@ namespace JoystickVisualizer {
         private Pen framePen;
 
         #region Public Properties
-        [Description("Sets the Minimum value"),
-                Category("Control Defaults"),
-                DefaultValue(0),
-                Browsable(true)]
-        public int Minimum {
-            get;
-            set;
-        }
-
-        [Description("Sets the Maximum value"),
-                Category("Control Defaults"),
-                DefaultValue(65535),
-                Browsable(true)]
-        public int Maximum {
-            get;
-            set;
-        }
-
         [Description("Sets the current value"),
                 Category("Control Defaults"),
                 DefaultValue(32767),
@@ -64,11 +46,11 @@ namespace JoystickVisualizer {
 
         [Description("HTML color code of the frame color"),
                 Category("Control Defaults"),
-                DefaultValue("#0000ff"),
+                DefaultValue("#0000FF"),
                 Browsable(true)]
         public string FrameColor {
             get { return ColorTranslator.ToHtml(m_FrameColor); }
-            set { m_FrameColor = (value == "") ? Color.Aquamarine : ColorTranslator.FromHtml(value); }
+            set { m_FrameColor = (value == "") ? Color.Blue : ColorTranslator.FromHtml(value); }
         }
 
         [Description("HTML color code of the dot color"),
@@ -119,7 +101,9 @@ namespace JoystickVisualizer {
         }
 
         private int MapValueToRange() {
-            //output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start)
+            // Formula to map input range to output range
+            //   output = output_start + ((output_end - output_start) / (input_end - input_start)) * (value - input_start)
+
             float positionExact = MaxBottomPosition * Value / 65535;
             return (int)positionExact;
         }
