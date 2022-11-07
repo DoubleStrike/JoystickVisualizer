@@ -85,7 +85,7 @@ namespace JoystickVisualizer {
             }
 
             // Draw the dot
-            e.Graphics.FillEllipse(dotBrush, new Rectangle(MapValueToRange(), 0, this.Height, this.Height));
+            e.Graphics.FillEllipse(dotBrush, new Rectangle(MapValueToRange(m_Value), 0, this.Height, this.Height));
         }
 
         private void Form_Resize(object sender, EventArgs e) {
@@ -98,11 +98,11 @@ namespace JoystickVisualizer {
             MaxRightPosition = this.Width - this.Height;
         }
 
-        private int MapValueToRange() {
+        private int MapValueToRange(int InputValue) {
             // Formula to map input range to output range
             //   output = output_start + ((output_end - output_start) / (input_end - input_start)) * (value - input_start)
 
-            float positionExact = MaxRightPosition * Value / 65535;
+            float positionExact = MaxRightPosition * InputValue / 65535;
             return (int)positionExact;
         }
     }
