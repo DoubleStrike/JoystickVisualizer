@@ -77,7 +77,7 @@ namespace JoystickVisualizer {
             CalculateMaxPosition();
         }
 
-        private void Axis1D_Paint(object sender, PaintEventArgs e) {
+        private void Form_Paint(object sender, PaintEventArgs e) {
             // Draw the frame
             if (m_RenderFrame) {
                 //e.Graphics.FillRectangle(frameBrush, new Rectangle(0, 0, this.Width, this.Height));
@@ -88,7 +88,7 @@ namespace JoystickVisualizer {
             e.Graphics.FillEllipse(dotBrush, new Rectangle(MapValueToRange(), 0, this.Height, this.Height));
         }
 
-        private void Axis1D_Resize(object sender, EventArgs e) {
+        private void Form_Resize(object sender, EventArgs e) {
             CalculateMaxPosition();
             this.Invalidate();
             this.Update();

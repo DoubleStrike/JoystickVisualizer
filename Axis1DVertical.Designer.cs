@@ -33,8 +33,8 @@
             this.DoubleBuffered = true;
             this.Name = "Axis1DVertical";
             this.Size = new System.Drawing.Size(40, 200);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Axis1D_Paint);
-            this.Resize += new System.EventHandler(this.Axis1D_Resize);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form_Paint);
+            this.Resize += new System.EventHandler(this.Form_Resize);
             this.ResumeLayout(false);
 
         }
