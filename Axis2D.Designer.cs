@@ -29,8 +29,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.DoubleBuffered = true;
             this.Name = "Axis2D";
             this.Size = new System.Drawing.Size(200, 200);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form_Paint);
+            this.Resize += new System.EventHandler(this.Form_Resize);
             this.ResumeLayout(false);
 
         }

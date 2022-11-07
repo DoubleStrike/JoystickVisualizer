@@ -141,10 +141,10 @@ namespace JoystickVisualizer {
             foreach (JoystickUpdate state in dataLeftStick) {
                 switch (state.Offset) {
                     case JoystickOffset.X:
-                        LeftRoll.Value = state.Value;
+                        Left2D.XValue = state.Value;
                         break;
                     case JoystickOffset.Y:
-                        LeftPitch.Value = state.Value;
+                        Left2D.YValue = state.Value;
                         break;
                     case JoystickOffset.RotationZ:
                         LeftTwist.Value = state.Value;

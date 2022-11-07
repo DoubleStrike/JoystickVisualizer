@@ -26,17 +26,15 @@
             this.components = new System.ComponentModel.Container();
             this.PollingTimer = new System.Windows.Forms.Timer(this.components);
             this.PanelLeft = new System.Windows.Forms.Panel();
+            this.Left2D = new JoystickVisualizer.Axis2D();
+            this.LeftTwist = new JoystickVisualizer.Axis1DHorizontal();
             this.lblLeftStick = new System.Windows.Forms.Label();
             this.PanelRight = new System.Windows.Forms.Panel();
+            this.RightTwist = new JoystickVisualizer.Axis1DHorizontal();
             this.RightStickY = new System.Windows.Forms.VScrollBar();
             this.RightStickX = new System.Windows.Forms.HScrollBar();
             this.lblRightStick = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.LeftRoll = new JoystickVisualizer.Axis1DHorizontal();
-            this.LeftPitch = new JoystickVisualizer.Axis1DVertical();
-            this.LeftTwist = new JoystickVisualizer.Axis1DHorizontal();
-            this.RightTwist = new JoystickVisualizer.Axis1DHorizontal();
-            this.Left2D = new JoystickVisualizer.Axis2D();
             this.PanelLeft.SuspendLayout();
             this.PanelRight.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -52,8 +50,6 @@
             // 
             this.PanelLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelLeft.Controls.Add(this.Left2D);
-            this.PanelLeft.Controls.Add(this.LeftRoll);
-            this.PanelLeft.Controls.Add(this.LeftPitch);
             this.PanelLeft.Controls.Add(this.LeftTwist);
             this.PanelLeft.Controls.Add(this.lblLeftStick);
             this.PanelLeft.Location = new System.Drawing.Point(15, 15);
@@ -62,11 +58,30 @@
             this.PanelLeft.Size = new System.Drawing.Size(308, 296);
             this.PanelLeft.TabIndex = 0;
             // 
+            // Left2D
+            // 
+            this.Left2D.DotColor = "Black";
+            this.Left2D.FrameColor = "Blue";
+            this.Left2D.Location = new System.Drawing.Point(44, 32);
+            this.Left2D.Name = "Left2D";
+            this.Left2D.Size = new System.Drawing.Size(220, 220);
+            this.Left2D.TabIndex = 7;
+            // 
+            // LeftTwist
+            // 
+            this.LeftTwist.CausesValidation = false;
+            this.LeftTwist.DotColor = "Black";
+            this.LeftTwist.FrameColor = "Blue";
+            this.LeftTwist.Location = new System.Drawing.Point(3, 272);
+            this.LeftTwist.Name = "LeftTwist";
+            this.LeftTwist.Size = new System.Drawing.Size(300, 20);
+            this.LeftTwist.TabIndex = 4;
+            // 
             // lblLeftStick
             // 
             this.lblLeftStick.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblLeftStick.Font = new System.Drawing.Font("Cambria", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLeftStick.Location = new System.Drawing.Point(3, 0);
+            this.lblLeftStick.Location = new System.Drawing.Point(4, 0);
             this.lblLeftStick.Name = "lblLeftStick";
             this.lblLeftStick.Size = new System.Drawing.Size(300, 29);
             this.lblLeftStick.TabIndex = 0;
@@ -85,6 +100,16 @@
             this.PanelRight.Name = "PanelRight";
             this.PanelRight.Size = new System.Drawing.Size(308, 296);
             this.PanelRight.TabIndex = 1;
+            // 
+            // RightTwist
+            // 
+            this.RightTwist.CausesValidation = false;
+            this.RightTwist.DotColor = "Black";
+            this.RightTwist.FrameColor = "Blue";
+            this.RightTwist.Location = new System.Drawing.Point(3, 272);
+            this.RightTwist.Name = "RightTwist";
+            this.RightTwist.Size = new System.Drawing.Size(300, 20);
+            this.RightTwist.TabIndex = 5;
             // 
             // RightStickY
             // 
@@ -124,55 +149,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(690, 326);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // LeftRoll
-            // 
-            this.LeftRoll.CausesValidation = false;
-            this.LeftRoll.DotColor = "Black";
-            this.LeftRoll.FrameColor = "Blue";
-            this.LeftRoll.Location = new System.Drawing.Point(35, 231);
-            this.LeftRoll.Name = "LeftRoll";
-            this.LeftRoll.Size = new System.Drawing.Size(200, 20);
-            this.LeftRoll.TabIndex = 6;
-            // 
-            // LeftPitch
-            // 
-            this.LeftPitch.CausesValidation = false;
-            this.LeftPitch.DotColor = "Black";
-            this.LeftPitch.FrameColor = "Blue";
-            this.LeftPitch.Location = new System.Drawing.Point(241, 51);
-            this.LeftPitch.Name = "LeftPitch";
-            this.LeftPitch.Size = new System.Drawing.Size(20, 200);
-            this.LeftPitch.TabIndex = 5;
-            // 
-            // LeftTwist
-            // 
-            this.LeftTwist.CausesValidation = false;
-            this.LeftTwist.DotColor = "Black";
-            this.LeftTwist.FrameColor = "Blue";
-            this.LeftTwist.Location = new System.Drawing.Point(3, 272);
-            this.LeftTwist.Name = "LeftTwist";
-            this.LeftTwist.Size = new System.Drawing.Size(300, 20);
-            this.LeftTwist.TabIndex = 4;
-            // 
-            // RightTwist
-            // 
-            this.RightTwist.CausesValidation = false;
-            this.RightTwist.DotColor = "Black";
-            this.RightTwist.FrameColor = "Blue";
-            this.RightTwist.Location = new System.Drawing.Point(3, 272);
-            this.RightTwist.Name = "RightTwist";
-            this.RightTwist.Size = new System.Drawing.Size(300, 20);
-            this.RightTwist.TabIndex = 5;
-            // 
-            // Left2D
-            // 
-            this.Left2D.DotColor = "Black";
-            this.Left2D.FrameColor = "Blue";
-            this.Left2D.Location = new System.Drawing.Point(35, 51);
-            this.Left2D.Name = "Left2D";
-            this.Left2D.Size = new System.Drawing.Size(150, 150);
-            this.Left2D.TabIndex = 7;
-            // 
             // JoystickStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,8 +180,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Axis1DHorizontal LeftTwist;
         private Axis1DHorizontal RightTwist;
-        private Axis1DVertical LeftPitch;
-        private Axis1DHorizontal LeftRoll;
         private Axis2D Left2D;
     }
 }
