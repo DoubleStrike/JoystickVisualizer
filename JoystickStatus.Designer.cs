@@ -26,16 +26,17 @@
             this.components = new System.ComponentModel.Container();
             this.PollingTimer = new System.Windows.Forms.Timer(this.components);
             this.PanelLeft = new System.Windows.Forms.Panel();
+            this.LeftTwist = new JoystickVisualizer.Axis1DHorizontal();
             this.LeftStickY = new System.Windows.Forms.VScrollBar();
             this.LeftStickX = new System.Windows.Forms.HScrollBar();
             this.lblLeftStick = new System.Windows.Forms.Label();
             this.PanelRight = new System.Windows.Forms.Panel();
+            this.RightTwist = new JoystickVisualizer.Axis1DHorizontal();
             this.RightStickY = new System.Windows.Forms.VScrollBar();
             this.RightStickX = new System.Windows.Forms.HScrollBar();
             this.lblRightStick = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.LeftTwist = new JoystickVisualizer.Axis1DHorizontal();
-            this.RightTwist = new JoystickVisualizer.Axis1DHorizontal();
+            this.axis1DVertical1 = new JoystickVisualizer.Axis1DVertical();
             this.PanelLeft.SuspendLayout();
             this.PanelRight.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -50,6 +51,7 @@
             // PanelLeft
             // 
             this.PanelLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelLeft.Controls.Add(this.axis1DVertical1);
             this.PanelLeft.Controls.Add(this.LeftTwist);
             this.PanelLeft.Controls.Add(this.LeftStickY);
             this.PanelLeft.Controls.Add(this.LeftStickX);
@@ -59,6 +61,17 @@
             this.PanelLeft.Name = "PanelLeft";
             this.PanelLeft.Size = new System.Drawing.Size(308, 296);
             this.PanelLeft.TabIndex = 0;
+            // 
+            // LeftTwist
+            // 
+            this.LeftTwist.CausesValidation = false;
+            this.LeftTwist.DotColor = "Black";
+            this.LeftTwist.FrameColor = "#0000FF";
+            this.LeftTwist.Location = new System.Drawing.Point(3, 272);
+            this.LeftTwist.Maximum = 0;
+            this.LeftTwist.Name = "LeftTwist";
+            this.LeftTwist.Size = new System.Drawing.Size(300, 19);
+            this.LeftTwist.TabIndex = 4;
             // 
             // LeftStickY
             // 
@@ -100,6 +113,17 @@
             this.PanelRight.Size = new System.Drawing.Size(308, 296);
             this.PanelRight.TabIndex = 1;
             // 
+            // RightTwist
+            // 
+            this.RightTwist.CausesValidation = false;
+            this.RightTwist.DotColor = "Black";
+            this.RightTwist.FrameColor = "#0000FF";
+            this.RightTwist.Location = new System.Drawing.Point(3, 272);
+            this.RightTwist.Maximum = 0;
+            this.RightTwist.Name = "RightTwist";
+            this.RightTwist.Size = new System.Drawing.Size(300, 19);
+            this.RightTwist.TabIndex = 5;
+            // 
             // RightStickY
             // 
             this.RightStickY.Location = new System.Drawing.Point(151, 31);
@@ -138,26 +162,16 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(690, 326);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // LeftTwist
+            // axis1DVertical1
             // 
-            this.LeftTwist.CausesValidation = false;
-            this.LeftTwist.DotColor = "Black";
-            this.LeftTwist.FrameColor = "#0000FF";
-            this.LeftTwist.Location = new System.Drawing.Point(3, 272);
-            this.LeftTwist.Maximum = 0;
-            this.LeftTwist.Name = "LeftTwist";
-            this.LeftTwist.Size = new System.Drawing.Size(300, 19);
-            this.LeftTwist.TabIndex = 4;
-            // 
-            // RightTwist
-            // 
-            this.RightTwist.CausesValidation = false;
-            this.RightTwist.FrameColor = "#0000FF";
-            this.RightTwist.Location = new System.Drawing.Point(3, 272);
-            this.RightTwist.Maximum = 0;
-            this.RightTwist.Name = "RightTwist";
-            this.RightTwist.Size = new System.Drawing.Size(300, 19);
-            this.RightTwist.TabIndex = 5;
+            this.axis1DVertical1.CausesValidation = false;
+            this.axis1DVertical1.DotColor = "Black";
+            this.axis1DVertical1.FrameColor = "Blue";
+            this.axis1DVertical1.Location = new System.Drawing.Point(217, 47);
+            this.axis1DVertical1.Maximum = 0;
+            this.axis1DVertical1.Name = "axis1DVertical1";
+            this.axis1DVertical1.Size = new System.Drawing.Size(40, 200);
+            this.axis1DVertical1.TabIndex = 5;
             // 
             // JoystickStatus
             // 
@@ -191,6 +205,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Axis1DHorizontal LeftTwist;
         private Axis1DHorizontal RightTwist;
+        private Axis1DVertical axis1DVertical1;
     }
 }
 

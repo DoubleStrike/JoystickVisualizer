@@ -146,6 +146,7 @@ namespace JoystickVisualizer {
                         break;
                     case JoystickOffset.Y:
                         LeftStickY.Value = state.Value;
+                        axis1DVertical1.Value = state.Value;
                         break;
                     case JoystickOffset.RotationZ:
                         LeftTwist.Value = state.Value;
