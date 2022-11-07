@@ -26,13 +26,15 @@
             this.components = new System.ComponentModel.Container();
             this.PollingTimer = new System.Windows.Forms.Timer(this.components);
             this.PanelLeft = new System.Windows.Forms.Panel();
-            this.LeftStickY = new System.Windows.Forms.VScrollBar();
             this.LeftStickX = new System.Windows.Forms.HScrollBar();
+            this.LeftStickY = new System.Windows.Forms.VScrollBar();
+            this.LeftStickZ = new System.Windows.Forms.HScrollBar();
             this.lblLeftStick = new System.Windows.Forms.Label();
             this.PanelRight = new System.Windows.Forms.Panel();
-            this.lblRightStick = new System.Windows.Forms.Label();
-            this.RightStickY = new System.Windows.Forms.VScrollBar();
             this.RightStickX = new System.Windows.Forms.HScrollBar();
+            this.RightStickY = new System.Windows.Forms.VScrollBar();
+            this.RightStickZ = new System.Windows.Forms.HScrollBar();
+            this.lblRightStick = new System.Windows.Forms.Label();
             this.PanelLeft.SuspendLayout();
             this.PanelRight.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +48,7 @@
             // PanelLeft
             // 
             this.PanelLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelLeft.Controls.Add(this.LeftStickZ);
             this.PanelLeft.Controls.Add(this.LeftStickY);
             this.PanelLeft.Controls.Add(this.LeftStickX);
             this.PanelLeft.Controls.Add(this.lblLeftStick);
@@ -53,6 +56,14 @@
             this.PanelLeft.Name = "PanelLeft";
             this.PanelLeft.Size = new System.Drawing.Size(308, 296);
             this.PanelLeft.TabIndex = 0;
+            // 
+            // LeftStickX
+            // 
+            this.LeftStickX.Location = new System.Drawing.Point(24, 143);
+            this.LeftStickX.Maximum = 65535;
+            this.LeftStickX.Name = "LeftStickX";
+            this.LeftStickX.Size = new System.Drawing.Size(250, 17);
+            this.LeftStickX.TabIndex = 1;
             // 
             // LeftStickY
             // 
@@ -62,13 +73,13 @@
             this.LeftStickY.Size = new System.Drawing.Size(17, 250);
             this.LeftStickY.TabIndex = 2;
             // 
-            // LeftStickX
+            // LeftStickZ
             // 
-            this.LeftStickX.Location = new System.Drawing.Point(24, 143);
-            this.LeftStickX.Maximum = 65535;
-            this.LeftStickX.Name = "LeftStickX";
-            this.LeftStickX.Size = new System.Drawing.Size(250, 17);
-            this.LeftStickX.TabIndex = 1;
+            this.LeftStickZ.Location = new System.Drawing.Point(24, 278);
+            this.LeftStickZ.Maximum = 65535;
+            this.LeftStickZ.Name = "LeftStickZ";
+            this.LeftStickZ.Size = new System.Drawing.Size(250, 17);
+            this.LeftStickZ.TabIndex = 3;
             // 
             // lblLeftStick
             // 
@@ -84,6 +95,7 @@
             // PanelRight
             // 
             this.PanelRight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelRight.Controls.Add(this.RightStickZ);
             this.PanelRight.Controls.Add(this.RightStickY);
             this.PanelRight.Controls.Add(this.RightStickX);
             this.PanelRight.Controls.Add(this.lblRightStick);
@@ -91,6 +103,30 @@
             this.PanelRight.Name = "PanelRight";
             this.PanelRight.Size = new System.Drawing.Size(308, 296);
             this.PanelRight.TabIndex = 1;
+            // 
+            // RightStickX
+            // 
+            this.RightStickX.Location = new System.Drawing.Point(32, 143);
+            this.RightStickX.Maximum = 65535;
+            this.RightStickX.Name = "RightStickX";
+            this.RightStickX.Size = new System.Drawing.Size(250, 17);
+            this.RightStickX.TabIndex = 3;
+            // 
+            // RightStickY
+            // 
+            this.RightStickY.Location = new System.Drawing.Point(151, 31);
+            this.RightStickY.Maximum = 65535;
+            this.RightStickY.Name = "RightStickY";
+            this.RightStickY.Size = new System.Drawing.Size(17, 250);
+            this.RightStickY.TabIndex = 4;
+            // 
+            // RightStickZ
+            // 
+            this.RightStickZ.Location = new System.Drawing.Point(32, 277);
+            this.RightStickZ.Maximum = 65535;
+            this.RightStickZ.Name = "RightStickZ";
+            this.RightStickZ.Size = new System.Drawing.Size(250, 17);
+            this.RightStickZ.TabIndex = 5;
             // 
             // lblRightStick
             // 
@@ -102,22 +138,6 @@
             this.lblRightStick.TabIndex = 2;
             this.lblRightStick.Text = "Right Stick";
             this.lblRightStick.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // RightStickY
-            // 
-            this.RightStickY.Location = new System.Drawing.Point(151, 31);
-            this.RightStickY.Maximum = 65535;
-            this.RightStickY.Name = "RightStickY";
-            this.RightStickY.Size = new System.Drawing.Size(17, 250);
-            this.RightStickY.TabIndex = 4;
-            // 
-            // RightStickX
-            // 
-            this.RightStickX.Location = new System.Drawing.Point(32, 143);
-            this.RightStickX.Maximum = 65535;
-            this.RightStickX.Name = "RightStickX";
-            this.RightStickX.Size = new System.Drawing.Size(250, 17);
-            this.RightStickX.TabIndex = 3;
             // 
             // Form1
             // 
@@ -144,10 +164,12 @@
         private System.Windows.Forms.Panel PanelRight;
         private System.Windows.Forms.Label lblLeftStick;
         private System.Windows.Forms.Label lblRightStick;
-        private System.Windows.Forms.VScrollBar LeftStickY;
         private System.Windows.Forms.HScrollBar LeftStickX;
-        private System.Windows.Forms.VScrollBar RightStickY;
+        private System.Windows.Forms.VScrollBar LeftStickY;
+        private System.Windows.Forms.HScrollBar LeftStickZ;
         private System.Windows.Forms.HScrollBar RightStickX;
+        private System.Windows.Forms.VScrollBar RightStickY;
+        private System.Windows.Forms.HScrollBar RightStickZ;
     }
 }
 

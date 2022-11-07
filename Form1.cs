@@ -45,14 +45,14 @@ namespace JoystickVisualizer {
             directInput = new DirectInput();
 
             // Setup left stick UI
-            LeftStickY.Minimum = LeftStickX.Minimum = 0;
-            LeftStickY.Maximum = LeftStickX.Maximum = 65535;
-            LeftStickY.Value = LeftStickX.Value = 65535 / 2;
+            LeftStickX.Minimum = LeftStickY.Minimum = LeftStickZ.Minimum = 0;
+            LeftStickX.Maximum = LeftStickY.Maximum = LeftStickZ.Maximum = 65535;
+            LeftStickX.Value = LeftStickY.Value = LeftStickZ.Value = 65535 / 2;
 
             // Setup right stick UI
-            RightStickY.Minimum = RightStickX.Minimum = 0;
-            RightStickY.Maximum = RightStickX.Maximum = 65535;
-            RightStickY.Value = RightStickX.Value = 65535 / 2;
+            RightStickX.Minimum = RightStickY.Minimum = RightStickZ.Minimum = 0;
+            RightStickX.Maximum = RightStickY.Maximum = RightStickZ.Maximum= 65535;
+            RightStickX.Value = RightStickY.Value = RightStickZ.Value = 65535 / 2;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -140,15 +140,33 @@ namespace JoystickVisualizer {
             dataRightStick = PollJoystick(joystickR);
 
             foreach (JoystickUpdate state in dataLeftStick) {
-                if (state.Offset == JoystickOffset.Y) LeftStickY.Value = state.Value;
-                if (state.Offset == JoystickOffset.X) LeftStickX.Value = state.Value;
+                switch (state.Offset) {
+                    case JoystickOffset.X:
+                        LeftStickX.Value = state.Value;
+                        break;
+                    case JoystickOffset.Y:
+                        LeftStickY.Value = state.Value;
+                        break;
+                    case JoystickOffset.RotationZ:
+                        LeftStickZ.Value = state.Value;
+                        break;
+                }
 
                 Debug.WriteLine($"Left: '{state}'");
             }
 
             foreach (JoystickUpdate state in dataRightStick) {
-                if (state.Offset == JoystickOffset.Y) RightStickY.Value = state.Value;
-                if (state.Offset == JoystickOffset.X) RightStickX.Value = state.Value;
+                switch (state.Offset) {
+                    case JoystickOffset.X:
+                        RightStickX.Value = state.Value;
+                        break;
+                    case JoystickOffset.Y:
+                        RightStickY.Value = state.Value;
+                        break;
+                    case JoystickOffset.RotationZ:
+                        RightStickZ.Value = state.Value;
+                        break;
+                }
 
                 Debug.WriteLine($"Right: '{state}'");
             }
