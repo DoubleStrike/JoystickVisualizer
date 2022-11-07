@@ -35,6 +35,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
+            this.DoubleBuffered = true;
             this.Name = "Axis1DVertical";
             this.Size = new System.Drawing.Size(40, 200);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Axis1D_Paint);

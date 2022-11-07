@@ -16,8 +16,9 @@ namespace JoystickVisualizer {
         // VKB's device names - complete with weird extra spaces
         private const string GLADIATOR_LEFT_NAME = " VKBsim Gladiator EVO  L  ";
         private const string GLADIATOR_RIGHT_NAME = " VKBsim Gladiator EVO  R  ";
+        private const string GLADIATOR_RIGHT_SEM_NAME = " VKBsim Gladiator EVO  R SEM ";
 
-        private const int POLLING_SLEEP_MS = 100;
+        private const int POLLING_SLEEP_MS = 20;
 
         // Initialize DirectInput
         private readonly DirectInput directInput;
@@ -108,6 +109,9 @@ namespace JoystickVisualizer {
                 } else if (thisDevice.InstanceName == GLADIATOR_RIGHT_NAME) {
                     joystickRFound = true;
                     joystickRGuid = thisDevice.InstanceGuid;
+                } else if (thisDevice.InstanceName == GLADIATOR_RIGHT_SEM_NAME) {
+                    joystickRFound = true;
+                    joystickRGuid = thisDevice.InstanceGuid;
                 } else {
                     Debug.WriteLine("Unplanned extra device found.");
                 }
@@ -146,7 +150,7 @@ namespace JoystickVisualizer {
                         break;
                     case JoystickOffset.Y:
                         LeftStickY.Value = state.Value;
-                        axis1DVertical1.Value = state.Value;
+                        LeftPitch.Value = state.Value;
                         break;
                     case JoystickOffset.RotationZ:
                         LeftTwist.Value = state.Value;

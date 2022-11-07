@@ -91,6 +91,9 @@
     <EmbeddedResource Include="Axis1DVertical.resx">
       <DependentUpon>Axis1DVertical.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Axis2D.resx">
+      <DependentUpon>Axis2D.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="JoystickStatus.resx">
       <DependentUpon>JoystickStatus.cs</DependentUpon>
     </EmbeddedResource>

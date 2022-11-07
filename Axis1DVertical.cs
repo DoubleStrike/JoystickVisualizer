@@ -17,6 +17,9 @@ namespace JoystickVisualizer {
         private int m_Value = 32767;
         private Color m_DotColor = Color.Black;
         private Color m_FrameColor = Color.Blue;
+        private SolidBrush dotBrush;
+        private SolidBrush frameBrush;
+        private Pen framePen;
 
         #region Public Properties
         [Description("Sets the Minimum value"),
@@ -50,6 +53,15 @@ namespace JoystickVisualizer {
             }
         }
 
+        [Description("Sets whether the frame should be rendered"),
+                Category("Control Defaults"),
+                DefaultValue(true),
+                Browsable(true)]
+        public bool RenderFrame {
+            get;
+            set;
+        }
+
         [Description("HTML color code of the frame color"),
                 Category("Control Defaults"),
                 DefaultValue("#0000ff"),
@@ -73,24 +85,26 @@ namespace JoystickVisualizer {
         public Axis1DVertical() {
             InitializeComponent();
 
+            // Setup class members
+            dotBrush = new SolidBrush(m_DotColor);
+            frameBrush = new SolidBrush(m_FrameColor);
+            framePen = new Pen(m_FrameColor, BORDER_THICKNESS);
+
             CalculateMaxPosition();
         }
 
         private void Axis1D_Paint(object sender, PaintEventArgs e) {
-
-            SolidBrush dotBrush = new SolidBrush(m_DotColor);
-            //SolidBrush frameBrush = new SolidBrush(m_FrameColor);
-            Pen framePen = new Pen(m_FrameColor, BORDER_THICKNESS);
             Graphics formGraphics = this.CreateGraphics();
 
             // Draw the frame
-            //formGraphics.FillRectangle(frameBrush, new Rectangle(0, 0, this.Width, this.Height));
-            formGraphics.DrawRectangle(framePen, new Rectangle(0, 0, this.Width, this.Height));
+            if (RenderFrame) {
+                //formGraphics.FillRectangle(frameBrush, new Rectangle(0, 0, this.Width, this.Height));
+                formGraphics.DrawRectangle(framePen, new Rectangle(0, 0, this.Width, this.Height));
+            }
 
             // Draw the dot
             formGraphics.FillEllipse(dotBrush, new Rectangle(0, MapValueToRange(), this.Width, this.Width));
 
-            dotBrush.Dispose();
             formGraphics.Dispose();
         }
 
