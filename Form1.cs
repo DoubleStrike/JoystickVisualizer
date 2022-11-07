@@ -33,6 +33,10 @@ namespace JoystickVisualizer {
         // Joystick objects
         private Joystick joystickL;
         private Joystick joystickR;
+
+        // Joystick data buffers
+        private JoystickUpdate[] dataLeftStick;
+        private JoystickUpdate[] dataRightStick;
         #endregion Private members
 
         public Form1() {
@@ -53,8 +57,8 @@ namespace JoystickVisualizer {
 
             // Poll events from joystick
             while (true) {
-                JoystickUpdate[] dataLeftStick = PollJoystick(joystickL);
-                JoystickUpdate[] dataRightStick = PollJoystick(joystickR);
+                dataLeftStick = PollJoystick(joystickL);
+                dataRightStick = PollJoystick(joystickR);
 
                 foreach (JoystickUpdate state in dataLeftStick)
                     Debug.WriteLine($"Left: '{state}'");
@@ -96,6 +100,10 @@ namespace JoystickVisualizer {
             }
         }
 
+        /// <summary>
+        /// Iterates through device instances from DirectInput and saves the left/right stick GUIDs and marks them as found
+        /// </summary>
+        /// <returns>true if at least one joystick was bound successfully</returns>
         private bool BindJoysticks() {
             foreach (DeviceInstance thisDevice in directInput.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AllDevices)) {
                 Debug.WriteLine($"Device instance found: '{thisDevice.InstanceName}'");
@@ -114,6 +122,11 @@ namespace JoystickVisualizer {
             return (joystickLFound || joystickRFound);
         }
 
+        /// <summary>
+        /// Calls Poll() on the Joystick object and returns its buffered data
+        /// </summary>
+        /// <param name="stickToPoll">the Joystick object to poll</param>
+        /// <returns>the contents of the data buffer as a JoystickUpdate[]</returns>
         private JoystickUpdate[] PollJoystick(Joystick stickToPoll) {
             if (stickToPoll == null) return null;
 
