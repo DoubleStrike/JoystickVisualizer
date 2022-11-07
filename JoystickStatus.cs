@@ -45,11 +45,6 @@ namespace JoystickVisualizer {
 
             directInput = new DirectInput();
 
-            // Setup left stick UI
-            LeftStickX.Minimum = LeftStickY.Minimum = 0;
-            LeftStickX.Maximum = LeftStickY.Maximum = 65535;
-            LeftStickX.Value = LeftStickY.Value = 65535 / 2;
-
             // Setup right stick UI
             RightStickX.Minimum = RightStickY.Minimum = 0;
             RightStickX.Maximum = RightStickY.Maximum = 65535;
@@ -146,10 +141,9 @@ namespace JoystickVisualizer {
             foreach (JoystickUpdate state in dataLeftStick) {
                 switch (state.Offset) {
                     case JoystickOffset.X:
-                        LeftStickX.Value = state.Value;
+                        LeftRoll.Value = state.Value;
                         break;
                     case JoystickOffset.Y:
-                        LeftStickY.Value = state.Value;
                         LeftPitch.Value = state.Value;
                         break;
                     case JoystickOffset.RotationZ:
