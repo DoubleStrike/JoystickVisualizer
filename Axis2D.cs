@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace JoystickVisualizer {
     public partial class Axis2D : UserControl {
         private const int BORDER_THICKNESS = 4;
+        private const int CROSSHAIR_THICKNESS = 1;
         private const int DOT_SIZE = 20;
 
         private int MaxBottomPosition = 0;
@@ -23,6 +24,7 @@ namespace JoystickVisualizer {
         private SolidBrush dotBrush;
         private SolidBrush frameBrush;
         private Pen framePen;
+        private Pen crosshairsPen;
 
         #region Public Properties
         [Description("Sets the current X value"),
@@ -88,6 +90,7 @@ namespace JoystickVisualizer {
             dotBrush = new SolidBrush(m_DotColor);
             frameBrush = new SolidBrush(m_FrameColor);
             framePen = new Pen(m_FrameColor, BORDER_THICKNESS);
+            crosshairsPen = new Pen(m_FrameColor, CROSSHAIR_THICKNESS);
 
             CalculateMaxPositions();
         }
@@ -98,6 +101,10 @@ namespace JoystickVisualizer {
                 //e.Graphics.FillRectangle(frameBrush, new Rectangle(0, 0, this.Width, this.Height));
                 e.Graphics.DrawRectangle(framePen, new Rectangle(0, 0, this.Width, this.Height));
             }
+
+            // Draw centering crosshairs
+            e.Graphics.DrawLine(crosshairsPen, 0, this.Width / 2, this.Height, this.Width / 2);
+            e.Graphics.DrawLine(crosshairsPen, this.Height / 2, 0, this.Height / 2, this.Width);
 
             // Draw the dot
             e.Graphics.FillEllipse(dotBrush, new Rectangle(MapValueToRangeX(m_XValue), MapValueToRangeY(m_YValue), DOT_SIZE, DOT_SIZE));
