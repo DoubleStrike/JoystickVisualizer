@@ -141,6 +141,9 @@ namespace JoystickVisualizer {
                     case JoystickOffset.Y:
                         Left2D.YValue = state.Value;
                         break;
+                    case JoystickOffset.Z:
+                        LeftThrottle.Value = 65535 - state.Value;
+                        break;
                     case JoystickOffset.RotationZ:
                         LeftTwist.Value = state.Value;
                         break;
@@ -157,8 +160,14 @@ namespace JoystickVisualizer {
                     case JoystickOffset.Y:
                         Right2D.YValue = state.Value;
                         break;
+                    case JoystickOffset.Z:
+                        RightThrottle.Value = 65535 - state.Value;
+                        break;
                     case JoystickOffset.RotationZ:
                         RightTwist.Value = state.Value;
+                        break;
+                    case JoystickOffset.Sliders0:
+                        RightSlider.Value = 65535 - state.Value;
                         break;
                 }
 
@@ -167,6 +176,10 @@ namespace JoystickVisualizer {
 
             // Sleep for the defined delay
             System.Threading.Thread.Sleep(POLLING_SLEEP_MS);
+        }
+
+        private void AlwaysOnTop_CheckedChanged(object sender, EventArgs e) {
+            this.TopMost = AlwaysOnTop.Checked;
         }
     }
 }
