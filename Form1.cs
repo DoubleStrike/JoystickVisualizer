@@ -53,22 +53,6 @@ namespace JoystickVisualizer {
             }
 
             ActivateJoysticks();
-
-
-            // Poll events from joystick
-            while (true) {
-                dataLeftStick = PollJoystick(joystickL);
-                dataRightStick = PollJoystick(joystickR);
-
-                foreach (JoystickUpdate state in dataLeftStick)
-                    Debug.WriteLine($"Left: '{state}'");
-
-                foreach (JoystickUpdate state in dataRightStick)
-                    Debug.WriteLine($"Right: '{state}'");
-
-                // Sleep for the defined delay
-                System.Threading.Thread.Sleep(POLLING_SLEEP_MS);
-            }
         }
 
         /// <summary>
@@ -132,6 +116,29 @@ namespace JoystickVisualizer {
 
             stickToPoll.Poll();
             return stickToPoll.GetBufferedData();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
+            // Unacquire any active joysticks
+            if (joystickLFound) joystickL.Unacquire();
+            if (joystickRFound) joystickR.Unacquire();
+        }
+
+        private void PollingTimer_Tick(object sender, EventArgs e) {
+            // Poll events from joystick
+            dataLeftStick = PollJoystick(joystickL);
+            dataRightStick = PollJoystick(joystickR);
+
+            foreach (JoystickUpdate state in dataLeftStick) {
+                Debug.WriteLine($"Left: '{state}'");
+            }
+
+            foreach (JoystickUpdate state in dataRightStick) {
+                Debug.WriteLine($"Right: '{state}'");
+            }
+
+            // Sleep for the defined delay
+            System.Threading.Thread.Sleep(POLLING_SLEEP_MS);
         }
     }
 }
