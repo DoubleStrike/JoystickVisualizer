@@ -68,6 +68,7 @@ namespace JoystickVisualizer {
             InitializeComponent();
 
             // Setup class members
+            this.ResizeRedraw = true;
             dotBrush = new SolidBrush(m_DotColor);
             frameBrush = new SolidBrush(m_FrameColor);
             framePen = new Pen(m_FrameColor, BORDER_THICKNESS);
@@ -76,18 +77,14 @@ namespace JoystickVisualizer {
         }
 
         private void Axis1D_Paint(object sender, PaintEventArgs e) {
-            Graphics formGraphics = this.CreateGraphics();
-
             // Draw the frame
             if (RenderFrame) {
-                //formGraphics.FillRectangle(frameBrush, new Rectangle(0, 0, this.Width, this.Height));
-                formGraphics.DrawRectangle(framePen, new Rectangle(0, 0, this.Width, this.Height));
+                //e.Graphics.FillRectangle(frameBrush, new Rectangle(0, 0, this.Width, this.Height));
+                e.Graphics.DrawRectangle(framePen, new Rectangle(0, 0, this.Width, this.Height));
             }
 
             // Draw the dot
-            formGraphics.FillEllipse(dotBrush, new Rectangle(0, MapValueToRange(), this.Width, this.Width));
-
-            formGraphics.Dispose();
+            e.Graphics.FillEllipse(dotBrush, new Rectangle(0, MapValueToRange(), this.Width, this.Width));
         }
 
         private void Axis1D_Resize(object sender, EventArgs e) {

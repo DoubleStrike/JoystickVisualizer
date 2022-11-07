@@ -30,6 +30,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
+            this.DoubleBuffered = true;
             this.Name = "Axis1DHorizontal";
             this.Size = new System.Drawing.Size(200, 40);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Axis1D_Paint);

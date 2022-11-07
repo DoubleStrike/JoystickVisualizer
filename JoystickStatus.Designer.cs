@@ -65,14 +65,19 @@
             // LeftPitch
             // 
             this.LeftPitch.CausesValidation = false;
+            this.LeftPitch.DotColor = "Black";
+            this.LeftPitch.FrameColor = "Blue";
             this.LeftPitch.Location = new System.Drawing.Point(241, 51);
             this.LeftPitch.Name = "LeftPitch";
+            this.LeftPitch.RenderFrame = false;
             this.LeftPitch.Size = new System.Drawing.Size(23, 200);
             this.LeftPitch.TabIndex = 5;
             // 
             // LeftTwist
             // 
             this.LeftTwist.CausesValidation = false;
+            this.LeftTwist.DotColor = "Black";
+            this.LeftTwist.FrameColor = "Blue";
             this.LeftTwist.Location = new System.Drawing.Point(3, 272);
             this.LeftTwist.Name = "LeftTwist";
             this.LeftTwist.RenderFrame = false;
@@ -122,6 +127,8 @@
             // RightTwist
             // 
             this.RightTwist.CausesValidation = false;
+            this.RightTwist.DotColor = "Black";
+            this.RightTwist.FrameColor = "Blue";
             this.RightTwist.Location = new System.Drawing.Point(3, 272);
             this.RightTwist.Name = "RightTwist";
             this.RightTwist.RenderFrame = false;
@@ -172,6 +179,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 326);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "JoystickStatus";
             this.Text = "Joystick Status";
