@@ -31,10 +31,9 @@
             this.lblLeftStick = new System.Windows.Forms.Label();
             this.PanelRight = new System.Windows.Forms.Panel();
             this.RightTwist = new JoystickVisualizer.Axis1DHorizontal();
-            this.RightStickY = new System.Windows.Forms.VScrollBar();
-            this.RightStickX = new System.Windows.Forms.HScrollBar();
             this.lblRightStick = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.Right2D = new JoystickVisualizer.Axis2D();
             this.PanelLeft.SuspendLayout();
             this.PanelRight.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -91,9 +90,8 @@
             // PanelRight
             // 
             this.PanelRight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelRight.Controls.Add(this.Right2D);
             this.PanelRight.Controls.Add(this.RightTwist);
-            this.PanelRight.Controls.Add(this.RightStickY);
-            this.PanelRight.Controls.Add(this.RightStickX);
             this.PanelRight.Controls.Add(this.lblRightStick);
             this.PanelRight.Location = new System.Drawing.Point(363, 15);
             this.PanelRight.Margin = new System.Windows.Forms.Padding(20, 10, 10, 10);
@@ -110,22 +108,6 @@
             this.RightTwist.Name = "RightTwist";
             this.RightTwist.Size = new System.Drawing.Size(300, 20);
             this.RightTwist.TabIndex = 5;
-            // 
-            // RightStickY
-            // 
-            this.RightStickY.Location = new System.Drawing.Point(151, 31);
-            this.RightStickY.Maximum = 65535;
-            this.RightStickY.Name = "RightStickY";
-            this.RightStickY.Size = new System.Drawing.Size(17, 250);
-            this.RightStickY.TabIndex = 4;
-            // 
-            // RightStickX
-            // 
-            this.RightStickX.Location = new System.Drawing.Point(32, 143);
-            this.RightStickX.Maximum = 65535;
-            this.RightStickX.Name = "RightStickX";
-            this.RightStickX.Size = new System.Drawing.Size(250, 17);
-            this.RightStickX.TabIndex = 3;
             // 
             // lblRightStick
             // 
@@ -148,6 +130,15 @@
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(690, 326);
             this.flowLayoutPanel1.TabIndex = 2;
+            // 
+            // Right2D
+            // 
+            this.Right2D.DotColor = "Black";
+            this.Right2D.FrameColor = "Blue";
+            this.Right2D.Location = new System.Drawing.Point(43, 37);
+            this.Right2D.Name = "Right2D";
+            this.Right2D.Size = new System.Drawing.Size(220, 220);
+            this.Right2D.TabIndex = 8;
             // 
             // JoystickStatus
             // 
@@ -175,12 +166,11 @@
         private System.Windows.Forms.Panel PanelRight;
         private System.Windows.Forms.Label lblLeftStick;
         private System.Windows.Forms.Label lblRightStick;
-        private System.Windows.Forms.HScrollBar RightStickX;
-        private System.Windows.Forms.VScrollBar RightStickY;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Axis1DHorizontal LeftTwist;
         private Axis1DHorizontal RightTwist;
         private Axis2D Left2D;
+        private Axis2D Right2D;
     }
 }
 
