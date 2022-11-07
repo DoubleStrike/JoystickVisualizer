@@ -12,29 +12,91 @@ using System.Windows.Forms;
 
 namespace JoystickVisualizer {
     public partial class Form1 : Form {
+        #region Private members
         // VKB's device names - complete with weird extra spaces
         private const string GLADIATOR_LEFT_NAME = " VKBsim Gladiator EVO  L  ";
         private const string GLADIATOR_RIGHT_NAME = " VKBsim Gladiator EVO  R  ";
 
         private const int POLLING_SLEEP_MS = 100;
 
+        // Initialize DirectInput
+        private readonly DirectInput directInput;
+
+        // Joystick GUIDs
+        private Guid joystickLGuid = Guid.Empty;
+        private Guid joystickRGuid = Guid.Empty;
+
+        // Joystick state
+        private bool joystickLFound = false;
+        private bool joystickRFound = false;
+
+        // Joystick objects
+        private Joystick joystickL;
+        private Joystick joystickR;
+        #endregion Private members
 
         public Form1() {
             InitializeComponent();
+
+            directInput = new DirectInput();
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            // Initialize DirectInput
-            DirectInput directInput = new DirectInput();
+            // Try to bind the joysticks, else throw an error and exit
+            if (!BindJoysticks()) {
+                Debug.WriteLine("No joystick/Gamepad found.");
+                Environment.Exit(1);
+            }
 
-            // Joystick GUIDs
-            Guid joystickLGuid = Guid.Empty;
-            Guid joystickRGuid = Guid.Empty;
+            ActivateJoysticks();
 
-            // Joystick counter
-            bool joystickLFound = false;
-            bool joystickRFound = false;
 
+            // Poll events from joystick
+            while (true) {
+                JoystickUpdate[] dataLeftStick = PollJoystick(joystickL);
+                JoystickUpdate[] dataRightStick = PollJoystick(joystickR);
+
+                foreach (JoystickUpdate state in dataLeftStick)
+                    Debug.WriteLine($"Left: '{state}'");
+
+                foreach (JoystickUpdate state in dataRightStick)
+                    Debug.WriteLine($"Right: '{state}'");
+
+                // Sleep for the defined delay
+                System.Threading.Thread.Sleep(POLLING_SLEEP_MS);
+            }
+        }
+
+        /// <summary>
+        /// Instantiates Joystick objects given proper GUIDs, sets buffer sizes, and performs Acquire() on the sticks
+        /// </summary>
+        private void ActivateJoysticks() {
+            if (joystickLFound) {
+                // Instantiate the joystick
+                joystickL = new Joystick(directInput, joystickLGuid);
+                Debug.WriteLine($"Found Left Joystick/Gamepad with GUID: '{joystickLGuid}'");
+
+                // Set BufferSize in order to use buffered data
+                joystickL.Properties.BufferSize = 128;
+
+                // Acquire the joysticks
+                joystickL.Acquire();
+            }
+
+            if (joystickRFound) {
+                // Instantiate the joystick
+                joystickR = new Joystick(directInput, joystickRGuid);
+                Debug.WriteLine($"Found Right Joystick/Gamepad with GUID: '{joystickRGuid}'");
+
+                // Set BufferSize in order to use buffered data
+                joystickR.Properties.BufferSize = 128;
+
+                // Acquire the joysticks
+                joystickR.Acquire();
+            }
+        }
+
+        private bool BindJoysticks() {
             foreach (DeviceInstance thisDevice in directInput.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AllDevices)) {
                 Debug.WriteLine($"Device instance found: '{thisDevice.InstanceName}'");
 
@@ -49,43 +111,14 @@ namespace JoystickVisualizer {
                 }
             }
 
-            // If Joystick not found, throws an error and exits
-            if (!joystickLFound && !joystickRFound) {
-                Debug.WriteLine("No joystick/Gamepad found.");
-                Environment.Exit(1);
-            }
+            return (joystickLFound || joystickRFound);
+        }
 
-            // Instantiate the joysticks
-            Joystick joystickL = new Joystick(directInput, joystickLGuid);
-            Debug.WriteLine($"Found Left Joystick/Gamepad with GUID: '{joystickLGuid}'");
+        private JoystickUpdate[] PollJoystick(Joystick stickToPoll) {
+            if (stickToPoll == null) return null;
 
-            Joystick joystickR = new Joystick(directInput, joystickRGuid);
-            Debug.WriteLine($"Found Right Joystick/Gamepad with GUID: '{joystickRGuid}'");
-
-            // Set BufferSize in order to use buffered data
-            joystickL.Properties.BufferSize = 128;
-            joystickR.Properties.BufferSize = 128;
-
-            // Acquire the joysticks
-            joystickL.Acquire();
-            joystickR.Acquire();
-
-
-            // Poll events from joystick
-            while (true) {
-                joystickL.Poll();
-                JoystickUpdate[] dataLeftStick = joystickL.GetBufferedData();
-                foreach (JoystickUpdate state in dataLeftStick)
-                    Debug.WriteLine($"Left: '{state}'");
-
-                joystickR.Poll();
-                JoystickUpdate[] dataRightStick = joystickR.GetBufferedData();
-                foreach (JoystickUpdate state in dataRightStick)
-                    Debug.WriteLine($"Right: '{state}'");
-
-                // Sleep for the defined delay
-                System.Threading.Thread.Sleep(POLLING_SLEEP_MS);
-            }
+            stickToPoll.Poll();
+            return stickToPoll.GetBufferedData();
         }
     }
 }
