@@ -36,11 +36,9 @@
             this.RightStickX = new System.Windows.Forms.HScrollBar();
             this.lblRightStick = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PanelLeft.SuspendLayout();
             this.PanelRight.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // PollingTimer
@@ -56,7 +54,8 @@
             this.PanelLeft.Controls.Add(this.LeftStickY);
             this.PanelLeft.Controls.Add(this.LeftStickX);
             this.PanelLeft.Controls.Add(this.lblLeftStick);
-            this.PanelLeft.Location = new System.Drawing.Point(8, 8);
+            this.PanelLeft.Location = new System.Drawing.Point(15, 15);
+            this.PanelLeft.Margin = new System.Windows.Forms.Padding(10, 10, 20, 10);
             this.PanelLeft.Name = "PanelLeft";
             this.PanelLeft.Size = new System.Drawing.Size(308, 296);
             this.PanelLeft.TabIndex = 0;
@@ -103,7 +102,8 @@
             this.PanelRight.Controls.Add(this.RightStickY);
             this.PanelRight.Controls.Add(this.RightStickX);
             this.PanelRight.Controls.Add(this.lblRightStick);
-            this.PanelRight.Location = new System.Drawing.Point(428, 8);
+            this.PanelRight.Location = new System.Drawing.Point(363, 15);
+            this.PanelRight.Margin = new System.Windows.Forms.Padding(20, 10, 10, 10);
             this.PanelRight.Name = "PanelRight";
             this.PanelRight.Size = new System.Drawing.Size(308, 296);
             this.PanelRight.TabIndex = 1;
@@ -146,28 +146,19 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.PanelLeft);
-            this.flowLayoutPanel1.Controls.Add(this.pictureBox1);
             this.flowLayoutPanel1.Controls.Add(this.PanelRight);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(747, 316);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(690, 326);
             this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(322, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // JoystickStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(747, 316);
+            this.ClientSize = new System.Drawing.Size(690, 326);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "JoystickStatus";
@@ -177,7 +168,6 @@
             this.PanelLeft.ResumeLayout(false);
             this.PanelRight.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,7 +186,6 @@
         private System.Windows.Forms.VScrollBar RightStickY;
         private System.Windows.Forms.HScrollBar RightStickZ;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
