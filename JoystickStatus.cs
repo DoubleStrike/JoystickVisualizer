@@ -53,6 +53,9 @@ namespace JoystickVisualizer {
             RightStickX.Minimum = RightStickY.Minimum = RightStickZ.Minimum = 0;
             RightStickX.Maximum = RightStickY.Maximum = RightStickZ.Maximum= 65535;
             RightStickX.Value = RightStickY.Value = RightStickZ.Value = 65535 / 2;
+
+            axis1D1.Value = 32767;
+            axis1D1.Maximum = 65535;
         }
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -149,6 +152,7 @@ namespace JoystickVisualizer {
                         break;
                     case JoystickOffset.RotationZ:
                         LeftStickZ.Value = state.Value;
+                        axis1D1.Value = state.Value;
                         break;
                 }
 

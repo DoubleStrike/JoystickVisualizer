@@ -36,6 +36,7 @@
             this.RightStickX = new System.Windows.Forms.HScrollBar();
             this.lblRightStick = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.axis1D1 = new JoystickVisualizer.Axis1D();
             this.PanelLeft.SuspendLayout();
             this.PanelRight.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -50,6 +51,7 @@
             // PanelLeft
             // 
             this.PanelLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelLeft.Controls.Add(this.axis1D1);
             this.PanelLeft.Controls.Add(this.LeftStickZ);
             this.PanelLeft.Controls.Add(this.LeftStickY);
             this.PanelLeft.Controls.Add(this.LeftStickX);
@@ -154,6 +156,13 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(690, 326);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
+            // axis1D1
+            // 
+            this.axis1D1.Location = new System.Drawing.Point(24, 199);
+            this.axis1D1.Name = "axis1D1";
+            this.axis1D1.Size = new System.Drawing.Size(200, 40);
+            this.axis1D1.TabIndex = 4;
+            // 
             // JoystickStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,6 +195,7 @@
         private System.Windows.Forms.VScrollBar RightStickY;
         private System.Windows.Forms.HScrollBar RightStickZ;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Axis1D axis1D1;
     }
 }
 
