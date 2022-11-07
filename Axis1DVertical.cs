@@ -15,6 +15,7 @@ namespace JoystickVisualizer {
 
         private int MaxBottomPosition = 0;
         private int m_Value = 32767;
+        private bool m_RenderFrame = true;
         private Color m_DotColor = Color.Black;
         private Color m_FrameColor = Color.Blue;
         private SolidBrush dotBrush;
@@ -40,8 +41,8 @@ namespace JoystickVisualizer {
                 DefaultValue(true),
                 Browsable(true)]
         public bool RenderFrame {
-            get;
-            set;
+            get { return m_RenderFrame; }
+            set { m_RenderFrame = value; }
         }
 
         [Description("HTML color code of the frame color"),
@@ -78,7 +79,7 @@ namespace JoystickVisualizer {
 
         private void Axis1D_Paint(object sender, PaintEventArgs e) {
             // Draw the frame
-            if (RenderFrame) {
+            if (m_RenderFrame) {
                 //e.Graphics.FillRectangle(frameBrush, new Rectangle(0, 0, this.Width, this.Height));
                 e.Graphics.DrawRectangle(framePen, new Rectangle(0, 0, this.Width, this.Height));
             }
