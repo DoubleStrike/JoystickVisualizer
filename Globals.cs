@@ -18,6 +18,8 @@ namespace JoystickVisualizer {
 
         public static DashStyle CenterLineDashStyle = DashStyle.DashDot;
         public static DashStyle DotWidthLineDashStyle = DashStyle.Dot;
+        public static float[] CenterDashValues = { 5, 10 };
+        public static float[] DotWidthDashValues = { 1, 2 };
 
         public enum CrosshairDirection {
             Vertical = 0,
@@ -68,13 +70,13 @@ namespace JoystickVisualizer {
                     break;
                 case CrosshairDirection.Both:
                     if (drawCenterLine) {
-                        pen.DashStyle = CenterLineDashStyle;
+                        pen.DashPattern = CenterDashValues;
                         drawingSurface.DrawLine(pen, width / 2, 0, width / 2, height);
                         drawingSurface.DrawLine(pen, 0, width / 2, height, width / 2);
                     }
 
                     if (drawDotWidthLines) {
-                        pen.DashStyle = DotWidthLineDashStyle;
+                        pen.DashPattern = DotWidthDashValues;
                         drawingSurface.DrawLine(pen, (width - DOT_SIZE) / 2, 0, (width - DOT_SIZE) / 2, height);
                         drawingSurface.DrawLine(pen, (width + DOT_SIZE) / 2, 0, (width + DOT_SIZE) / 2, height);
                         drawingSurface.DrawLine(pen, 0, (height - DOT_SIZE) / 2, width, (height - DOT_SIZE) / 2);
