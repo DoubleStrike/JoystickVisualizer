@@ -11,9 +11,6 @@ using System.Windows.Forms;
 
 namespace JoystickVisualizer {
     public partial class Axis1DVertical : UserControl {
-        private const int BORDER_THICKNESS = 4;
-        private const int CROSSHAIR_THICKNESS = 1;
-
         private int MaxBottomPosition = 0;
         private int m_Value = 32767;
         private bool m_RenderFrame = true;
@@ -74,8 +71,8 @@ namespace JoystickVisualizer {
             this.ResizeRedraw = true;
             dotBrush = new SolidBrush(m_DotColor);
             frameBrush = new SolidBrush(m_FrameColor);
-            framePen = new Pen(m_FrameColor, BORDER_THICKNESS);
-            crosshairsPen = new Pen(m_FrameColor, CROSSHAIR_THICKNESS);
+            framePen = new Pen(m_FrameColor, Globals.BORDER_THICKNESS);
+            crosshairsPen = new Pen(m_FrameColor, Globals.CROSSHAIR_THICKNESS);
 
             CalculateMaxPosition();
         }

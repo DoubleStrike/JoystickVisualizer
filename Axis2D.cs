@@ -10,10 +10,6 @@ using System.Windows.Forms;
 
 namespace JoystickVisualizer {
     public partial class Axis2D : UserControl {
-        private const int BORDER_THICKNESS = 4;
-        private const int CROSSHAIR_THICKNESS = 1;
-        private const int DOT_SIZE = 20;
-
         private int MaxBottomPosition = 0;
         private int MaxRightPosition = 0;
         private int m_XValue = 32767;
@@ -89,8 +85,8 @@ namespace JoystickVisualizer {
             this.ResizeRedraw = true;
             dotBrush = new SolidBrush(m_DotColor);
             frameBrush = new SolidBrush(m_FrameColor);
-            framePen = new Pen(m_FrameColor, BORDER_THICKNESS);
-            crosshairsPen = new Pen(m_FrameColor, CROSSHAIR_THICKNESS);
+            framePen = new Pen(m_FrameColor, Globals.BORDER_THICKNESS);
+            crosshairsPen = new Pen(m_FrameColor, Globals.CROSSHAIR_THICKNESS);
 
             CalculateMaxPositions();
         }
@@ -107,7 +103,7 @@ namespace JoystickVisualizer {
             e.Graphics.DrawLine(crosshairsPen, this.Height / 2, 0, this.Height / 2, this.Width);
 
             // Draw the dot
-            e.Graphics.FillEllipse(dotBrush, new Rectangle(MapValueToRangeX(m_XValue), MapValueToRangeY(m_YValue), DOT_SIZE, DOT_SIZE));
+            e.Graphics.FillEllipse(dotBrush, new Rectangle(MapValueToRangeX(m_XValue), MapValueToRangeY(m_YValue), Globals.DOT_SIZE, Globals.DOT_SIZE));
         }
 
         private void Form_Resize(object sender, EventArgs e) {
@@ -117,8 +113,8 @@ namespace JoystickVisualizer {
         }
 
         private void CalculateMaxPositions() {
-            MaxBottomPosition = this.Height - DOT_SIZE;
-            MaxRightPosition = this.Width - DOT_SIZE;
+            MaxBottomPosition = this.Height - Globals.DOT_SIZE;
+            MaxRightPosition = this.Width - Globals.DOT_SIZE;
         }
 
         private int MapValueToRangeX(int InputValue) {
