@@ -46,7 +46,7 @@ namespace JoystickVisualizer {
             directInput = new DirectInput();
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
+        private void JoystickStatus_Load(object sender, EventArgs e) {
             // Try to bind the joysticks, else throw an error and exit
             if (!BindJoysticks()) {
                 MessageBox.Show("No joystick/Gamepad found.", "No devices", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -54,6 +54,12 @@ namespace JoystickVisualizer {
             }
 
             ActivateJoysticks();
+        }
+
+        private void JoystickStatus_FormClosing(object sender, FormClosingEventArgs e) {
+            // Unacquire any active joysticks
+            if (joystickLFound) joystickL.Unacquire();
+            if (joystickRFound) joystickR.Unacquire();
         }
 
         /// <summary>
@@ -120,12 +126,6 @@ namespace JoystickVisualizer {
 
             stickToPoll.Poll();
             return stickToPoll.GetBufferedData();
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
-            // Unacquire any active joysticks
-            if (joystickLFound) joystickL.Unacquire();
-            if (joystickRFound) joystickR.Unacquire();
         }
 
         private void PollingTimer_Tick(object sender, EventArgs e) {
