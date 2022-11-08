@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("JoystickVisualizer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Joystick Visualizer")]
+[assembly: AssemblyDescription("A tool to see the current position of multiple joystick axes")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("DoubleStrike Consulting, LLC")]
 [assembly: AssemblyProduct("JoystickVisualizer")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyCopyright("Copyright © 2022 DoubleStrike Consulting, LLC. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

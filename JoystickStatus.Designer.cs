@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(JoystickStatus));
             this.PollingTimer = new System.Windows.Forms.Timer(this.components);
             this.PanelLeft = new System.Windows.Forms.Panel();
             this.LeftThrottle = new JoystickVisualizer.Axis1DVertical();
@@ -38,6 +39,13 @@
             this.lblRightStick = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.AlwaysOnTop = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.PanelLeft.SuspendLayout();
             this.PanelRight.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -52,6 +60,9 @@
             // PanelLeft
             // 
             this.PanelLeft.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelLeft.Controls.Add(this.label5);
+            this.PanelLeft.Controls.Add(this.label4);
+            this.PanelLeft.Controls.Add(this.label1);
             this.PanelLeft.Controls.Add(this.LeftThrottle);
             this.PanelLeft.Controls.Add(this.Left2D);
             this.PanelLeft.Controls.Add(this.LeftTwist);
@@ -107,6 +118,10 @@
             // PanelRight
             // 
             this.PanelRight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelRight.Controls.Add(this.label7);
+            this.PanelRight.Controls.Add(this.label6);
+            this.PanelRight.Controls.Add(this.label3);
+            this.PanelRight.Controls.Add(this.label2);
             this.PanelRight.Controls.Add(this.RightSlider);
             this.PanelRight.Controls.Add(this.RightThrottle);
             this.PanelRight.Controls.Add(this.Right2D);
@@ -192,6 +207,69 @@
             this.AlwaysOnTop.UseVisualStyleBackColor = true;
             this.AlwaysOnTop.CheckedChanged += new System.EventHandler(this.AlwaysOnTop_CheckedChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "X,Y";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "X,Y";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(289, 256);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(14, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Z";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(289, 256);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(14, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Z";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 129);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(20, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Th";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(0, 129);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(20, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Th";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(283, 160);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(24, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Slid";
+            // 
             // JoystickStatus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,12 +280,15 @@
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "JoystickStatus";
             this.Text = "Joystick Status";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.JoystickStatus_FormClosing);
             this.Load += new System.EventHandler(this.JoystickStatus_Load);
             this.PanelLeft.ResumeLayout(false);
+            this.PanelLeft.PerformLayout();
             this.PanelRight.ResumeLayout(false);
+            this.PanelRight.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -230,6 +311,13 @@
         private Axis1DVertical LeftThrottle;
         private Axis1DVertical RightSlider;
         private Axis1DVertical RightThrottle;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
 
