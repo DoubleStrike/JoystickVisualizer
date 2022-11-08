@@ -49,7 +49,7 @@ namespace JoystickVisualizer {
         private void Form1_Load(object sender, EventArgs e) {
             // Try to bind the joysticks, else throw an error and exit
             if (!BindJoysticks()) {
-                Debug.WriteLine("No joystick/Gamepad found.");
+                MessageBox.Show("No joystick/Gamepad found.", "No devices", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(1);
             }
 
@@ -63,7 +63,7 @@ namespace JoystickVisualizer {
             if (joystickLFound) {
                 // Instantiate the joystick
                 joystickL = new Joystick(directInput, joystickLGuid);
-                Debug.WriteLine($"Found Left Joystick/Gamepad with GUID: '{joystickLGuid}'");
+                //Debug.WriteLine($"Found Left Joystick/Gamepad with GUID: '{joystickLGuid}'");
 
                 // Set BufferSize in order to use buffered data
                 joystickL.Properties.BufferSize = 128;
@@ -75,7 +75,7 @@ namespace JoystickVisualizer {
             if (joystickRFound) {
                 // Instantiate the joystick
                 joystickR = new Joystick(directInput, joystickRGuid);
-                Debug.WriteLine($"Found Right Joystick/Gamepad with GUID: '{joystickRGuid}'");
+                //Debug.WriteLine($"Found Right Joystick/Gamepad with GUID: '{joystickRGuid}'");
 
                 // Set BufferSize in order to use buffered data
                 joystickR.Properties.BufferSize = 128;

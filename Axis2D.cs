@@ -15,8 +15,6 @@ namespace JoystickVisualizer {
         private int m_XValue = 32767;
         private int m_YValue = 32767;
         private bool m_RenderFrame = true;
-        private Color m_DotColor = Color.Black;
-        private Color m_FrameColor = Color.Blue;
         private SolidBrush dotBrush;
         private SolidBrush frameBrush;
         private Pen framePen;
@@ -57,24 +55,6 @@ namespace JoystickVisualizer {
             get { return m_RenderFrame; }
             set { m_RenderFrame = value; }
         }
-
-        [Description("HTML color code of the frame color"),
-                Category("Control Defaults"),
-                DefaultValue("#0000FF"),
-                Browsable(true)]
-        public string FrameColor {
-            get { return ColorTranslator.ToHtml(m_FrameColor); }
-            set { m_FrameColor = (value == "") ? Color.Blue : ColorTranslator.FromHtml(value); }
-        }
-
-        [Description("HTML color code of the dot color"),
-                Category("Control Defaults"),
-                DefaultValue("#000000"),
-                Browsable(true)]
-        public string DotColor {
-            get { return ColorTranslator.ToHtml(m_DotColor); }
-            set { m_DotColor = (value == "") ? Color.Black : ColorTranslator.FromHtml(value); }
-        }
         #endregion Public Properties
 
 
@@ -83,10 +63,10 @@ namespace JoystickVisualizer {
 
             // Setup class members
             this.ResizeRedraw = true;
-            dotBrush = new SolidBrush(m_DotColor);
-            frameBrush = new SolidBrush(m_FrameColor);
-            framePen = new Pen(m_FrameColor, Globals.BORDER_THICKNESS);
-            crosshairsPen = new Pen(m_FrameColor, Globals.CROSSHAIR_THICKNESS);
+            dotBrush = new SolidBrush(Globals.DEFAULT_DOT_COLOR);
+            frameBrush = new SolidBrush(Globals.DEFAULT_FRAME_COLOR);
+            framePen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.BORDER_THICKNESS);
+            crosshairsPen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.CROSSHAIR_THICKNESS);
 
             CalculateMaxPositions();
         }
