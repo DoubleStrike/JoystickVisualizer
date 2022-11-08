@@ -85,7 +85,7 @@ namespace JoystickVisualizer {
             }
 
             // Draw centering crosshair
-            e.Graphics.DrawLine(crosshairsPen, this.Width / 2, 0, this.Width / 2, this.Height);
+            Globals.DrawCrosshairs(Globals.CrosshairDirection.Vertical, e.Graphics, ref crosshairsPen, this.Height, this.Width, true, true);
 
             // Draw the dot
             e.Graphics.FillEllipse(dotBrush, new Rectangle(MapValueToRange(m_Value), 0, this.Height, this.Height));
