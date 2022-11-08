@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace JoystickVisualizer {
     public partial class Axis1DHorizontal : UserControl {
+        private ToolTip toolTip = new System.Windows.Forms.ToolTip();
         private int MaxRightPosition = 0;
         private int m_Value = Globals.DEFAULT_AXIS_VALUE;
         private bool m_RenderFrame = true;
@@ -20,6 +21,15 @@ namespace JoystickVisualizer {
         private Pen crosshairsPen;
 
         #region Public Properties
+        public string ToolTip {
+            get {
+                return toolTip.GetToolTip(this);
+            }
+            set {
+                toolTip.SetToolTip(this, value);
+            }
+        }
+
         [Description("Sets the current value"),
                 Category("Control Defaults"),
                 DefaultValue(32767),
@@ -69,6 +79,9 @@ namespace JoystickVisualizer {
 
             // Draw the dot
             e.Graphics.FillEllipse(dotBrush, new Rectangle(MapValueToRange(m_Value), 0, this.Height, this.Height));
+
+            // Update the tooltip
+            ToolTip = $"('{Value}')";
         }
 
         private void Form_Resize(object sender, EventArgs e) {
@@ -85,7 +98,7 @@ namespace JoystickVisualizer {
             // Formula to map input range to output range
             //   output = output_start + ((output_end - output_start) / (input_end - input_start)) * (value - input_start)
 
-            float positionExact = MaxRightPosition * InputValue / 65535;
+            float positionExact = MaxRightPosition * InputValue / Globals.MAX_AXIS_VALUE;
             return (int)positionExact;
         }
     }

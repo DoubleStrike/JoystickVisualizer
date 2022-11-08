@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 namespace JoystickVisualizer {
     internal class Globals {
         #region Variables
-        public const int DEFAULT_AXIS_VALUE = 32767;
+        public const int DEFAULT_AXIS_VALUE = 32768;
+        public const int MAX_AXIS_VALUE = 65535;
         public const int BORDER_THICKNESS = 4;
         public const int CROSSHAIR_THICKNESS = 1;
         public const int DOT_SIZE = 20;

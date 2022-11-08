@@ -10,10 +10,11 @@ using System.Windows.Forms;
 
 namespace JoystickVisualizer {
     public partial class Axis2D : UserControl {
+        private ToolTip toolTip = new System.Windows.Forms.ToolTip();
         private int MaxBottomPosition = 0;
         private int MaxRightPosition = 0;
-        private int m_XValue = 32767;
-        private int m_YValue = 32767;
+        private int m_XValue = Globals.DEFAULT_AXIS_VALUE;
+        private int m_YValue = Globals.DEFAULT_AXIS_VALUE;
         private bool m_RenderFrame = true;
         private SolidBrush dotBrush;
         private SolidBrush frameBrush;
@@ -21,6 +22,15 @@ namespace JoystickVisualizer {
         private Pen crosshairsPen;
 
         #region Public Properties
+        public string ToolTip {
+            get {
+                return toolTip.GetToolTip(this);
+            }
+            set {
+                toolTip.SetToolTip(this, value);
+            }
+        }
+
         [Description("Sets the current X value"),
                 Category("Control Defaults"),
                 DefaultValue(32767),
@@ -83,6 +93,9 @@ namespace JoystickVisualizer {
 
             // Draw the dot
             e.Graphics.FillEllipse(dotBrush, new Rectangle(MapValueToRangeX(m_XValue), MapValueToRangeY(m_YValue), Globals.DOT_SIZE, Globals.DOT_SIZE));
+
+            // Update the tooltip
+            ToolTip = $"('{XValue}','{YValue}')";
         }
 
         private void Form_Resize(object sender, EventArgs e) {
@@ -100,7 +113,7 @@ namespace JoystickVisualizer {
             // Formula to map input range to output range
             //   output = output_start + ((output_end - output_start) / (input_end - input_start)) * (value - input_start)
 
-            float positionExact = MaxRightPosition * InputValue / 65535;
+            float positionExact = MaxRightPosition * InputValue / Globals.MAX_AXIS_VALUE;
             return (int)positionExact;
         }
 
@@ -108,7 +121,7 @@ namespace JoystickVisualizer {
             // Formula to map input range to output range
             //   output = output_start + ((output_end - output_start) / (input_end - input_start)) * (value - input_start)
 
-            float positionExact = MaxBottomPosition * InputValue / 65535;
+            float positionExact = MaxBottomPosition * InputValue / Globals.MAX_AXIS_VALUE;
             return (int)positionExact;
         }
     }

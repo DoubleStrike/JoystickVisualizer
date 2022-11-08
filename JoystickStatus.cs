@@ -142,7 +142,7 @@ namespace JoystickVisualizer {
                         Left2D.YValue = state.Value;
                         break;
                     case JoystickOffset.Z:
-                        LeftThrottle.Value = 65535 - state.Value;
+                        LeftThrottle.Value = Globals.MAX_AXIS_VALUE - state.Value;
                         break;
                     case JoystickOffset.RotationZ:
                         LeftTwist.Value = state.Value;
@@ -161,13 +161,13 @@ namespace JoystickVisualizer {
                         Right2D.YValue = state.Value;
                         break;
                     case JoystickOffset.Z:
-                        RightThrottle.Value = 65535 - state.Value;
+                        RightThrottle.Value = Globals.MAX_AXIS_VALUE - state.Value;
                         break;
                     case JoystickOffset.RotationZ:
                         RightTwist.Value = state.Value;
                         break;
                     case JoystickOffset.Sliders0:
-                        RightSlider.Value = 65535 - state.Value;
+                        RightSlider.Value = Globals.MAX_AXIS_VALUE - state.Value;
                         break;
                 }
 
