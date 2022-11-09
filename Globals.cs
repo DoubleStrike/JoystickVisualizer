@@ -1,5 +1,6 @@
 ﻿using SharpDX.DirectInput;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
@@ -63,6 +64,7 @@ namespace JoystickVisualizer {
         #endregion External Calls
 
         #region Methods
+        #region User Interface and Rendering
         /// <summary>
         /// Draws a set of center and dot-width crosshairs
         /// </summary>
@@ -121,8 +123,88 @@ namespace JoystickVisualizer {
                     break;
             }
         }
+        #endregion User Interface and Rendering
 
-        static public bool NearlyEquals(double x, double y, double tolerance = 0.01d) {
+        #region Joystick Management
+        /// <summary>
+        /// Instantiates Joystick objects given proper GUIDs, sets buffer sizes, and performs Acquire() on the sticks.  Only call after BindJoysticks().
+        /// </summary>
+        public static bool ActivateJoysticks() {
+            if (joystickLFound) {
+                // Instantiate the joystick
+                joystickL = new Joystick(directInput, joystickLGuid);
+                //Debug.WriteLine($"Found Left Joystick/Gamepad with GUID: '{joystickLGuid}'");
+
+                // Set BufferSize in order to use buffered data
+                joystickL.Properties.BufferSize = 128;
+
+                // Acquire the joystick
+                joystickL.Acquire();
+                joystickLAcquired = true;
+            }
+
+            if (joystickRFound) {
+                // Instantiate the joystick
+                joystickR = new Joystick(directInput, joystickRGuid);
+                //Debug.WriteLine($"Found Right Joystick/Gamepad with GUID: '{joystickRGuid}'");
+
+                // Set BufferSize in order to use buffered data
+                joystickR.Properties.BufferSize = 128;
+
+                // Acquire the joystick
+                joystickR.Acquire();
+                joystickRAcquired = true;
+            }
+
+            return joystickLAcquired || joystickRAcquired;
+        }
+
+        /// <summary>
+        /// Iterates through device instances from DirectInput and saves the left/right stick GUIDs and marks them as found
+        /// </summary>
+        /// <returns>true if at least one joystick was bound successfully</returns>
+        public static bool BindJoysticks() {
+            foreach (DeviceInstance thisDevice in directInput.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AllDevices)) {
+                Debug.WriteLine($"Device instance found: '{thisDevice.InstanceName}'");
+
+                if (thisDevice.InstanceName == GLADIATOR_LEFT_NAME) {
+                    joystickLFound = true;
+                    joystickLGuid = thisDevice.InstanceGuid;
+                } else if (thisDevice.InstanceName == GLADIATOR_RIGHT_NAME) {
+                    joystickRFound = true;
+                    joystickRGuid = thisDevice.InstanceGuid;
+                } else if (thisDevice.InstanceName == GLADIATOR_RIGHT_SEM_NAME) {
+                    joystickRFound = true;
+                    joystickRGuid = thisDevice.InstanceGuid;
+                } else {
+                    Debug.WriteLine("Unplanned extra device found.");
+                }
+            }
+
+            return (joystickLFound || joystickRFound);
+        }
+
+        /// <summary>
+        /// Calls Poll() on the Joystick object and returns its buffered data
+        /// </summary>
+        /// <param name="stickToPoll">the Joystick object to poll</param>
+        /// <returns>the contents of the data buffer as a JoystickUpdate[]</returns>
+        public static JoystickUpdate[] PollJoystick(Joystick stickToPoll) {
+            if (stickToPoll == null) return null;
+
+            stickToPoll.Poll();
+            return stickToPoll.GetBufferedData();
+        }
+
+        public static void UnacquireJoysticks() {
+            // Unacquire any active joysticks
+            if (joystickLAcquired) joystickL.Unacquire();
+            if (joystickRAcquired) joystickR.Unacquire();
+        }
+        #endregion Joystick Management
+
+        #region Utilities
+        public static bool NearlyEquals(double x, double y, double tolerance = 0.01d) {
             var diff = Math.Abs(x - y);
             return diff <= tolerance ||
                    diff <= Math.Max(Math.Abs(x), Math.Abs(y)) * tolerance;
@@ -134,6 +216,7 @@ namespace JoystickVisualizer {
         //    this.Region = System.Drawing.Region.FromHrgn(ptr);
         //    DeleteObject(ptr);
         //}
+        #endregion Utilities
         #endregion Methods
     }
 }
