@@ -165,9 +165,6 @@ namespace JoystickVisualizer {
                     //Debug.WriteLine($"Right: '{state}'");
                 }
             }
-
-            // Sleep for the defined delay
-            System.Threading.Thread.Sleep(Globals.POLLING_SLEEP_MS);
         }
 
         private void AlwaysOnTop_CheckedChanged(object sender, EventArgs e) {
