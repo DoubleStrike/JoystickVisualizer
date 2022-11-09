@@ -75,7 +75,7 @@ namespace JoystickVisualizer {
                     if (drawCenterLine) {
                         pen.DashPattern = CenterDashValues;
                         drawingSurface.DrawLine(pen, width / 2, 0, width / 2, height);
-                        drawingSurface.DrawLine(pen, 0, width / 2, height, width / 2);
+                        drawingSurface.DrawLine(pen, 0, height / 2, width, height / 2);
                     }
 
                     if (drawDotWidthLines) {
