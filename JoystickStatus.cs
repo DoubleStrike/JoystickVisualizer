@@ -6,18 +6,6 @@ using System.Windows.Forms;
 namespace JoystickVisualizer {
     public partial class JoystickStatus : Form {
         #region Private members
-        // Joystick GUIDs
-        private Guid joystickLGuid = Guid.Empty;
-        private Guid joystickRGuid = Guid.Empty;
-
-        // Joystick state
-        private bool joystickLFound = false;
-        private bool joystickRFound = false;
-
-        // Joystick objects
-        private Joystick joystickL;
-        private Joystick joystickR;
-
         // Joystick data buffers
         private JoystickUpdate[] dataLeftStick;
         private JoystickUpdate[] dataRightStick;
@@ -42,36 +30,36 @@ namespace JoystickVisualizer {
 
         private void JoystickStatus_FormClosing(object sender, FormClosingEventArgs e) {
             // Unacquire any active joysticks
-            if (joystickLFound) joystickL.Unacquire();
-            if (joystickRFound) joystickR.Unacquire();
+            if (Globals.joystickLFound) Globals.joystickL.Unacquire();
+            if (Globals.joystickRFound) Globals.joystickR.Unacquire();
         }
 
         /// <summary>
         /// Instantiates Joystick objects given proper GUIDs, sets buffer sizes, and performs Acquire() on the sticks.  Only call after BindJoysticks().
         /// </summary>
         private void ActivateJoysticks() {
-            if (joystickLFound) {
+            if (Globals.joystickLFound) {
                 // Instantiate the joystick
-                joystickL = new Joystick(Globals.directInput, joystickLGuid);
+                Globals.joystickL = new Joystick(Globals.directInput, Globals.joystickLGuid);
                 //Debug.WriteLine($"Found Left Joystick/Gamepad with GUID: '{joystickLGuid}'");
 
                 // Set BufferSize in order to use buffered data
-                joystickL.Properties.BufferSize = 128;
+                Globals.joystickL.Properties.BufferSize = 128;
 
                 // Acquire the joysticks
-                joystickL.Acquire();
+                Globals.joystickL.Acquire();
             }
 
-            if (joystickRFound) {
+            if (Globals.joystickRFound) {
                 // Instantiate the joystick
-                joystickR = new Joystick(Globals.directInput, joystickRGuid);
+                Globals.joystickR = new Joystick(Globals.directInput, Globals.joystickRGuid);
                 //Debug.WriteLine($"Found Right Joystick/Gamepad with GUID: '{joystickRGuid}'");
 
                 // Set BufferSize in order to use buffered data
-                joystickR.Properties.BufferSize = 128;
+                Globals.joystickR.Properties.BufferSize = 128;
 
                 // Acquire the joysticks
-                joystickR.Acquire();
+                Globals.joystickR.Acquire();
             }
         }
 
@@ -84,20 +72,20 @@ namespace JoystickVisualizer {
                 Debug.WriteLine($"Device instance found: '{thisDevice.InstanceName}'");
 
                 if (thisDevice.InstanceName == Globals.GLADIATOR_LEFT_NAME) {
-                    joystickLFound = true;
-                    joystickLGuid = thisDevice.InstanceGuid;
+                    Globals.joystickLFound = true;
+                    Globals.joystickLGuid = thisDevice.InstanceGuid;
                 } else if (thisDevice.InstanceName == Globals.GLADIATOR_RIGHT_NAME) {
-                    joystickRFound = true;
-                    joystickRGuid = thisDevice.InstanceGuid;
+                    Globals.joystickRFound = true;
+                    Globals.joystickRGuid = thisDevice.InstanceGuid;
                 } else if (thisDevice.InstanceName == Globals.GLADIATOR_RIGHT_SEM_NAME) {
-                    joystickRFound = true;
-                    joystickRGuid = thisDevice.InstanceGuid;
+                    Globals.joystickRFound = true;
+                    Globals.joystickRGuid = thisDevice.InstanceGuid;
                 } else {
                     Debug.WriteLine("Unplanned extra device found.");
                 }
             }
 
-            return (joystickLFound || joystickRFound);
+            return (Globals.joystickLFound || Globals.joystickRFound);
         }
 
         /// <summary>
@@ -114,8 +102,8 @@ namespace JoystickVisualizer {
 
         private void PollingTimer_Tick(object sender, EventArgs e) {
             // Poll events from joystick
-            dataLeftStick = PollJoystick(joystickL);
-            dataRightStick = PollJoystick(joystickR);
+            dataLeftStick = PollJoystick(Globals.joystickL);
+            dataRightStick = PollJoystick(Globals.joystickR);
 
             if (dataLeftStick != null && dataLeftStick.Length > 0) {
                 foreach (JoystickUpdate state in dataLeftStick) {

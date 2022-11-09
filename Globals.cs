@@ -14,6 +14,18 @@ namespace JoystickVisualizer {
         public const string GLADIATOR_RIGHT_NAME = " VKBsim Gladiator EVO  R  ";
         public const string GLADIATOR_RIGHT_SEM_NAME = " VKBsim Gladiator EVO  R SEM ";
 
+        // Joystick GUIDs
+        public static Guid joystickLGuid = Guid.Empty;
+        public static Guid joystickRGuid = Guid.Empty;
+
+        // Joystick state
+        public static bool joystickLFound = false;
+        public static bool joystickRFound = false;
+
+        // Joystick objects
+        public static Joystick joystickL;
+        public static Joystick joystickR;
+
         // Polling timeout
         public const int POLLING_INTERVAL_MS = 20;
 
@@ -114,7 +126,7 @@ namespace JoystickVisualizer {
                    diff <= Math.Max(Math.Abs(x), Math.Abs(y)) * tolerance;
         }
 
-        // Call this function on form Paint
+        // For rounded corners, call this function on form Paint
         //private void Form_Paint(object sender, PaintEventArgs e) {
         //    System.IntPtr ptr = CreateRoundRectRgn(0, 0, this.Width, this.Height, CornerRadius, CornerRadius);
         //    this.Region = System.Drawing.Region.FromHrgn(ptr);
