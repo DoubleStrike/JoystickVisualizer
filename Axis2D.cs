@@ -6,8 +6,6 @@ using System.Windows.Forms;
 namespace JoystickVisualizer {
     public partial class Axis2D : UserControl {
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
-        private int MaxBottomPosition = 0;
-        private int MaxRightPosition = 0;
         private int m_DotSize = Globals.DEFAULT_2D_DOT_SIZE;
         private int m_XValue = Globals.DEFAULT_AXIS_VALUE;
         private int m_YValue = Globals.DEFAULT_AXIS_VALUE;
@@ -84,8 +82,6 @@ namespace JoystickVisualizer {
                 frameBrush = new SolidBrush(Globals.DEFAULT_FRAME_COLOR);
                 framePen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.BORDER_THICKNESS);
                 crosshairsPen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.CROSSHAIR_THICKNESS);
-
-                CalculateMaxPositions();
             }
         }
 
@@ -110,18 +106,14 @@ namespace JoystickVisualizer {
 
         private void Form_Resize(object sender, EventArgs e) {
             if (this.Enabled) {
-                CalculateMaxPositions();
                 this.Invalidate();
                 this.Update();
             }
         }
 
-        private void CalculateMaxPositions() {
-            MaxBottomPosition = this.Height - m_DotSize;
-            MaxRightPosition = this.Width - m_DotSize;
-        }
-
         private int MapValueToRangeX(int InputValue) {
+            int MaxRightPosition = this.Width - m_DotSize;
+
             // Formula to map input range to output range
             //   output = output_start + ((output_end - output_start) / (input_end - input_start)) * (value - input_start)
 
@@ -130,6 +122,8 @@ namespace JoystickVisualizer {
         }
 
         private int MapValueToRangeY(int InputValue) {
+            int MaxBottomPosition = this.Height - m_DotSize;
+
             // Formula to map input range to output range
             //   output = output_start + ((output_end - output_start) / (input_end - input_start)) * (value - input_start)
 

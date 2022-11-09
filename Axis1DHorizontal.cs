@@ -6,7 +6,6 @@ using System.Windows.Forms;
 namespace JoystickVisualizer {
     public partial class Axis1DHorizontal : UserControl {
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
-        private int MaxRightPosition = 0;
         private int m_Value = Globals.DEFAULT_AXIS_VALUE;
         private bool m_RenderFrame = true;
         private SolidBrush dotBrush;
@@ -58,8 +57,6 @@ namespace JoystickVisualizer {
                 frameBrush = new SolidBrush(Globals.DEFAULT_FRAME_COLOR);
                 framePen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.BORDER_THICKNESS);
                 crosshairsPen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.CROSSHAIR_THICKNESS);
-
-                CalculateMaxPosition();
             }
         }
 
@@ -84,20 +81,16 @@ namespace JoystickVisualizer {
 
         private void Form_Resize(object sender, EventArgs e) {
             if (this.Enabled) {
-                CalculateMaxPosition();
                 this.Invalidate();
                 this.Update();
             }
         }
 
-        private void CalculateMaxPosition() {
-            MaxRightPosition = this.Width - this.Height;
-        }
-
         private int MapValueToRange(int InputValue) {
+            int MaxRightPosition = this.Width - this.Height;
+
             // Formula to map input range to output range
             //   output = output_start + ((output_end - output_start) / (input_end - input_start)) * (value - input_start)
-
             float positionExact = MaxRightPosition * InputValue / Globals.MAX_AXIS_VALUE;
             return (int)positionExact;
         }
