@@ -100,7 +100,7 @@ namespace JoystickVisualizer {
                 e.Graphics.FillEllipse(dotBrush, MapValueToRangeX(m_XValue) + 1, MapValueToRangeY(m_YValue) + 1, m_DotSize - 2, m_DotSize - 2);
 
                 // Update the tooltip
-                ToolTip = $"('{XValue}','{YValue}')";
+                ToolTip = $"'{this.Name}': ('{XValue}','{YValue}')";
             }
         }
 
