@@ -30,8 +30,8 @@ namespace JoystickVisualizer {
 
         private void JoystickStatus_FormClosing(object sender, FormClosingEventArgs e) {
             // Unacquire any active joysticks
-            if (Globals.joystickLFound) Globals.joystickL.Unacquire();
-            if (Globals.joystickRFound) Globals.joystickR.Unacquire();
+            if (Globals.joystickLAcquired) Globals.joystickL.Unacquire();
+            if (Globals.joystickRAcquired) Globals.joystickR.Unacquire();
         }
 
         /// <summary>
@@ -46,8 +46,9 @@ namespace JoystickVisualizer {
                 // Set BufferSize in order to use buffered data
                 Globals.joystickL.Properties.BufferSize = 128;
 
-                // Acquire the joysticks
+                // Acquire the joystick
                 Globals.joystickL.Acquire();
+                Globals.joystickLAcquired = true;
             }
 
             if (Globals.joystickRFound) {
@@ -58,8 +59,9 @@ namespace JoystickVisualizer {
                 // Set BufferSize in order to use buffered data
                 Globals.joystickR.Properties.BufferSize = 128;
 
-                // Acquire the joysticks
+                // Acquire the joystick
                 Globals.joystickR.Acquire();
+                Globals.joystickRAcquired = true;
             }
         }
 

@@ -21,6 +21,8 @@ namespace JoystickVisualizer {
         // Joystick state
         public static bool joystickLFound = false;
         public static bool joystickRFound = false;
+        public static bool joystickLAcquired = false;
+        public static bool joystickRAcquired = false;
 
         // Joystick objects
         public static Joystick joystickL;
