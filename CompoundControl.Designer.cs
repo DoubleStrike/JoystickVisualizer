@@ -25,19 +25,18 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.squareTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.PollingTimer = new System.Windows.Forms.Timer(this.components);
             this.axisZ = new JoystickVisualizer.Axis1DVertical();
             this.axisSlider0 = new JoystickVisualizer.Axis1DVertical();
             this.axisSlider1 = new JoystickVisualizer.Axis1DVertical();
             this.axisRotZ = new JoystickVisualizer.Axis1DHorizontal();
             this.axisXY = new JoystickVisualizer.Axis2D();
             this.axisRotXRotY = new JoystickVisualizer.Axis2D();
-            this.PollingTimer = new System.Windows.Forms.Timer(this.components);
             this.squareTableLayout.SuspendLayout();
             this.SuspendLayout();
             // 
             // squareTableLayout
             // 
-            this.squareTableLayout.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.squareTableLayout.ColumnCount = 4;
             this.squareTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.squareTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -57,6 +56,10 @@
             this.squareTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.squareTableLayout.Size = new System.Drawing.Size(344, 367);
             this.squareTableLayout.TabIndex = 0;
+            // 
+            // PollingTimer
+            // 
+            this.PollingTimer.Tick += new System.EventHandler(this.PollingTimer_Tick);
             // 
             // axisZ
             // 
@@ -124,15 +127,10 @@
             this.axisRotXRotY.XValue = 32768;
             this.axisRotXRotY.YValue = 32768;
             // 
-            // PollingTimer
-            // 
-            this.PollingTimer.Tick += new System.EventHandler(this.PollingTimer_Tick);
-            // 
             // CompoundControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.InfoText;
             this.Controls.Add(this.squareTableLayout);
             this.MinimumSize = new System.Drawing.Size(200, 200);
             this.Name = "CompoundControl";

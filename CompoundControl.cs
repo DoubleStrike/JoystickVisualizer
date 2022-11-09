@@ -14,6 +14,14 @@ namespace JoystickVisualizer {
         #endregion Private members
 
         #region Public functions
+        public void SetDarkMode(bool darkModeOn = true) {
+            if (darkModeOn) {
+                squareTableLayout.BackColor = SystemColors.ControlDarkDark;
+            } else {
+                squareTableLayout.BackColor = SystemColors.Control;
+            }
+        }
+
         public void SetJoystickToUse(JoystickSelection selectedStick) {
             if (selectedStick == JoystickSelection.Right) {
                 m_joystickToUse = Globals.joystickR;

@@ -19,15 +19,33 @@ namespace JoystickVisualizer {
                 Environment.Exit(1);
             }
 
-            if (Globals.ActivateJoysticks() || Globals.joystickRAcquired) {
-                compoundControl1.SetJoystickToUse(JoystickSelection.Right);
-                compoundControl1.StartPolling();
+            if (Globals.ActivateJoysticks()) {
+                if (Globals.joystickRAcquired) {
+                    RightStick.SetJoystickToUse(JoystickSelection.Right);
+                    RightStick.StartPolling();
+                    RightStick.SetDarkMode();
+                } else {
+                    RightStick.Enabled = false;
+                }
+
+                if (Globals.joystickLAcquired) {
+                    LeftStick.SetJoystickToUse(JoystickSelection.Left);
+                    LeftStick.StartPolling();
+                    LeftStick.SetDarkMode();
+                } else {
+                    LeftStick.Enabled = false;
+                }
             }
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e) {
             // Unacquire any active joysticks
             Globals.UnacquireJoysticks();
+        }
+
+        private void chkKeepOnTop_CheckedChanged(object sender, EventArgs e) {
+            this.TopMost = chkKeepOnTop.Checked;
+            this.Focus();
         }
     }
 }
