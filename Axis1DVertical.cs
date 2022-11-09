@@ -57,37 +57,43 @@ namespace JoystickVisualizer {
         public Axis1DVertical() {
             InitializeComponent();
 
-            // Setup class members
-            this.ResizeRedraw = true;
-            dotBrush = new SolidBrush(Globals.DEFAULT_DOT_COLOR);
-            frameBrush = new SolidBrush(Globals.DEFAULT_FRAME_COLOR);
-            framePen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.BORDER_THICKNESS);
-            crosshairsPen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.CROSSHAIR_THICKNESS);
+            if (this.Enabled) {
+                // Setup class members
+                this.ResizeRedraw = true;
+                dotBrush = new SolidBrush(Globals.DEFAULT_DOT_COLOR);
+                frameBrush = new SolidBrush(Globals.DEFAULT_FRAME_COLOR);
+                framePen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.BORDER_THICKNESS);
+                crosshairsPen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.CROSSHAIR_THICKNESS);
 
-            CalculateMaxPosition();
+                CalculateMaxPosition();
+            }
         }
 
         private void Form_Paint(object sender, PaintEventArgs e) {
-            // Draw the frame
-            if (m_RenderFrame) {
-                //e.Graphics.FillRectangle(frameBrush, new Rectangle(0, 0, this.Width, this.Height));
-                e.Graphics.DrawRectangle(framePen, new Rectangle(0, 0, this.Width, this.Height));
+            if (this.Enabled) {
+                // Draw the frame
+                if (m_RenderFrame) {
+                    //e.Graphics.FillRectangle(frameBrush, new Rectangle(0, 0, this.Width, this.Height));
+                    e.Graphics.DrawRectangle(framePen, new Rectangle(0, 0, this.Width, this.Height));
+                }
+
+                // Draw centering crosshair
+                Globals.DrawCrosshairs(Globals.CrosshairDirection.Horizontal, e.Graphics, ref crosshairsPen, this.Height, this.Width, true, true);
+
+                // Draw the dot
+                e.Graphics.FillEllipse(dotBrush, new Rectangle(0, MapValueToRange(m_Value), this.Width, this.Width));
+
+                // Update the tooltip
+                ToolTip = $"('{Value}')";
             }
-
-            // Draw centering crosshair
-            Globals.DrawCrosshairs(Globals.CrosshairDirection.Horizontal, e.Graphics, ref crosshairsPen, this.Height, this.Width, true, true);
-
-            // Draw the dot
-            e.Graphics.FillEllipse(dotBrush, new Rectangle(0, MapValueToRange(m_Value), this.Width, this.Width));
-
-            // Update the tooltip
-            ToolTip = $"('{Value}')";
         }
 
         private void Form_Resize(object sender, EventArgs e) {
-            CalculateMaxPosition();
-            this.Invalidate();
-            this.Update();
+            if (this.Enabled) {
+                CalculateMaxPosition();
+                this.Invalidate();
+                this.Update();
+            }
         }
 
         private void CalculateMaxPosition() {
