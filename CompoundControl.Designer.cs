@@ -53,7 +53,7 @@
             this.squareTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.squareTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.squareTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.squareTableLayout.Size = new System.Drawing.Size(362, 344);
+            this.squareTableLayout.Size = new System.Drawing.Size(344, 367);
             this.squareTableLayout.TabIndex = 0;
             // 
             // axisZ
@@ -62,7 +62,7 @@
             this.axisZ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.axisZ.Location = new System.Drawing.Point(3, 63);
             this.axisZ.Name = "axisZ";
-            this.axisZ.Size = new System.Drawing.Size(24, 248);
+            this.axisZ.Size = new System.Drawing.Size(24, 271);
             this.axisZ.TabIndex = 0;
             this.axisZ.ToolTip = "(\'32768\')";
             this.axisZ.Value = 32768;
@@ -71,9 +71,9 @@
             // 
             this.axisSlider0.CausesValidation = false;
             this.axisSlider0.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisSlider0.Location = new System.Drawing.Point(305, 63);
+            this.axisSlider0.Location = new System.Drawing.Point(287, 63);
             this.axisSlider0.Name = "axisSlider0";
-            this.axisSlider0.Size = new System.Drawing.Size(24, 248);
+            this.axisSlider0.Size = new System.Drawing.Size(24, 271);
             this.axisSlider0.TabIndex = 1;
             this.axisSlider0.ToolTip = "(\'32768\')";
             this.axisSlider0.Value = 32768;
@@ -82,9 +82,9 @@
             // 
             this.axisSlider1.CausesValidation = false;
             this.axisSlider1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisSlider1.Location = new System.Drawing.Point(335, 63);
+            this.axisSlider1.Location = new System.Drawing.Point(317, 63);
             this.axisSlider1.Name = "axisSlider1";
-            this.axisSlider1.Size = new System.Drawing.Size(24, 248);
+            this.axisSlider1.Size = new System.Drawing.Size(24, 271);
             this.axisSlider1.TabIndex = 2;
             this.axisSlider1.ToolTip = "(\'32768\')";
             this.axisSlider1.Value = 32768;
@@ -93,9 +93,9 @@
             // 
             this.axisRotZ.CausesValidation = false;
             this.axisRotZ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisRotZ.Location = new System.Drawing.Point(33, 317);
+            this.axisRotZ.Location = new System.Drawing.Point(33, 340);
             this.axisRotZ.Name = "axisRotZ";
-            this.axisRotZ.Size = new System.Drawing.Size(266, 24);
+            this.axisRotZ.Size = new System.Drawing.Size(248, 24);
             this.axisRotZ.TabIndex = 3;
             this.axisRotZ.ToolTip = "(\'32768\')";
             this.axisRotZ.Value = 32768;
@@ -105,7 +105,7 @@
             this.axisXY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.axisXY.Location = new System.Drawing.Point(33, 63);
             this.axisXY.Name = "axisXY";
-            this.axisXY.Size = new System.Drawing.Size(266, 248);
+            this.axisXY.Size = new System.Drawing.Size(248, 271);
             this.axisXY.TabIndex = 5;
             this.axisXY.ToolTip = "(\'32768\',\'32768\')";
             this.axisXY.XValue = 32768;
@@ -114,9 +114,9 @@
             // axisRotXRotY
             // 
             this.axisRotXRotY.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.axisRotXRotY.Location = new System.Drawing.Point(136, 3);
+            this.axisRotXRotY.Location = new System.Drawing.Point(130, 3);
             this.axisRotXRotY.Name = "axisRotXRotY";
-            this.axisRotXRotY.Size = new System.Drawing.Size(59, 54);
+            this.axisRotXRotY.Size = new System.Drawing.Size(54, 54);
             this.axisRotXRotY.TabIndex = 6;
             this.axisRotXRotY.ToolTip = "(\'32768\',\'32768\')";
             this.axisRotXRotY.XValue = 32768;
