@@ -97,7 +97,7 @@ namespace JoystickVisualizer {
                 Globals.DrawCrosshairs(CrosshairDirection.Both, e.Graphics, ref crosshairsPen, this.Height, this.Width, m_DotSize, true, true);
 
                 // Draw the dot
-                e.Graphics.FillEllipse(dotBrush, new Rectangle(MapValueToRangeX(m_XValue), MapValueToRangeY(m_YValue), m_DotSize, m_DotSize));
+                e.Graphics.FillEllipse(dotBrush, MapValueToRangeX(m_XValue) + 1, MapValueToRangeY(m_YValue) + 1, m_DotSize - 2, m_DotSize - 2);
 
                 // Update the tooltip
                 ToolTip = $"('{XValue}','{YValue}')";
@@ -111,24 +111,24 @@ namespace JoystickVisualizer {
             }
         }
 
-        private int MapValueToRangeX(int InputValue) {
+        private float MapValueToRangeX(int InputValue) {
             int MaxRightPosition = this.Width - m_DotSize;
 
             // Formula to map input range to output range
             //   output = output_start + ((output_end - output_start) / (input_end - input_start)) * (value - input_start)
 
             float positionExact = MaxRightPosition * InputValue / Globals.MAX_AXIS_VALUE;
-            return (int)positionExact;
+            return positionExact;
         }
 
-        private int MapValueToRangeY(int InputValue) {
+        private float MapValueToRangeY(int InputValue) {
             int MaxBottomPosition = this.Height - m_DotSize;
 
             // Formula to map input range to output range
             //   output = output_start + ((output_end - output_start) / (input_end - input_start)) * (value - input_start)
 
             float positionExact = MaxBottomPosition * InputValue / Globals.MAX_AXIS_VALUE;
-            return (int)positionExact;
+            return positionExact;
         }
     }
 }
