@@ -5,6 +5,17 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 
 namespace JoystickVisualizer {
+    public enum CrosshairDirection {
+        Vertical = 0,
+        Horizontal = 1,
+        Both = 2,
+    }
+
+    public enum JoystickSelection {
+        Right = 0,
+        Left = 1,
+    }
+
     internal class Globals {
         #region Variables
         // Access object for DirectInput
@@ -46,12 +57,6 @@ namespace JoystickVisualizer {
         public readonly static DashStyle DotWidthLineDashStyle = DashStyle.Dot;
         public readonly static float[] CenterDashValues = { 5, 10 };
         public readonly static float[] DotWidthDashValues = { 1, 2 };
-
-        public enum CrosshairDirection {
-            Vertical = 0,
-            Horizontal = 1,
-            Both = 2,
-        }
         #endregion Variables
 
         #region External Calls
