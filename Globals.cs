@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace JoystickVisualizer {
     internal class Globals {
@@ -29,6 +30,15 @@ namespace JoystickVisualizer {
             Both = 2,
         }
         #endregion Variables
+
+        #region External Calls
+        [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern System.IntPtr CreateRoundRectRgn
+         (int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+
+        [System.Runtime.InteropServices.DllImport("gdi32.dll", EntryPoint = "DeleteObject")]
+        private static extern bool DeleteObject(System.IntPtr hObject);
+        #endregion External Calls
 
         #region Methods
         /// <summary>
@@ -89,6 +99,19 @@ namespace JoystickVisualizer {
                     break;
             }
         }
+
+        static public bool NearlyEquals(double x, double y, double tolerance = 0.01d) {
+            var diff = Math.Abs(x - y);
+            return diff <= tolerance ||
+                   diff <= Math.Max(Math.Abs(x), Math.Abs(y)) * tolerance;
+        }
+
+        // Call this function on form Paint
+        //private void Form_Paint(object sender, PaintEventArgs e) {
+        //    System.IntPtr ptr = CreateRoundRectRgn(0, 0, this.Width, this.Height, CornerRadius, CornerRadius);
+        //    this.Region = System.Drawing.Region.FromHrgn(ptr);
+        //    DeleteObject(ptr);
+        //}
         #endregion Methods
     }
 }
