@@ -22,6 +22,11 @@ namespace JoystickVisualizer {
             }
         }
 
+        public void SetDotSize(int sizeInPixels) {
+            axisXY.SetDotSize(sizeInPixels);
+            axisRotXRotY.SetDotSize(sizeInPixels);
+        }
+
         public void SetJoystickToUse(JoystickSelection selectedStick) {
             if (selectedStick == JoystickSelection.Right) {
                 m_joystickToUse = Globals.joystickR;

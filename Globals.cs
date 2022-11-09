@@ -53,7 +53,7 @@ namespace JoystickVisualizer {
         public const int BORDER_THICKNESS = 4;
         public const int CROSSHAIR_THICKNESS = 1;
         public const int DEFAULT_2D_DOT_SIZE = 20;
-        public readonly static Color DEFAULT_DOT_COLOR = SystemColors.HotTrack;
+        public readonly static Color DEFAULT_DOT_COLOR = SystemColors.GradientInactiveCaption;
         public readonly static Color DEFAULT_FRAME_COLOR = SystemColors.Info;
         public readonly static DashStyle CenterLineDashStyle = DashStyle.DashDot;
         public readonly static DashStyle DotWidthLineDashStyle = DashStyle.Dot;
