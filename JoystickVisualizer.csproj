@@ -84,6 +84,12 @@
     <Compile Include="Axis2D.Designer.cs">
       <DependentUpon>Axis2D.cs</DependentUpon>
     </Compile>
+    <Compile Include="CompoundControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompoundControl.Designer.cs">
+      <DependentUpon>CompoundControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="JoystickStatus.cs">
       <SubType>Form</SubType>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Axis2D.resx">
       <DependentUpon>Axis2D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompoundControl.resx">
+      <DependentUpon>CompoundControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JoystickStatus.resx">
       <DependentUpon>JoystickStatus.cs</DependentUpon>
