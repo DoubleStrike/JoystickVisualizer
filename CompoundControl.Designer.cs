@@ -134,6 +134,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InfoText;
             this.Controls.Add(this.squareTableLayout);
+            this.MinimumSize = new System.Drawing.Size(200, 200);
             this.Name = "CompoundControl";
             this.Size = new System.Drawing.Size(991, 722);
             this.Load += new System.EventHandler(this.CompoundControl_Load);
