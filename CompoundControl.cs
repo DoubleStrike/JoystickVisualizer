@@ -51,6 +51,7 @@ namespace JoystickVisualizer {
 
         private void CompoundControl_Resize(object sender, EventArgs e) {
             KeepGridSquare();
+            KeepMinistickSquare();
         }
 
         private void KeepGridSquare() {
@@ -62,7 +63,7 @@ namespace JoystickVisualizer {
             int interiorWidth = this.ClientSize.Width;
             int interiorHeight = this.ClientSize.Height;
 
-            //Debug.Print($"TableGrid before ('{tableWidth}', '{tableHeight}')");
+            //Debug.Print($"TableGrid before ('{ministickWidth}', '{ministickHeight}')");
             if (interiorHeight > interiorWidth) {
                 tableHeight = tableWidth = interiorWidth;
             } else if (interiorWidth > interiorHeight) {
@@ -70,7 +71,21 @@ namespace JoystickVisualizer {
             }
 
             squareTableLayout.Size = new Size(tableWidth, tableHeight);
-            //Debug.Print($"TableGrid after ('{tableWidth}', '{tableHeight}')");
+            //Debug.Print($"TableGrid after ('{ministickWidth}', '{ministickHeight}')");
+        }
+
+        private void KeepMinistickSquare() {
+            // Size of the Axis2D control
+            int ministickSize = axisRotXRotY.Width;
+
+            // Size of the XY grid
+            int xyGridSize = this.axisXY.Height;
+
+            Debug.Print($"Ministick before ('{axisRotXRotY.Width}', '{axisRotXRotY.Height}')");
+            ministickSize = (int)(xyGridSize * (2.0f / 7.0f));
+
+            axisRotXRotY.Size = new Size(ministickSize, ministickSize);
+            Debug.Print($"Ministick after ('{axisRotXRotY.Width}', '{axisRotXRotY.Height}')");
         }
 
         private void PollingTimer_Tick(object sender, EventArgs e) {

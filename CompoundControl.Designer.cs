@@ -38,10 +38,10 @@
             // squareTableLayout
             // 
             this.squareTableLayout.ColumnCount = 4;
-            this.squareTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.squareTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.squareTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.squareTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.squareTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.squareTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.squareTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.squareTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.squareTableLayout.Controls.Add(this.axisZ, 0, 1);
             this.squareTableLayout.Controls.Add(this.axisSlider0, 2, 1);
             this.squareTableLayout.Controls.Add(this.axisSlider1, 3, 1);
@@ -51,9 +51,9 @@
             this.squareTableLayout.Location = new System.Drawing.Point(0, 0);
             this.squareTableLayout.Name = "squareTableLayout";
             this.squareTableLayout.RowCount = 3;
-            this.squareTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.squareTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.squareTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.squareTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.squareTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.squareTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.squareTableLayout.Size = new System.Drawing.Size(344, 367);
             this.squareTableLayout.TabIndex = 0;
             // 
@@ -65,9 +65,9 @@
             // 
             this.axisZ.CausesValidation = false;
             this.axisZ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisZ.Location = new System.Drawing.Point(3, 63);
+            this.axisZ.Location = new System.Drawing.Point(3, 76);
             this.axisZ.Name = "axisZ";
-            this.axisZ.Size = new System.Drawing.Size(24, 271);
+            this.axisZ.Size = new System.Drawing.Size(28, 250);
             this.axisZ.TabIndex = 0;
             this.axisZ.ToolTip = "(\'32768\')";
             this.axisZ.Value = 32768;
@@ -76,9 +76,9 @@
             // 
             this.axisSlider0.CausesValidation = false;
             this.axisSlider0.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisSlider0.Location = new System.Drawing.Point(287, 63);
+            this.axisSlider0.Location = new System.Drawing.Point(277, 76);
             this.axisSlider0.Name = "axisSlider0";
-            this.axisSlider0.Size = new System.Drawing.Size(24, 271);
+            this.axisSlider0.Size = new System.Drawing.Size(28, 250);
             this.axisSlider0.TabIndex = 1;
             this.axisSlider0.ToolTip = "(\'32768\')";
             this.axisSlider0.Value = 32768;
@@ -87,9 +87,9 @@
             // 
             this.axisSlider1.CausesValidation = false;
             this.axisSlider1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisSlider1.Location = new System.Drawing.Point(317, 63);
+            this.axisSlider1.Location = new System.Drawing.Point(311, 76);
             this.axisSlider1.Name = "axisSlider1";
-            this.axisSlider1.Size = new System.Drawing.Size(24, 271);
+            this.axisSlider1.Size = new System.Drawing.Size(30, 250);
             this.axisSlider1.TabIndex = 2;
             this.axisSlider1.ToolTip = "(\'32768\')";
             this.axisSlider1.Value = 32768;
@@ -98,9 +98,9 @@
             // 
             this.axisRotZ.CausesValidation = false;
             this.axisRotZ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisRotZ.Location = new System.Drawing.Point(33, 340);
+            this.axisRotZ.Location = new System.Drawing.Point(37, 332);
             this.axisRotZ.Name = "axisRotZ";
-            this.axisRotZ.Size = new System.Drawing.Size(248, 24);
+            this.axisRotZ.Size = new System.Drawing.Size(234, 32);
             this.axisRotZ.TabIndex = 3;
             this.axisRotZ.ToolTip = "(\'32768\')";
             this.axisRotZ.Value = 32768;
@@ -108,9 +108,9 @@
             // axisXY
             // 
             this.axisXY.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axisXY.Location = new System.Drawing.Point(33, 63);
+            this.axisXY.Location = new System.Drawing.Point(37, 76);
             this.axisXY.Name = "axisXY";
-            this.axisXY.Size = new System.Drawing.Size(248, 271);
+            this.axisXY.Size = new System.Drawing.Size(234, 250);
             this.axisXY.TabIndex = 5;
             this.axisXY.ToolTip = "(\'32768\',\'32768\')";
             this.axisXY.XValue = 32768;
@@ -119,7 +119,7 @@
             // axisRotXRotY
             // 
             this.axisRotXRotY.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.axisRotXRotY.Location = new System.Drawing.Point(130, 3);
+            this.axisRotXRotY.Location = new System.Drawing.Point(127, 9);
             this.axisRotXRotY.Name = "axisRotXRotY";
             this.axisRotXRotY.Size = new System.Drawing.Size(54, 54);
             this.axisRotXRotY.TabIndex = 6;
