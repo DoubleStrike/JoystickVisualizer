@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.squareTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.axisZ = new JoystickVisualizer.Axis1DVertical();
             this.axisSlider0 = new JoystickVisualizer.Axis1DVertical();
@@ -30,6 +31,7 @@
             this.axisRotZ = new JoystickVisualizer.Axis1DHorizontal();
             this.axisXY = new JoystickVisualizer.Axis2D();
             this.axisRotXRotY = new JoystickVisualizer.Axis2D();
+            this.PollingTimer = new System.Windows.Forms.Timer(this.components);
             this.squareTableLayout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,15 +124,18 @@
             this.axisRotXRotY.XValue = 32768;
             this.axisRotXRotY.YValue = 32768;
             // 
+            // PollingTimer
+            // 
+            this.PollingTimer.Tick += new System.EventHandler(this.PollingTimer_Tick);
+            // 
             // CompoundControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InfoText;
-            this.ClientSize = new System.Drawing.Size(991, 722);
             this.Controls.Add(this.squareTableLayout);
             this.Name = "CompoundControl";
-            this.Text = "CompoundControl";
+            this.Size = new System.Drawing.Size(991, 722);
             this.Load += new System.EventHandler(this.CompoundControl_Load);
             this.Resize += new System.EventHandler(this.CompoundControl_Resize);
             this.squareTableLayout.ResumeLayout(false);
@@ -147,5 +152,6 @@
         private Axis1DHorizontal axisRotZ;
         private Axis2D axisXY;
         private Axis2D axisRotXRotY;
+        private System.Windows.Forms.Timer PollingTimer;
     }
 }

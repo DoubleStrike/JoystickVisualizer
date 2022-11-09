@@ -1,39 +1,40 @@
 ﻿using SharpDX.DirectInput;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using static JoystickVisualizer.Globals;
 
 namespace JoystickVisualizer {
     public partial class CompoundControl : UserControl {
         #region Private members
-        // Initialize DirectInput
-        private readonly DirectInput directInput;
+        private Joystick m_joystickToUse;
 
-        // Joystick GUIDs
-        private Guid joystickLGuid = Guid.Empty;
-        private Guid joystickRGuid = Guid.Empty;
-
-        // Joystick state
-        private bool joystickLFound = false;
-        private bool joystickRFound = false;
-
-        // Joystick objects
-        private Joystick joystickL;
-        private Joystick joystickR;
-
-        // Joystick data buffers
-        private JoystickUpdate[] dataLeftStick;
-        private JoystickUpdate[] dataRightStick;
+        private JoystickUpdate[] m_joystickDataBuffer;
         #endregion Private members
+
+        #region Public functions
+        public void SetJoystickToUse(JoystickSelection selectedStick) {
+            if (selectedStick == JoystickSelection.Right) {
+                m_joystickToUse = Globals.joystickR;
+            } else if (selectedStick == JoystickSelection.Left) {
+                m_joystickToUse = Globals.joystickL;
+            }
+        }
+
+        public void StartPolling() {
+            if (m_joystickToUse != null) PollingTimer.Enabled = true;
+        }
+        #endregion Public functions
 
         public CompoundControl() {
             InitializeComponent();
-
-            directInput = new DirectInput();
         }
 
         private void CompoundControl_Load(object sender, EventArgs e) {
             KeepGridSquare();
+
+            PollingTimer.Interval = Globals.POLLING_INTERVAL_MS;
         }
 
         private void CompoundControl_Resize(object sender, EventArgs e) {
@@ -58,6 +59,41 @@ namespace JoystickVisualizer {
 
             squareTableLayout.Size = new Size(tableWidth, tableHeight);
             //Debug.Print($"TableGrid after ('{tableWidth}', '{tableHeight}')");
+        }
+
+        private void PollingTimer_Tick(object sender, EventArgs e) {
+            // Poll events from joystick
+            m_joystickDataBuffer = Globals.PollJoystick(m_joystickToUse);
+
+            if (m_joystickDataBuffer != null && m_joystickDataBuffer.Length > 0) {
+                foreach (JoystickUpdate state in m_joystickDataBuffer) {
+                    switch (state.Offset) {
+                        case JoystickOffset.X:
+                            axisXY.XValue = state.Value;
+                            break;
+                        case JoystickOffset.Y:
+                            axisXY.YValue = state.Value;
+                            break;
+                        case JoystickOffset.Z:
+                            axisZ.Value = Globals.MAX_AXIS_VALUE - state.Value;
+                            break;
+                        case JoystickOffset.RotationX:
+                            axisRotXRotY.XValue = state.Value;
+                            break;
+                        case JoystickOffset.RotationY:
+                            axisRotXRotY.YValue = Globals.MAX_AXIS_VALUE - state.Value;
+                            break;
+                        case JoystickOffset.RotationZ:
+                            axisRotZ.Value = state.Value;
+                            break;
+                        case JoystickOffset.Sliders0:
+                            axisSlider0.Value = Globals.MAX_AXIS_VALUE - state.Value;
+                            break;
+                    }
+
+                    //Debug.WriteLine($"Right: '{state}'");
+                }
+            }
         }
     }
 }
