@@ -33,6 +33,10 @@ namespace JoystickVisualizer {
         public void StartPolling() {
             if (m_joystickToUse != null) PollingTimer.Enabled = true;
         }
+
+        public void UpdatePollingInterval(int milliseconds) {
+            PollingTimer.Interval = milliseconds;
+        }
         #endregion Public functions
 
         public CompoundControl() {

@@ -47,5 +47,16 @@ namespace JoystickVisualizer {
             this.TopMost = chkKeepOnTop.Checked;
             this.Focus();
         }
+
+        private void btnSet_Click(object sender, EventArgs e) {
+            try {
+                int parsedInput = int.Parse(txtPollingTime.Text);
+
+                LeftStick.UpdatePollingInterval(parsedInput);
+                RightStick.UpdatePollingInterval(parsedInput);
+            } catch(Exception) {
+                MessageBox.Show("Enter a valid numeric value in milliseconds");
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 
 namespace JoystickVisualizer {
+    #region Enums
     public enum CrosshairDirection {
         Vertical = 0,
         Horizontal = 1,
@@ -15,6 +16,7 @@ namespace JoystickVisualizer {
         Right = 0,
         Left = 1,
     }
+    #endregion Enums
 
     internal class Globals {
         #region Variables
@@ -41,7 +43,7 @@ namespace JoystickVisualizer {
         public static Joystick joystickR;
 
         // Polling timeout
-        public const int POLLING_INTERVAL_MS = 20;
+        public const int POLLING_INTERVAL_MS = 50;
 
         // Axis values
         public const int DEFAULT_AXIS_VALUE = 32768;
