@@ -174,6 +174,7 @@
             this.Text = "MainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.FlowPanelCenter.ResumeLayout(false);
             this.FlowPanelCenter.PerformLayout();

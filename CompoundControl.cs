@@ -23,8 +23,12 @@ namespace JoystickVisualizer {
         }
 
         public void SetDotSize(int sizeInPixels) {
+            if (sizeInPixels == 0) return;
+
+            int scaledSize = (int) (sizeInPixels / 3);
+
             axisXY.SetDotSize(sizeInPixels);
-            axisRotXRotY.SetDotSize(sizeInPixels);
+            axisRotXRotY.SetDotSize(scaledSize);
         }
 
         public void SetJoystickToUse(JoystickSelection selectedStick) {

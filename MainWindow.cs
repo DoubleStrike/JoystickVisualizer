@@ -36,11 +36,19 @@ namespace JoystickVisualizer {
                     LeftStick.Enabled = false;
                 }
             }
+
+            LeftStick.SetDotSize(LeftStick.Width / 7);
+            RightStick.SetDotSize(RightStick.Width / 7);
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e) {
             // Unacquire any active joysticks
             Globals.UnacquireJoysticks();
+        }
+
+        private void MainWindow_Resize(object sender, EventArgs e) {
+            LeftStick.SetDotSize(LeftStick.Width / 7);
+            RightStick.SetDotSize(RightStick.Width / 7);
         }
 
         private void chkKeepOnTop_CheckedChanged(object sender, EventArgs e) {
@@ -54,7 +62,7 @@ namespace JoystickVisualizer {
 
                 LeftStick.UpdatePollingInterval(parsedInput);
                 RightStick.UpdatePollingInterval(parsedInput);
-            } catch(Exception) {
+            } catch (Exception) {
                 MessageBox.Show("Enter a valid numeric value in milliseconds");
             }
         }
