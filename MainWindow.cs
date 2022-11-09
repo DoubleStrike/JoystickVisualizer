@@ -24,7 +24,13 @@ namespace JoystickVisualizer {
         }
 
         private void MainWindow_Resize(object sender, EventArgs e) {
-            Debug.Print("x");
+            if (false && LeftStick.ClientSize.Width != LeftStick.ClientSize.Height) {
+                tableLayoutPanel1.ColumnStyles[0].Width = LeftStick.ClientSize.Height;
+                tableLayoutPanel1.ColumnStyles[2].Width = LeftStick.ClientSize.Height;
+
+                RightStick.Dock = DockStyle.Right;
+                RightStick.ClientSize = LeftStick.ClientSize;
+            }
 
             ScaleDots();
         }

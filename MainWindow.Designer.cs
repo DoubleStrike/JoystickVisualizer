@@ -24,8 +24,6 @@
         /// </summary>
         private void InitializeComponent() {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.LeftStick = new JoystickVisualizer.CompoundControl();
-            this.RightStick = new JoystickVisualizer.CompoundControl();
             this.FlowPanelCenter = new System.Windows.Forms.FlowLayoutPanel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.spacer1 = new System.Windows.Forms.PictureBox();
@@ -34,6 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPollingTime = new System.Windows.Forms.TextBox();
             this.btnSet = new System.Windows.Forms.Button();
+            this.LeftStick = new JoystickVisualizer.CompoundControl();
+            this.RightStick = new JoystickVisualizer.CompoundControl();
             this.tableLayoutPanel1.SuspendLayout();
             this.FlowPanelCenter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spacer1)).BeginInit();
@@ -56,24 +56,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1144, 467);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // LeftStick
-            // 
-            this.LeftStick.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LeftStick.Location = new System.Drawing.Point(3, 3);
-            this.LeftStick.MinimumSize = new System.Drawing.Size(200, 200);
-            this.LeftStick.Name = "LeftStick";
-            this.LeftStick.Size = new System.Drawing.Size(466, 461);
-            this.LeftStick.TabIndex = 0;
-            // 
-            // RightStick
-            // 
-            this.RightStick.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RightStick.Location = new System.Drawing.Point(675, 3);
-            this.RightStick.MinimumSize = new System.Drawing.Size(200, 200);
-            this.RightStick.Name = "RightStick";
-            this.RightStick.Size = new System.Drawing.Size(466, 461);
-            this.RightStick.TabIndex = 1;
             // 
             // FlowPanelCenter
             // 
@@ -162,6 +144,24 @@
             this.btnSet.Text = "Set";
             this.btnSet.UseVisualStyleBackColor = true;
             this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
+            // 
+            // LeftStick
+            // 
+            this.LeftStick.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LeftStick.Location = new System.Drawing.Point(3, 3);
+            this.LeftStick.MinimumSize = new System.Drawing.Size(200, 200);
+            this.LeftStick.Name = "LeftStick";
+            this.LeftStick.Size = new System.Drawing.Size(466, 461);
+            this.LeftStick.TabIndex = 0;
+            // 
+            // RightStick
+            // 
+            this.RightStick.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RightStick.Location = new System.Drawing.Point(675, 3);
+            this.RightStick.MinimumSize = new System.Drawing.Size(200, 200);
+            this.RightStick.Name = "RightStick";
+            this.RightStick.Size = new System.Drawing.Size(466, 461);
+            this.RightStick.TabIndex = 1;
             // 
             // MainWindow
             // 
