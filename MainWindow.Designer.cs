@@ -29,9 +29,10 @@
             // compoundControl1
             // 
             this.compoundControl1.BackColor = System.Drawing.SystemColors.InfoText;
-            this.compoundControl1.Location = new System.Drawing.Point(12, 12);
+            this.compoundControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.compoundControl1.Location = new System.Drawing.Point(0, 0);
             this.compoundControl1.Name = "compoundControl1";
-            this.compoundControl1.Size = new System.Drawing.Size(331, 304);
+            this.compoundControl1.Size = new System.Drawing.Size(800, 450);
             this.compoundControl1.TabIndex = 0;
             // 
             // MainWindow
@@ -42,6 +43,8 @@
             this.Controls.Add(this.compoundControl1);
             this.Name = "MainWindow";
             this.Text = "MainWindow";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
 
         }
