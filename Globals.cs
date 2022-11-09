@@ -20,7 +20,7 @@ namespace JoystickVisualizer {
         public const string GLADIATOR_RIGHT_SEM_NAME = " VKBsim Gladiator EVO  R SEM ";
 
         // Polling timeout
-        public const int POLLING_SLEEP_MS = 20;
+        public const int POLLING_INTERVAL_MS = 20;
 
         // Axis values
         public const int DEFAULT_AXIS_VALUE = 32768;

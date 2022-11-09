@@ -35,6 +35,8 @@ namespace JoystickVisualizer {
         }
 
         private void JoystickStatus_Load(object sender, EventArgs e) {
+            PollingTimer.Interval = Globals.POLLING_INTERVAL_MS;
+
             // Try to bind the joysticks, else throw an error and exit
             if (!BindJoysticks()) {
                 MessageBox.Show("No joystick/Gamepad found.", "No devices", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -42,6 +44,7 @@ namespace JoystickVisualizer {
             }
 
             ActivateJoysticks();
+            PollingTimer.Enabled = true;
         }
 
         private void JoystickStatus_FormClosing(object sender, FormClosingEventArgs e) {
@@ -51,7 +54,7 @@ namespace JoystickVisualizer {
         }
 
         /// <summary>
-        /// Instantiates Joystick objects given proper GUIDs, sets buffer sizes, and performs Acquire() on the sticks
+        /// Instantiates Joystick objects given proper GUIDs, sets buffer sizes, and performs Acquire() on the sticks.  Only call after BindJoysticks().
         /// </summary>
         private void ActivateJoysticks() {
             if (joystickLFound) {
@@ -121,7 +124,7 @@ namespace JoystickVisualizer {
             dataLeftStick = PollJoystick(joystickL);
             dataRightStick = PollJoystick(joystickR);
 
-            if (dataLeftStick!= null && dataLeftStick.Length > 0) {
+            if (dataLeftStick != null && dataLeftStick.Length > 0) {
                 foreach (JoystickUpdate state in dataLeftStick) {
                     switch (state.Offset) {
                         case JoystickOffset.X:
@@ -142,7 +145,7 @@ namespace JoystickVisualizer {
                 }
             }
 
-            if (dataRightStick!=null && dataRightStick.Length > 0) {
+            if (dataRightStick != null && dataRightStick.Length > 0) {
                 foreach (JoystickUpdate state in dataRightStick) {
                     switch (state.Offset) {
                         case JoystickOffset.X:
