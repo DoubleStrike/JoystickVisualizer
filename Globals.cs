@@ -52,7 +52,7 @@ namespace JoystickVisualizer {
         // Visual style
         public const int BORDER_THICKNESS = 4;
         public const int CROSSHAIR_THICKNESS = 1;
-        public const int DOT_SIZE = 20;
+        public const int DEFAULT_2D_DOT_SIZE = 20;
         public readonly static Color DEFAULT_DOT_COLOR = SystemColors.HotTrack;
         public readonly static Color DEFAULT_FRAME_COLOR = SystemColors.Info;
         public readonly static DashStyle CenterLineDashStyle = DashStyle.DashDot;
@@ -80,9 +80,10 @@ namespace JoystickVisualizer {
         /// <param name="pen">A reference to the pen to use</param>
         /// <param name="height">The height of the control</param>
         /// <param name="width">The width of the control</param>
+        /// <param name="dotSize">For 2D axes, the width of the dot to draw. Ignored for 1D axes.</param>
         /// <param name="drawCenterLine">Whether to draw one line at the exact center</param>
         /// <param name="drawDotWidthLines">Whether to draw a pair of lines on each side of the center range</param>
-        public static void DrawCrosshairs(CrosshairDirection direction, Graphics drawingSurface, ref Pen pen, int height, int width, bool drawCenterLine = true, bool drawDotWidthLines = false) {
+        public static void DrawCrosshairs(CrosshairDirection direction, Graphics drawingSurface, ref Pen pen, int height, int width, int dotSize, bool drawCenterLine = true, bool drawDotWidthLines = false) {
             if (drawingSurface == null) return;
 
             switch (direction) {
@@ -124,10 +125,10 @@ namespace JoystickVisualizer {
                     // In this case, use the fixed dot size to determine offset
                     if (drawDotWidthLines) {
                         pen.DashPattern = DotWidthDashValues;
-                        drawingSurface.DrawLine(pen, (width - DOT_SIZE) / 2, 0, (width - DOT_SIZE) / 2, height);
-                        drawingSurface.DrawLine(pen, (width + DOT_SIZE) / 2, 0, (width + DOT_SIZE) / 2, height);
-                        drawingSurface.DrawLine(pen, 0, (height - DOT_SIZE) / 2, width, (height - DOT_SIZE) / 2);
-                        drawingSurface.DrawLine(pen, 0, (height + DOT_SIZE) / 2, width, (height + DOT_SIZE) / 2);
+                        drawingSurface.DrawLine(pen, (width - dotSize) / 2, 0, (width - dotSize) / 2, height);
+                        drawingSurface.DrawLine(pen, (width + dotSize) / 2, 0, (width + dotSize) / 2, height);
+                        drawingSurface.DrawLine(pen, 0, (height - dotSize) / 2, width, (height - dotSize) / 2);
+                        drawingSurface.DrawLine(pen, 0, (height + dotSize) / 2, width, (height + dotSize) / 2);
                     }
 
                     break;

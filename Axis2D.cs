@@ -8,6 +8,7 @@ namespace JoystickVisualizer {
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
         private int MaxBottomPosition = 0;
         private int MaxRightPosition = 0;
+        private int m_DotSize = Globals.DEFAULT_2D_DOT_SIZE;
         private int m_XValue = Globals.DEFAULT_AXIS_VALUE;
         private int m_YValue = Globals.DEFAULT_AXIS_VALUE;
         private bool m_RenderFrame = true;
@@ -62,6 +63,16 @@ namespace JoystickVisualizer {
         }
         #endregion Public Properties
 
+        #region Public functions
+        public int GetDotSize() {
+            return m_DotSize;
+        }
+
+        public void SetDotSize(int sizeInPixels) {
+            m_DotSize = sizeInPixels;
+        }
+        #endregion Public functions
+
 
         public Axis2D() {
             InitializeComponent();
@@ -87,10 +98,10 @@ namespace JoystickVisualizer {
                 }
 
                 // Draw centering crosshairs
-                Globals.DrawCrosshairs(CrosshairDirection.Both, e.Graphics, ref crosshairsPen, this.Height, this.Width, true, true);
+                Globals.DrawCrosshairs(CrosshairDirection.Both, e.Graphics, ref crosshairsPen, this.Height, this.Width, m_DotSize, true, true);
 
                 // Draw the dot
-                e.Graphics.FillEllipse(dotBrush, new Rectangle(MapValueToRangeX(m_XValue), MapValueToRangeY(m_YValue), Globals.DOT_SIZE, Globals.DOT_SIZE));
+                e.Graphics.FillEllipse(dotBrush, new Rectangle(MapValueToRangeX(m_XValue), MapValueToRangeY(m_YValue), m_DotSize, m_DotSize));
 
                 // Update the tooltip
                 ToolTip = $"('{XValue}','{YValue}')";
@@ -106,8 +117,8 @@ namespace JoystickVisualizer {
         }
 
         private void CalculateMaxPositions() {
-            MaxBottomPosition = this.Height - Globals.DOT_SIZE;
-            MaxRightPosition = this.Width - Globals.DOT_SIZE;
+            MaxBottomPosition = this.Height - m_DotSize;
+            MaxRightPosition = this.Width - m_DotSize;
         }
 
         private int MapValueToRangeX(int InputValue) {
