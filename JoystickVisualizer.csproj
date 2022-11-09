@@ -85,7 +85,7 @@
       <DependentUpon>Axis2D.cs</DependentUpon>
     </Compile>
     <Compile Include="CompoundControl.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CompoundControl.Designer.cs">
       <DependentUpon>CompoundControl.cs</DependentUpon>
@@ -96,6 +96,12 @@
     </Compile>
     <Compile Include="JoystickStatus.Designer.cs">
       <DependentUpon>JoystickStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,6 +121,9 @@
     <EmbeddedResource Include="JoystickStatus.resx">
       <DependentUpon>JoystickStatus.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

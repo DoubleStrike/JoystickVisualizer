@@ -13,7 +13,7 @@ namespace JoystickVisualizer {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new JoystickStatus());
+            Application.Run(new MainWindow());
         }
     }
 }
