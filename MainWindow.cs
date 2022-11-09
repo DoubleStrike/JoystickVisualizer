@@ -13,6 +13,39 @@ namespace JoystickVisualizer {
         }
 
         private void MainWindow_Load(object sender, EventArgs e) {
+            BindAndActivateSticks();
+
+            ScaleDots();
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e) {
+            // Unacquire any active joysticks
+            Globals.UnacquireJoysticks();
+        }
+
+        private void MainWindow_Resize(object sender, EventArgs e) {
+            Debug.Print("x");
+
+            ScaleDots();
+        }
+
+        private void chkKeepOnTop_CheckedChanged(object sender, EventArgs e) {
+            this.TopMost = chkKeepOnTop.Checked;
+            this.Focus();
+        }
+
+        private void btnSet_Click(object sender, EventArgs e) {
+            try {
+                int parsedInput = int.Parse(txtPollingTime.Text);
+
+                LeftStick.UpdatePollingInterval(parsedInput);
+                RightStick.UpdatePollingInterval(parsedInput);
+            } catch (Exception) {
+                MessageBox.Show("Enter a valid numeric value in milliseconds");
+            }
+        }
+
+        private void BindAndActivateSticks() {
             // Try to bind the joysticks, else throw an error and exit
             if (!Globals.BindJoysticks()) {
                 MessageBox.Show("No joystick/Gamepad found.", "No devices", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -36,35 +69,11 @@ namespace JoystickVisualizer {
                     LeftStick.Enabled = false;
                 }
             }
+        }
 
+        private void ScaleDots() {
             LeftStick.SetDotSize(LeftStick.Width / 7);
             RightStick.SetDotSize(RightStick.Width / 7);
-        }
-
-        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e) {
-            // Unacquire any active joysticks
-            Globals.UnacquireJoysticks();
-        }
-
-        private void MainWindow_Resize(object sender, EventArgs e) {
-            LeftStick.SetDotSize(LeftStick.Width / 7);
-            RightStick.SetDotSize(RightStick.Width / 7);
-        }
-
-        private void chkKeepOnTop_CheckedChanged(object sender, EventArgs e) {
-            this.TopMost = chkKeepOnTop.Checked;
-            this.Focus();
-        }
-
-        private void btnSet_Click(object sender, EventArgs e) {
-            try {
-                int parsedInput = int.Parse(txtPollingTime.Text);
-
-                LeftStick.UpdatePollingInterval(parsedInput);
-                RightStick.UpdatePollingInterval(parsedInput);
-            } catch (Exception) {
-                MessageBox.Show("Enter a valid numeric value in milliseconds");
-            }
         }
     }
 }

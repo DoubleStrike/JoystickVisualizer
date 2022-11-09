@@ -188,7 +188,7 @@ namespace JoystickVisualizer {
                     joystickRFound = true;
                     joystickRGuid = thisDevice.InstanceGuid;
                 } else {
-                    Debug.WriteLine("Unplanned extra device found.");
+                    //Debug.WriteLine("Unplanned extra device found.");
                 }
             }
 

@@ -25,13 +25,13 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.squareTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.PollingTimer = new System.Windows.Forms.Timer(this.components);
             this.axisZ = new JoystickVisualizer.Axis1DVertical();
             this.axisSlider0 = new JoystickVisualizer.Axis1DVertical();
             this.axisSlider1 = new JoystickVisualizer.Axis1DVertical();
             this.axisRotZ = new JoystickVisualizer.Axis1DHorizontal();
             this.axisXY = new JoystickVisualizer.Axis2D();
             this.axisRotXRotY = new JoystickVisualizer.Axis2D();
+            this.PollingTimer = new System.Windows.Forms.Timer(this.components);
             this.squareTableLayout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,10 +56,6 @@
             this.squareTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.squareTableLayout.Size = new System.Drawing.Size(344, 367);
             this.squareTableLayout.TabIndex = 0;
-            // 
-            // PollingTimer
-            // 
-            this.PollingTimer.Tick += new System.EventHandler(this.PollingTimer_Tick);
             // 
             // axisZ
             // 
@@ -120,12 +116,17 @@
             // 
             this.axisRotXRotY.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.axisRotXRotY.Location = new System.Drawing.Point(127, 9);
+            this.axisRotXRotY.Margin = new System.Windows.Forms.Padding(0);
             this.axisRotXRotY.Name = "axisRotXRotY";
             this.axisRotXRotY.Size = new System.Drawing.Size(54, 54);
             this.axisRotXRotY.TabIndex = 6;
             this.axisRotXRotY.ToolTip = "(\'32768\',\'32768\')";
             this.axisRotXRotY.XValue = 32768;
             this.axisRotXRotY.YValue = 32768;
+            // 
+            // PollingTimer
+            // 
+            this.PollingTimer.Tick += new System.EventHandler(this.PollingTimer_Tick);
             // 
             // CompoundControl
             // 

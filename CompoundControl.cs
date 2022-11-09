@@ -90,11 +90,11 @@ namespace JoystickVisualizer {
             // Size of the XY grid
             int xyGridSize = this.axisXY.Height;
 
-            Debug.Print($"Ministick before ('{axisRotXRotY.Width}', '{axisRotXRotY.Height}')");
+            //Debug.Print($"Ministick before ('{axisRotXRotY.Width}', '{axisRotXRotY.Height}')");
             ministickSize = (int)(xyGridSize * (2.0f / 7.0f));
 
             axisRotXRotY.Size = new Size(ministickSize, ministickSize);
-            Debug.Print($"Ministick after ('{axisRotXRotY.Width}', '{axisRotXRotY.Height}')");
+            //Debug.Print($"Ministick after ('{axisRotXRotY.Width}', '{axisRotXRotY.Height}')");
         }
 
         private void PollingTimer_Tick(object sender, EventArgs e) {
