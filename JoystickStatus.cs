@@ -13,16 +13,6 @@ using System.Windows.Forms;
 namespace JoystickVisualizer {
     public partial class JoystickStatus : Form {
         #region Private members
-        // VKB's device names - complete with weird extra spaces
-        private const string GLADIATOR_LEFT_NAME = " VKBsim Gladiator EVO  L  ";
-        private const string GLADIATOR_RIGHT_NAME = " VKBsim Gladiator EVO  R  ";
-        private const string GLADIATOR_RIGHT_SEM_NAME = " VKBsim Gladiator EVO  R SEM ";
-
-        private const int POLLING_SLEEP_MS = 20;
-
-        // Initialize DirectInput
-        private readonly DirectInput directInput;
-
         // Joystick GUIDs
         private Guid joystickLGuid = Guid.Empty;
         private Guid joystickRGuid = Guid.Empty;
@@ -42,8 +32,6 @@ namespace JoystickVisualizer {
 
         public JoystickStatus() {
             InitializeComponent();
-
-            directInput = new DirectInput();
         }
 
         private void JoystickStatus_Load(object sender, EventArgs e) {
@@ -68,7 +56,7 @@ namespace JoystickVisualizer {
         private void ActivateJoysticks() {
             if (joystickLFound) {
                 // Instantiate the joystick
-                joystickL = new Joystick(directInput, joystickLGuid);
+                joystickL = new Joystick(Globals.directInput, joystickLGuid);
                 //Debug.WriteLine($"Found Left Joystick/Gamepad with GUID: '{joystickLGuid}'");
 
                 // Set BufferSize in order to use buffered data
@@ -80,7 +68,7 @@ namespace JoystickVisualizer {
 
             if (joystickRFound) {
                 // Instantiate the joystick
-                joystickR = new Joystick(directInput, joystickRGuid);
+                joystickR = new Joystick(Globals.directInput, joystickRGuid);
                 //Debug.WriteLine($"Found Right Joystick/Gamepad with GUID: '{joystickRGuid}'");
 
                 // Set BufferSize in order to use buffered data
@@ -96,16 +84,16 @@ namespace JoystickVisualizer {
         /// </summary>
         /// <returns>true if at least one joystick was bound successfully</returns>
         private bool BindJoysticks() {
-            foreach (DeviceInstance thisDevice in directInput.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AllDevices)) {
+            foreach (DeviceInstance thisDevice in Globals.directInput.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AllDevices)) {
                 Debug.WriteLine($"Device instance found: '{thisDevice.InstanceName}'");
 
-                if (thisDevice.InstanceName == GLADIATOR_LEFT_NAME) {
+                if (thisDevice.InstanceName == Globals.GLADIATOR_LEFT_NAME) {
                     joystickLFound = true;
                     joystickLGuid = thisDevice.InstanceGuid;
-                } else if (thisDevice.InstanceName == GLADIATOR_RIGHT_NAME) {
+                } else if (thisDevice.InstanceName == Globals.GLADIATOR_RIGHT_NAME) {
                     joystickRFound = true;
                     joystickRGuid = thisDevice.InstanceGuid;
-                } else if (thisDevice.InstanceName == GLADIATOR_RIGHT_SEM_NAME) {
+                } else if (thisDevice.InstanceName == Globals.GLADIATOR_RIGHT_SEM_NAME) {
                     joystickRFound = true;
                     joystickRGuid = thisDevice.InstanceGuid;
                 } else {
@@ -133,49 +121,53 @@ namespace JoystickVisualizer {
             dataLeftStick = PollJoystick(joystickL);
             dataRightStick = PollJoystick(joystickR);
 
-            foreach (JoystickUpdate state in dataLeftStick) {
-                switch (state.Offset) {
-                    case JoystickOffset.X:
-                        Left2D.XValue = state.Value;
-                        break;
-                    case JoystickOffset.Y:
-                        Left2D.YValue = state.Value;
-                        break;
-                    case JoystickOffset.Z:
-                        LeftThrottle.Value = Globals.MAX_AXIS_VALUE - state.Value;
-                        break;
-                    case JoystickOffset.RotationZ:
-                        LeftTwist.Value = state.Value;
-                        break;
-                }
+            if (dataLeftStick!= null && dataLeftStick.Length > 0) {
+                foreach (JoystickUpdate state in dataLeftStick) {
+                    switch (state.Offset) {
+                        case JoystickOffset.X:
+                            Left2D.XValue = state.Value;
+                            break;
+                        case JoystickOffset.Y:
+                            Left2D.YValue = state.Value;
+                            break;
+                        case JoystickOffset.Z:
+                            LeftThrottle.Value = Globals.MAX_AXIS_VALUE - state.Value;
+                            break;
+                        case JoystickOffset.RotationZ:
+                            LeftTwist.Value = state.Value;
+                            break;
+                    }
 
-                //Debug.WriteLine($"Left: '{state}'");
+                    //Debug.WriteLine($"Left: '{state}'");
+                }
             }
 
-            foreach (JoystickUpdate state in dataRightStick) {
-                switch (state.Offset) {
-                    case JoystickOffset.X:
-                        Right2D.XValue = state.Value;
-                        break;
-                    case JoystickOffset.Y:
-                        Right2D.YValue = state.Value;
-                        break;
-                    case JoystickOffset.Z:
-                        RightThrottle.Value = Globals.MAX_AXIS_VALUE - state.Value;
-                        break;
-                    case JoystickOffset.RotationZ:
-                        RightTwist.Value = state.Value;
-                        break;
-                    case JoystickOffset.Sliders0:
-                        RightSlider.Value = Globals.MAX_AXIS_VALUE - state.Value;
-                        break;
-                }
+            if (dataRightStick!=null && dataRightStick.Length > 0) {
+                foreach (JoystickUpdate state in dataRightStick) {
+                    switch (state.Offset) {
+                        case JoystickOffset.X:
+                            Right2D.XValue = state.Value;
+                            break;
+                        case JoystickOffset.Y:
+                            Right2D.YValue = state.Value;
+                            break;
+                        case JoystickOffset.Z:
+                            RightThrottle.Value = Globals.MAX_AXIS_VALUE - state.Value;
+                            break;
+                        case JoystickOffset.RotationZ:
+                            RightTwist.Value = state.Value;
+                            break;
+                        case JoystickOffset.Sliders0:
+                            RightSlider.Value = Globals.MAX_AXIS_VALUE - state.Value;
+                            break;
+                    }
 
-                //Debug.WriteLine($"Right: '{state}'");
+                    //Debug.WriteLine($"Right: '{state}'");
+                }
             }
 
             // Sleep for the defined delay
-            System.Threading.Thread.Sleep(POLLING_SLEEP_MS);
+            System.Threading.Thread.Sleep(Globals.POLLING_SLEEP_MS);
         }
 
         private void AlwaysOnTop_CheckedChanged(object sender, EventArgs e) {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharpDX.DirectInput;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -10,15 +11,27 @@ using System.Windows.Forms;
 namespace JoystickVisualizer {
     internal class Globals {
         #region Variables
+        // Access object for DirectInput
+        public static readonly DirectInput directInput = new DirectInput();
+
+        // VKB's device names - complete with weird extra spaces
+        public const string GLADIATOR_LEFT_NAME = " VKBsim Gladiator EVO  L  ";
+        public const string GLADIATOR_RIGHT_NAME = " VKBsim Gladiator EVO  R  ";
+        public const string GLADIATOR_RIGHT_SEM_NAME = " VKBsim Gladiator EVO  R SEM ";
+
+        // Polling timeout
+        public const int POLLING_SLEEP_MS = 20;
+
+        // Axis values
         public const int DEFAULT_AXIS_VALUE = 32768;
         public const int MAX_AXIS_VALUE = 65535;
+
+        // Visual style
         public const int BORDER_THICKNESS = 4;
         public const int CROSSHAIR_THICKNESS = 1;
         public const int DOT_SIZE = 20;
-
         public readonly static Color DEFAULT_DOT_COLOR = SystemColors.HotTrack;
         public readonly static Color DEFAULT_FRAME_COLOR = SystemColors.Info;
-
         public readonly static DashStyle CenterLineDashStyle = DashStyle.DashDot;
         public readonly static DashStyle DotWidthLineDashStyle = DashStyle.Dot;
         public readonly static float[] CenterDashValues = { 5, 10 };
