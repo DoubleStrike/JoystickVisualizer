@@ -9,8 +9,6 @@ namespace JoystickVisualizer {
         private int m_Value = Globals.DEFAULT_AXIS_VALUE;
         private bool m_RenderFrame = true;
         private string m_Label = "";
-        private SolidBrush dotBrush;
-        private SolidBrush frameBrush;
         private Pen framePen;
         private Pen crosshairsPen;
 
@@ -63,8 +61,6 @@ namespace JoystickVisualizer {
             if (this.Enabled) {
                 // Setup class members
                 this.ResizeRedraw = true;
-                dotBrush = new SolidBrush(Globals.DEFAULT_DOT_COLOR);
-                frameBrush = new SolidBrush(Globals.DEFAULT_FRAME_COLOR);
                 framePen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.BORDER_THICKNESS);
                 crosshairsPen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.CROSSHAIR_THICKNESS);
             }
@@ -82,10 +78,10 @@ namespace JoystickVisualizer {
                 Globals.DrawCrosshairs(CrosshairDirection.Vertical, e.Graphics, ref crosshairsPen, this.Height, this.Width, 0, true, true);
 
                 // Draw the dot
-                e.Graphics.FillEllipse(dotBrush, MapValueToRange(m_Value) + 1, 0, this.Height - 2, this.Height - 2);
+                e.Graphics.FillEllipse(Globals.dotBrush, MapValueToRange(m_Value) + 1, 0, this.Height - 2, this.Height - 2);
 
                 // Draw the text label
-                e.Graphics.DrawString(m_Label, SystemFonts.DefaultFont, frameBrush, 2, 1);
+                e.Graphics.DrawString(m_Label, SystemFonts.DefaultFont, Globals.frameBrush, 2, 1);
 
                 // Update the tooltip
                 ToolTip = $"('{this.Name}': '{Value}')";

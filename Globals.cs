@@ -19,7 +19,7 @@ namespace JoystickVisualizer {
     #endregion Enums
 
     internal class Globals {
-        #region Variables
+        #region Constants and read-only
         // Access object for DirectInput
         public static readonly DirectInput directInput = new DirectInput();
 
@@ -27,20 +27,6 @@ namespace JoystickVisualizer {
         public const string GLADIATOR_LEFT_NAME = " VKBsim Gladiator EVO  L  ";
         public const string GLADIATOR_RIGHT_NAME = " VKBsim Gladiator EVO  R  ";
         public const string GLADIATOR_RIGHT_SEM_NAME = " VKBsim Gladiator EVO  R SEM ";
-
-        // Joystick GUIDs
-        public static Guid joystickLGuid = Guid.Empty;
-        public static Guid joystickRGuid = Guid.Empty;
-
-        // Joystick state
-        public static bool joystickLFound = false;
-        public static bool joystickRFound = false;
-        public static bool joystickLAcquired = false;
-        public static bool joystickRAcquired = false;
-
-        // Joystick objects
-        public static Joystick joystickL;
-        public static Joystick joystickR;
 
         // Polling timeout
         public const int POLLING_INTERVAL_MS = 50;
@@ -59,6 +45,26 @@ namespace JoystickVisualizer {
         public readonly static DashStyle DotWidthLineDashStyle = DashStyle.Dot;
         public readonly static float[] CenterDashValues = { 5, 10 };
         public readonly static float[] DotWidthDashValues = { 1, 2 };
+        #endregion Constants
+
+        #region Variables
+        // Joystick GUIDs
+        public static Guid joystickLGuid = Guid.Empty;
+        public static Guid joystickRGuid = Guid.Empty;
+
+        // Joystick state
+        public static bool joystickLFound = false;
+        public static bool joystickRFound = false;
+        public static bool joystickLAcquired = false;
+        public static bool joystickRAcquired = false;
+
+        // Joystick objects
+        public static Joystick joystickL;
+        public static Joystick joystickR;
+
+        // Visual style
+        public static SolidBrush dotBrush = new SolidBrush(Globals.DEFAULT_DOT_COLOR);
+        public static SolidBrush frameBrush = new SolidBrush(Globals.DEFAULT_FRAME_COLOR);
         #endregion Variables
 
         #region External Calls

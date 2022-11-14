@@ -12,10 +12,9 @@ namespace JoystickVisualizer {
         private int m_YValue = Globals.DEFAULT_AXIS_VALUE;
         private bool m_RenderFrame = true;
         private string m_Label = "";
-        private SolidBrush dotBrush;
-        private SolidBrush frameBrush;
         private Pen framePen;
         private Pen crosshairsPen;
+        private Font labelFont;
 
         #region Public Properties
         public string TextLabel {
@@ -89,8 +88,6 @@ namespace JoystickVisualizer {
             if (this.Enabled) {
                 // Setup class members
                 this.ResizeRedraw = true;
-                dotBrush = new SolidBrush(Globals.DEFAULT_DOT_COLOR);
-                frameBrush = new SolidBrush(Globals.DEFAULT_FRAME_COLOR);
                 framePen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.BORDER_THICKNESS);
                 crosshairsPen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.CROSSHAIR_THICKNESS);
             }
@@ -108,17 +105,10 @@ namespace JoystickVisualizer {
                 Globals.DrawCrosshairs(CrosshairDirection.Both, e.Graphics, ref crosshairsPen, this.Height, this.Width, m_DotSize, true, true);
 
                 // Draw the dot
-                e.Graphics.FillEllipse(dotBrush, MapValueToRangeX(m_XValue) + 1, MapValueToRangeY(m_YValue) + 1, m_DotSize - 2, m_DotSize - 2);
+                e.Graphics.FillEllipse(Globals.dotBrush, MapValueToRangeX(m_XValue) + 1, MapValueToRangeY(m_YValue) + 1, m_DotSize - 2, m_DotSize - 2);
 
                 // Draw the text label
-                Font SF = new Font(
-                    SystemFonts.DefaultFont.Name,
-                    (this.ClientSize.Width < 100) ? SystemFonts.DefaultFont.Size - 2 : SystemFonts.DefaultFont.Size,
-                    SystemFonts.DefaultFont.Style,
-                    SystemFonts.DefaultFont.Unit,
-                    SystemFonts.DefaultFont.GdiCharSet,
-                    SystemFonts.DefaultFont.GdiVerticalFont);
-                e.Graphics.DrawString(m_Label, SF, System.Drawing.SystemBrushes.Info, 2, 1);
+                e.Graphics.DrawString(m_Label, labelFont, Globals.frameBrush, 2, 1);
 
                 // Update the tooltip
                 ToolTip = $"'{this.Name}': ('{XValue}','{YValue}')";
@@ -127,6 +117,15 @@ namespace JoystickVisualizer {
 
         private void Form_Resize(object sender, EventArgs e) {
             if (this.Enabled) {
+                // Recalculate font size
+                labelFont = new Font(
+                    SystemFonts.DefaultFont.Name,
+                    (this.ClientSize.Width < 100) ? SystemFonts.DefaultFont.Size - 2 : SystemFonts.DefaultFont.Size,
+                    SystemFonts.DefaultFont.Style,
+                    SystemFonts.DefaultFont.Unit,
+                    SystemFonts.DefaultFont.GdiCharSet,
+                    SystemFonts.DefaultFont.GdiVerticalFont);
+
                 this.Invalidate();
                 this.Update();
             }
