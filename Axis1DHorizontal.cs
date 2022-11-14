@@ -66,8 +66,8 @@ namespace JoystickVisualizer {
             if (this.Enabled) {
                 // Draw the frame
                 if (m_RenderFrame) {
-                    //e.Graphics.FillRectangle(frameBrush, new Rectangle(0, 0, this.Width, this.Height));
-                    e.Graphics.DrawRectangle(Globals.framePen, new Rectangle(0, 0, this.Width, this.Height));
+                    //e.Graphics.FillRectangle(frameBrush, 0, 0, this.Width, this.Height);
+                    e.Graphics.DrawRectangle(Globals.framePen, 0, 0, this.Width, this.Height);
                 }
 
                 // Draw centering crosshair
