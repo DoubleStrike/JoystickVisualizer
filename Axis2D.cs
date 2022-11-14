@@ -12,7 +12,7 @@ namespace JoystickVisualizer {
         private int m_YValue = Globals.DEFAULT_AXIS_VALUE;
         private bool m_RenderFrame = true;
         private string m_Label = "";
-        private Font labelFont;
+        private Font labelFont = SystemFonts.DefaultFont;
 
         #region Public Properties
         public string TextLabel {
@@ -117,7 +117,7 @@ namespace JoystickVisualizer {
                 // Recalculate font size
                 labelFont = new Font(
                     SystemFonts.DefaultFont.Name,
-                    (this.ClientSize.Width < 100) ? SystemFonts.DefaultFont.Size - 2 : SystemFonts.DefaultFont.Size,
+                    (this.ClientSize.Width < 110) ? SystemFonts.DefaultFont.Size - 2 : SystemFonts.DefaultFont.Size,
                     SystemFonts.DefaultFont.Style,
                     SystemFonts.DefaultFont.Unit,
                     SystemFonts.DefaultFont.GdiCharSet,

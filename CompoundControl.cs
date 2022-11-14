@@ -58,9 +58,9 @@ namespace JoystickVisualizer {
             PollingTimer.Interval = Globals.POLLING_INTERVAL_MS;
 
             // Setup labels
-            axisRotXRotY.TextLabel = "RX,RY";
+            axisRotXRotY.TextLabel = "RX+RY";
             axisZ.TextLabel = "Z";
-            axisXY.TextLabel = "X,Y";
+            axisXY.TextLabel = "X+Y";
             axisSlider0.TextLabel= "S0";
             axisSlider1.TextLabel = "S1";
             axisRotZ.TextLabel = "RZ";
