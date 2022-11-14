@@ -132,10 +132,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.squareTableLayout);
             this.MinimumSize = new System.Drawing.Size(200, 200);
             this.Name = "CompoundControl";
-            this.Size = new System.Drawing.Size(991, 722);
+            this.Size = new System.Drawing.Size(347, 370);
             this.Load += new System.EventHandler(this.CompoundControl_Load);
             this.Resize += new System.EventHandler(this.CompoundControl_Resize);
             this.squareTableLayout.ResumeLayout(false);
