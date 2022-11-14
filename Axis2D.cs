@@ -123,7 +123,7 @@ namespace JoystickVisualizer {
                     SystemFonts.DefaultFont.GdiCharSet,
                     SystemFonts.DefaultFont.GdiVerticalFont);
 
-                this.Refresh();
+                //this.Refresh();
             }
         }
 
