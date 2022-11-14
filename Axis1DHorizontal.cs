@@ -85,10 +85,7 @@ namespace JoystickVisualizer {
         }
 
         private void Form_Resize(object sender, EventArgs e) {
-            if (this.Enabled) {
-                this.Invalidate();
-                this.Update();
-            }
+            if (this.Enabled) this.Refresh();
         }
 
         private float MapValueToRange(int InputValue) {

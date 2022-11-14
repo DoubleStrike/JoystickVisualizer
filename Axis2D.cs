@@ -76,6 +76,7 @@ namespace JoystickVisualizer {
 
         public void SetDotSize(int sizeInPixels) {
             m_DotSize = sizeInPixels;
+            this.Refresh();
         }
         #endregion Public functions
 
@@ -122,8 +123,7 @@ namespace JoystickVisualizer {
                     SystemFonts.DefaultFont.GdiCharSet,
                     SystemFonts.DefaultFont.GdiVerticalFont);
 
-                this.Invalidate();
-                this.Update();
+                this.Refresh();
             }
         }
 
