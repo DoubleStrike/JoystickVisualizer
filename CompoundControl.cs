@@ -1,5 +1,6 @@
 ﻿using SharpDX.DirectInput;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,6 +13,20 @@ namespace JoystickVisualizer {
 
         private JoystickUpdate[] m_joystickDataBuffer;
         #endregion Private members
+
+        #region Public Properties
+        [Description("The Anchor property of the contained TableLayoutPanel"),
+                Category("Control Defaults"),
+                Browsable(true)]
+        public AnchorStyles InternalTableAnchor {
+            get { return squareTableLayout.Anchor; }
+            set {
+                squareTableLayout.Anchor = value;
+                this.Invalidate();
+                this.Update();
+            }
+        }
+        #endregion Public Properties
 
         #region Public functions
         public void SetDarkMode(bool darkModeOn = true) {

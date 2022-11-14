@@ -28,11 +28,15 @@ namespace JoystickVisualizer {
 
 #if false
             if (LeftStick.ClientSize.Width != LeftStick.ClientSize.Height) {
+                tableLayoutPanel1.ColumnStyles[0].SizeType = SizeType.Absolute;
+                tableLayoutPanel1.ColumnStyles[1].SizeType = SizeType.AutoSize;
+                tableLayoutPanel1.ColumnStyles[2].SizeType = SizeType.Absolute;
+
                 tableLayoutPanel1.ColumnStyles[0].Width = LeftStick.ClientSize.Height;
                 tableLayoutPanel1.ColumnStyles[2].Width = LeftStick.ClientSize.Height;
 
-                RightStick.Dock = DockStyle.Right;
-                RightStick.ClientSize = LeftStick.ClientSize;
+                LeftStick.InternalTableAnchor = AnchorStyles.Left | AnchorStyles.Top;
+                RightStick.InternalTableAnchor = AnchorStyles.Right | AnchorStyles.Top;
             }
 #endif
 
