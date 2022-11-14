@@ -65,6 +65,8 @@ namespace JoystickVisualizer {
         // Visual style
         public static SolidBrush dotBrush = new SolidBrush(Globals.DEFAULT_DOT_COLOR);
         public static SolidBrush frameBrush = new SolidBrush(Globals.DEFAULT_FRAME_COLOR);
+        public static Pen framePen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.BORDER_THICKNESS);
+        public static Pen crosshairsPen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.CROSSHAIR_THICKNESS);
         #endregion Variables
 
         #region External Calls

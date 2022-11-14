@@ -9,8 +9,6 @@ namespace JoystickVisualizer {
         private int m_Value = Globals.DEFAULT_AXIS_VALUE;
         private bool m_RenderFrame = true;
         private string m_Label = "";
-        private Pen framePen;
-        private Pen crosshairsPen;
         private StringFormat strF = new StringFormat();
 
         #region Public Properties
@@ -62,8 +60,6 @@ namespace JoystickVisualizer {
             if (this.Enabled) {
                 // Setup class members
                 this.ResizeRedraw = true;
-                framePen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.BORDER_THICKNESS);
-                crosshairsPen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.CROSSHAIR_THICKNESS);
             }
 
             strF.Alignment = StringAlignment.Far;
@@ -74,11 +70,11 @@ namespace JoystickVisualizer {
                 // Draw the frame
                 if (m_RenderFrame) {
                     //e.Graphics.FillRectangle(frameBrush, new Rectangle(0, 0, this.Width, this.Height));
-                    e.Graphics.DrawRectangle(framePen, new Rectangle(0, 0, this.Width, this.Height));
+                    e.Graphics.DrawRectangle(Globals.framePen, new Rectangle(0, 0, this.Width, this.Height));
                 }
 
                 // Draw centering crosshair
-                Globals.DrawCrosshairs(CrosshairDirection.Horizontal, e.Graphics, ref crosshairsPen, this.Height, this.Width, 0, true, true);
+                Globals.DrawCrosshairs(CrosshairDirection.Horizontal, e.Graphics, ref Globals.crosshairsPen, this.Height, this.Width, 0, true, true);
 
                 // Draw the dot
                 e.Graphics.FillEllipse(Globals.dotBrush, 0, MapValueToRange(m_Value) + 1, this.Width - 2, this.Width - 2);
