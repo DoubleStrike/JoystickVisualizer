@@ -33,6 +33,7 @@ namespace JoystickVisualizer {
                 RightStick.ClientSize = LeftStick.ClientSize;
             }
 
+            this.Text = lblTitle.Text;
             ScaleDots();
         }
 
@@ -79,8 +80,9 @@ namespace JoystickVisualizer {
         }
 
         private void ScaleDots() {
-            LeftStick.SetDotSize(LeftStick.Width / 7);
-            RightStick.SetDotSize(RightStick.Width / 7);
+            int smallerDimension = LeftStick.Width < LeftStick.Height ? LeftStick.Width : LeftStick.Height;
+            LeftStick.SetDotSize(smallerDimension / 7);
+            RightStick.SetDotSize(smallerDimension / 7);
         }
     }
 }
