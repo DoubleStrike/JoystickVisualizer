@@ -14,8 +14,9 @@ namespace JoystickVisualizer {
 
         private void MainWindow_Load(object sender, EventArgs e) {
             BindAndActivateSticks();
-
             ScaleDots();
+
+            txtPollingTime.Text = Globals.POLLING_INTERVAL_MS.ToString();
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e) {

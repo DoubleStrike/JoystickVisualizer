@@ -82,7 +82,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(182, 98);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Joystick Visualizer";
+            this.lblTitle.Text = "DirectX Visualizer";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // spacer1
@@ -132,7 +132,6 @@
             this.txtPollingTime.Name = "txtPollingTime";
             this.txtPollingTime.Size = new System.Drawing.Size(100, 20);
             this.txtPollingTime.TabIndex = 5;
-            this.txtPollingTime.Text = "20";
             // 
             // btnSet
             // 
