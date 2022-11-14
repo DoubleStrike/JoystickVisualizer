@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace JoystickVisualizer {
+    [Obsolete]
     public partial class JoystickStatus : Form {
         #region Private members
         // Joystick data buffers
