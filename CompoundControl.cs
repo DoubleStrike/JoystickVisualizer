@@ -56,6 +56,14 @@ namespace JoystickVisualizer {
             KeepGridSquare();
 
             PollingTimer.Interval = Globals.POLLING_INTERVAL_MS;
+
+            // Setup labels
+            axisRotXRotY.TextLabel = "RX,RY";
+            axisZ.TextLabel = "Z";
+            axisXY.TextLabel = "X,Y";
+            axisSlider0.TextLabel= "S0";
+            axisSlider1.TextLabel = "S1";
+            axisRotZ.TextLabel = "RZ";
         }
 
         private void CompoundControl_Resize(object sender, EventArgs e) {

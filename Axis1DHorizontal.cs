@@ -8,12 +8,22 @@ namespace JoystickVisualizer {
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
         private int m_Value = Globals.DEFAULT_AXIS_VALUE;
         private bool m_RenderFrame = true;
+        private string m_Label = "";
         private SolidBrush dotBrush;
         private SolidBrush frameBrush;
         private Pen framePen;
         private Pen crosshairsPen;
 
         #region Public Properties
+        public string TextLabel {
+            get {
+                return m_Label;
+            }
+            set {
+                m_Label = value;
+            }
+        }
+
         public string ToolTip {
             get {
                 return toolTip.GetToolTip(this);
@@ -73,6 +83,9 @@ namespace JoystickVisualizer {
 
                 // Draw the dot
                 e.Graphics.FillEllipse(dotBrush, MapValueToRange(m_Value) + 1, 0, this.Height - 2, this.Height - 2);
+
+                // Draw the text label
+                e.Graphics.DrawString(m_Label, SystemFonts.DefaultFont, frameBrush, 2, 1);
 
                 // Update the tooltip
                 ToolTip = $"('{this.Name}': '{Value}')";

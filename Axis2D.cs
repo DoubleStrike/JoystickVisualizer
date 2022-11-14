@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Configuration;
 using System.Windows.Forms;
 
 namespace JoystickVisualizer {
@@ -10,12 +11,22 @@ namespace JoystickVisualizer {
         private int m_XValue = Globals.DEFAULT_AXIS_VALUE;
         private int m_YValue = Globals.DEFAULT_AXIS_VALUE;
         private bool m_RenderFrame = true;
+        private string m_Label = "";
         private SolidBrush dotBrush;
         private SolidBrush frameBrush;
         private Pen framePen;
         private Pen crosshairsPen;
 
         #region Public Properties
+        public string TextLabel {
+            get {
+                return m_Label;
+            }
+            set {
+                m_Label = value;
+            }
+        }
+
         public string ToolTip {
             get {
                 return toolTip.GetToolTip(this);
@@ -98,6 +109,16 @@ namespace JoystickVisualizer {
 
                 // Draw the dot
                 e.Graphics.FillEllipse(dotBrush, MapValueToRangeX(m_XValue) + 1, MapValueToRangeY(m_YValue) + 1, m_DotSize - 2, m_DotSize - 2);
+
+                // Draw the text label
+                Font SF = new Font(
+                    SystemFonts.DefaultFont.Name,
+                    (this.ClientSize.Width < 100) ? SystemFonts.DefaultFont.Size - 2 : SystemFonts.DefaultFont.Size,
+                    SystemFonts.DefaultFont.Style,
+                    SystemFonts.DefaultFont.Unit,
+                    SystemFonts.DefaultFont.GdiCharSet,
+                    SystemFonts.DefaultFont.GdiVerticalFont);
+                e.Graphics.DrawString(m_Label, SF, System.Drawing.SystemBrushes.Info, 2, 1);
 
                 // Update the tooltip
                 ToolTip = $"'{this.Name}': ('{XValue}','{YValue}')";
