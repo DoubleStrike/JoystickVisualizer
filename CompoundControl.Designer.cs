@@ -31,6 +31,7 @@
             this.axisRotZ = new JoystickVisualizer.Axis1DHorizontal();
             this.axisXY = new JoystickVisualizer.Axis2D();
             this.axisRotXRotY = new JoystickVisualizer.Axis2D();
+            this.povHat1 = new JoystickVisualizer.PovHat();
             this.PollingTimer = new System.Windows.Forms.Timer(this.components);
             this.squareTableLayout.SuspendLayout();
             this.SuspendLayout();
@@ -48,6 +49,7 @@
             this.squareTableLayout.Controls.Add(this.axisRotZ, 1, 2);
             this.squareTableLayout.Controls.Add(this.axisXY, 1, 1);
             this.squareTableLayout.Controls.Add(this.axisRotXRotY, 1, 0);
+            this.squareTableLayout.Controls.Add(this.povHat1, 2, 0);
             this.squareTableLayout.Location = new System.Drawing.Point(0, 0);
             this.squareTableLayout.Name = "squareTableLayout";
             this.squareTableLayout.RowCount = 3;
@@ -65,7 +67,8 @@
             this.axisZ.Name = "axisZ";
             this.axisZ.Size = new System.Drawing.Size(28, 250);
             this.axisZ.TabIndex = 0;
-            this.axisZ.ToolTip = "(\'32768\')";
+            this.axisZ.TextLabel = "";
+            this.axisZ.ToolTip = "(\'Axis1DVertical\': \'32768\')";
             this.axisZ.Value = 32768;
             // 
             // axisSlider0
@@ -76,7 +79,8 @@
             this.axisSlider0.Name = "axisSlider0";
             this.axisSlider0.Size = new System.Drawing.Size(28, 250);
             this.axisSlider0.TabIndex = 1;
-            this.axisSlider0.ToolTip = "(\'32768\')";
+            this.axisSlider0.TextLabel = "";
+            this.axisSlider0.ToolTip = "(\'Axis1DVertical\': \'32768\')";
             this.axisSlider0.Value = 32768;
             // 
             // axisSlider1
@@ -87,7 +91,8 @@
             this.axisSlider1.Name = "axisSlider1";
             this.axisSlider1.Size = new System.Drawing.Size(30, 250);
             this.axisSlider1.TabIndex = 2;
-            this.axisSlider1.ToolTip = "(\'32768\')";
+            this.axisSlider1.TextLabel = "";
+            this.axisSlider1.ToolTip = "(\'Axis1DVertical\': \'32768\')";
             this.axisSlider1.Value = 32768;
             // 
             // axisRotZ
@@ -98,7 +103,8 @@
             this.axisRotZ.Name = "axisRotZ";
             this.axisRotZ.Size = new System.Drawing.Size(234, 32);
             this.axisRotZ.TabIndex = 3;
-            this.axisRotZ.ToolTip = "(\'32768\')";
+            this.axisRotZ.TextLabel = "";
+            this.axisRotZ.ToolTip = "(\'Axis1DHorizontal\': \'32768\')";
             this.axisRotZ.Value = 32768;
             // 
             // axisXY
@@ -108,7 +114,8 @@
             this.axisXY.Name = "axisXY";
             this.axisXY.Size = new System.Drawing.Size(234, 250);
             this.axisXY.TabIndex = 5;
-            this.axisXY.ToolTip = "(\'32768\',\'32768\')";
+            this.axisXY.TextLabel = "";
+            this.axisXY.ToolTip = "\'Axis2D\': (\'32768\',\'32768\')";
             this.axisXY.XValue = 32768;
             this.axisXY.YValue = 32768;
             // 
@@ -120,9 +127,21 @@
             this.axisRotXRotY.Name = "axisRotXRotY";
             this.axisRotXRotY.Size = new System.Drawing.Size(54, 54);
             this.axisRotXRotY.TabIndex = 6;
-            this.axisRotXRotY.ToolTip = "(\'32768\',\'32768\')";
+            this.axisRotXRotY.TextLabel = "";
+            this.axisRotXRotY.ToolTip = "\'Axis2D\': (\'32768\',\'32768\')";
             this.axisRotXRotY.XValue = 32768;
             this.axisRotXRotY.YValue = 32768;
+            // 
+            // povHat1
+            // 
+            this.povHat1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.squareTableLayout.SetColumnSpan(this.povHat1, 2);
+            this.povHat1.Location = new System.Drawing.Point(284, 11);
+            this.povHat1.Name = "povHat1";
+            this.povHat1.Size = new System.Drawing.Size(50, 50);
+            this.povHat1.TabIndex = 7;
+            this.povHat1.ToolTip = "";
+            this.povHat1.Value = -1;
             // 
             // PollingTimer
             // 
@@ -155,5 +174,6 @@
         private Axis2D axisXY;
         private Axis2D axisRotXRotY;
         private System.Windows.Forms.Timer PollingTimer;
+        private PovHat povHat1;
     }
 }

@@ -149,37 +149,39 @@ namespace JoystickVisualizer {
                         #endregion Input is an Axis event ----------------------------------
                     } else if ((int)state.Offset == 32 || (int)state.Offset == 36 || (int)state.Offset == 40 || (int)state.Offset == 44) {
                         #region Input is a POV Hat event --------------------------------
-                        //Debug.WriteLine($"POV Hat: '{state}'");
+                        povHat1.Value = state.Value;
 
+#if false
                         switch (state.Value) {
                             case 0:
-                                Debug.WriteLine($"POV Hat: '{state}'");
+                                Debug.WriteLine($"POV Hat U");
                                 break;
                             case 4500:
-                                Debug.WriteLine($"POV Hat: '{state}'");
+                                Debug.WriteLine($"POV Hat U+R");
                                 break;
                             case 9000:
-                                Debug.WriteLine($"POV Hat: '{state}'");
+                                Debug.WriteLine($"POV Hat R");
                                 break;
                             case 13500:
-                                Debug.WriteLine($"POV Hat: '{state}'");
+                                Debug.WriteLine($"POV Hat D+R");
                                 break;
                             case 18000:
-                                Debug.WriteLine($"POV Hat: '{state}'");
+                                Debug.WriteLine($"POV Hat D");
                                 break;
                             case 22500:
-                                Debug.WriteLine($"POV Hat: '{state}'");
+                                Debug.WriteLine($"POV Hat D+L");
                                 break;
                             case 27000:
-                                Debug.WriteLine($"POV Hat: '{state}'");
+                                Debug.WriteLine($"POV Hat L");
                                 break;
                             case 31500:
-                                Debug.WriteLine($"POV Hat: '{state}'");
+                                Debug.WriteLine($"POV Hat U+L");
                                 break;
                             case -1:
-                                Debug.WriteLine($"POV Hat: '{state}'");
+                                Debug.WriteLine($"POV Hat released");
                                 break;
                         }
+#endif
                         #endregion Input is a POV Hat event --------------------------------
                     } else if ((int)state.Offset >= 48 && (int)state.Offset <= 150) {
                         #region Input is a button event ---------------------------------

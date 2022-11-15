@@ -67,6 +67,7 @@ namespace JoystickVisualizer {
         public static SolidBrush frameBrush = new SolidBrush(Globals.DEFAULT_FRAME_COLOR);
         public static Pen framePen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.BORDER_THICKNESS);
         public static Pen crosshairsPen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.CROSSHAIR_THICKNESS);
+        public static Pen povHatPen = new Pen(Color.Red, 8);
         #endregion Variables
 
         #region External Calls
