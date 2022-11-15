@@ -24,9 +24,11 @@ namespace JoystickVisualizer {
         public static readonly DirectInput directInput = new DirectInput();
 
         // VKB's device names - complete with weird extra spaces
-        public const string GLADIATOR_LEFT_NAME = " VKBsim Gladiator EVO  L  ";
-        public const string GLADIATOR_RIGHT_NAME = " VKBsim Gladiator EVO  R  ";
-        public const string GLADIATOR_RIGHT_SEM_NAME = " VKBsim Gladiator EVO  R SEM ";
+        //public const string GLADIATOR_LEFT_NAME = " VKBsim Gladiator EVO  L  ";
+        //public const string GLADIATOR_RIGHT_NAME = " VKBsim Gladiator EVO  R  ";
+        //public const string GLADIATOR_RIGHT_SEM_NAME = " VKBsim Gladiator EVO  R SEM ";
+        public const string GLADIATOR_L_GLOMMED = "vkbsimgladiatorevol";
+        public const string GLADIATOR_R_GLOMMED = "vkbsimgladiatorevor";
 
         // Polling timeout
         public const int POLLING_INTERVAL_MS = 50;
@@ -189,18 +191,31 @@ namespace JoystickVisualizer {
             foreach (DeviceInstance thisDevice in directInput.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AllDevices)) {
                 Debug.WriteLine($"Device instance found: '{thisDevice.InstanceName}'");
 
-                if (thisDevice.InstanceName == GLADIATOR_LEFT_NAME) {
+                // Glom the words together and force lowercase to allow more flexible device selection
+                string glommedName = thisDevice.InstanceName.Replace(" ", "").ToLower();
+
+                if (glommedName.StartsWith(GLADIATOR_L_GLOMMED)) {
                     joystickLFound = true;
                     joystickLGuid = thisDevice.InstanceGuid;
-                } else if (thisDevice.InstanceName == GLADIATOR_RIGHT_NAME) {
-                    joystickRFound = true;
-                    joystickRGuid = thisDevice.InstanceGuid;
-                } else if (thisDevice.InstanceName == GLADIATOR_RIGHT_SEM_NAME) {
+                } else if (glommedName.StartsWith(GLADIATOR_R_GLOMMED)) {
                     joystickRFound = true;
                     joystickRGuid = thisDevice.InstanceGuid;
                 } else {
                     //Debug.WriteLine("Unplanned extra device found.");
                 }
+
+                //if (thisDevice.InstanceName == GLADIATOR_LEFT_NAME) {
+                //    joystickLFound = true;
+                //    joystickLGuid = thisDevice.InstanceGuid;
+                //} else if (thisDevice.InstanceName == GLADIATOR_RIGHT_NAME) {
+                //    joystickRFound = true;
+                //    joystickRGuid = thisDevice.InstanceGuid;
+                //} else if (thisDevice.InstanceName == GLADIATOR_RIGHT_SEM_NAME) {
+                //    joystickRFound = true;
+                //    joystickRGuid = thisDevice.InstanceGuid;
+                //} else {
+                //    //Debug.WriteLine("Unplanned extra device found.");
+                //}
             }
 
             return (joystickLFound || joystickRFound);
