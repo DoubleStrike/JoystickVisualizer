@@ -121,6 +121,16 @@ namespace JoystickVisualizer {
 
             if (m_joystickDataBuffer != null && m_joystickDataBuffer.Length > 0) {
                 foreach (JoystickUpdate state in m_joystickDataBuffer) {
+                    // Process button events
+                    if ((int)state.Offset >= 48 && (int)state.Offset <= 150) {
+                        if (state.Value == 128) {
+                            Debug.WriteLine($"Button press:   '{state}'");
+                        } else if (state.Value == 0) {
+                            Debug.WriteLine($"Button release: '{state}'");
+                        }
+                    }
+
+                    // Process axis events
                     switch (state.Offset) {
                         case JoystickOffset.X:
                             axisXY.XValue = state.Value;
