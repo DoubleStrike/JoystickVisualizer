@@ -121,39 +121,77 @@ namespace JoystickVisualizer {
 
             if (m_joystickDataBuffer != null && m_joystickDataBuffer.Length > 0) {
                 foreach (JoystickUpdate state in m_joystickDataBuffer) {
-                    // Process button events
-                    if ((int)state.Offset >= 48 && (int)state.Offset <= 150) {
-                        if (state.Value == 128) {
-                            Debug.WriteLine($"Button press:   '{state}'");
-                        } else if (state.Value == 0) {
-                            Debug.WriteLine($"Button release: '{state}'");
+                    // Check the type of input
+                    if ((int)state.Offset <= 28) {
+                        #region Input is an Axis event ----------------------------------
+                        switch (state.Offset) {
+                            case JoystickOffset.X:
+                                axisXY.XValue = state.Value;
+                                break;
+                            case JoystickOffset.Y:
+                                axisXY.YValue = state.Value;
+                                break;
+                            case JoystickOffset.Z:
+                                axisZ.Value = Globals.MAX_AXIS_VALUE - state.Value;
+                                break;
+                            case JoystickOffset.RotationX:
+                                axisRotXRotY.XValue = state.Value;
+                                break;
+                            case JoystickOffset.RotationY:
+                                axisRotXRotY.YValue = Globals.MAX_AXIS_VALUE - state.Value;
+                                break;
+                            case JoystickOffset.RotationZ:
+                                axisRotZ.Value = state.Value;
+                                break;
+                            case JoystickOffset.Sliders0:
+                                axisSlider0.Value = Globals.MAX_AXIS_VALUE - state.Value;
+                                break;
                         }
+                        #endregion Input is an Axis event ----------------------------------
+                    } else if ((int)state.Offset == 32 || (int)state.Offset == 36 || (int)state.Offset == 40 || (int)state.Offset == 44) {
+                        #region Input is a POV Hat event --------------------------------
+                        //Debug.WriteLine($"POV Hat: '{state}'");
+
+                        switch (state.Value) {
+                            case 0:
+                                Debug.WriteLine($"POV Hat: '{state}'");
+                                break;
+                            case 4500:
+                                Debug.WriteLine($"POV Hat: '{state}'");
+                                break;
+                            case 9000:
+                                Debug.WriteLine($"POV Hat: '{state}'");
+                                break;
+                            case 13500:
+                                Debug.WriteLine($"POV Hat: '{state}'");
+                                break;
+                            case 18000:
+                                Debug.WriteLine($"POV Hat: '{state}'");
+                                break;
+                            case 22500:
+                                Debug.WriteLine($"POV Hat: '{state}'");
+                                break;
+                            case 27000:
+                                Debug.WriteLine($"POV Hat: '{state}'");
+                                break;
+                            case 31500:
+                                Debug.WriteLine($"POV Hat: '{state}'");
+                                break;
+                            case -1:
+                                Debug.WriteLine($"POV Hat: '{state}'");
+                                break;
+                        }
+                        #endregion Input is a POV Hat event --------------------------------
+                    } else if ((int)state.Offset >= 48 && (int)state.Offset <= 150) {
+                        #region Input is a button event ---------------------------------
+                        if (state.Value == 128) {
+                            //Debug.WriteLine($"Button press:   '{state}'");
+                        } else if (state.Value == 0) {
+                            //Debug.WriteLine($"Button release: '{state}'");
+                        }
+                        #endregion Input is a button events --------------------------------
                     }
 
-                    // Process axis events
-                    switch (state.Offset) {
-                        case JoystickOffset.X:
-                            axisXY.XValue = state.Value;
-                            break;
-                        case JoystickOffset.Y:
-                            axisXY.YValue = state.Value;
-                            break;
-                        case JoystickOffset.Z:
-                            axisZ.Value = Globals.MAX_AXIS_VALUE - state.Value;
-                            break;
-                        case JoystickOffset.RotationX:
-                            axisRotXRotY.XValue = state.Value;
-                            break;
-                        case JoystickOffset.RotationY:
-                            axisRotXRotY.YValue = Globals.MAX_AXIS_VALUE - state.Value;
-                            break;
-                        case JoystickOffset.RotationZ:
-                            axisRotZ.Value = state.Value;
-                            break;
-                        case JoystickOffset.Sliders0:
-                            axisSlider0.Value = Globals.MAX_AXIS_VALUE - state.Value;
-                            break;
-                    }
 
                     //Debug.WriteLine($"Received state: '{state}'");
                 }
