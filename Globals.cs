@@ -39,8 +39,10 @@ namespace JoystickVisualizer {
         public const int BORDER_THICKNESS = 4;
         public const int CROSSHAIR_THICKNESS = 1;
         public const int DEFAULT_2D_DOT_SIZE = 20;
+        public const int POV_LINE_THICKNESS = 8;
         public readonly static Color DEFAULT_DOT_COLOR = SystemColors.GradientInactiveCaption;
         public readonly static Color DEFAULT_FRAME_COLOR = SystemColors.Info;
+        public readonly static Color POV_LINE_COLOR = Color.Red;
         public readonly static DashStyle CenterLineDashStyle = DashStyle.DashDot;
         public readonly static DashStyle DotWidthLineDashStyle = DashStyle.Dot;
         public readonly static float[] CenterDashValues = { 5, 10 };
@@ -67,7 +69,7 @@ namespace JoystickVisualizer {
         public static SolidBrush frameBrush = new SolidBrush(Globals.DEFAULT_FRAME_COLOR);
         public static Pen framePen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.BORDER_THICKNESS);
         public static Pen crosshairsPen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.CROSSHAIR_THICKNESS);
-        public static Pen povHatPen = new Pen(Color.Red, 8);
+        public static Pen povHatPen = new Pen(POV_LINE_COLOR, POV_LINE_THICKNESS);
         #endregion Variables
 
         #region External Calls
