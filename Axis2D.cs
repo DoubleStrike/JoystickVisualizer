@@ -41,8 +41,7 @@ namespace JoystickVisualizer {
             get { return m_XValue; }
             set {
                 m_XValue = value;
-                this.Invalidate();
-                this.Update();
+                this.Refresh();
             }
         }
 
@@ -54,8 +53,7 @@ namespace JoystickVisualizer {
             get { return m_YValue; }
             set {
                 m_YValue = value;
-                this.Invalidate();
-                this.Update();
+                this.Refresh();
             }
         }
 

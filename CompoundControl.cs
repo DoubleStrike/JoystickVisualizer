@@ -22,8 +22,7 @@ namespace JoystickVisualizer {
             get { return squareTableLayout.Anchor; }
             set {
                 squareTableLayout.Anchor = value;
-                this.Invalidate();
-                this.Update();
+                this.Refresh();
             }
         }
         #endregion Public Properties

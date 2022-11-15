@@ -37,8 +37,7 @@ namespace JoystickVisualizer {
             get { return m_Value; }
             set {
                 m_Value = value;
-                this.Invalidate();
-                this.Update();
+                this.Refresh();
             }
         }
 
