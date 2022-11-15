@@ -141,6 +141,7 @@
             this.povHat1.Size = new System.Drawing.Size(64, 67);
             this.povHat1.TabIndex = 7;
             this.povHat1.ToolTip = "(\'PovHat\': \'-1\')";
+            this.povHat1.Value = -1;
             // 
             // PollingTimer
             // 

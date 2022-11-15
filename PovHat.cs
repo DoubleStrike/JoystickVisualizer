@@ -13,6 +13,8 @@ using static System.Windows.Forms.AxHost;
 
 namespace JoystickVisualizer {
     public partial class PovHat : UserControl {
+        private const int PovDotSize = 20;
+
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
         private int m_Value = Globals.DEFAULT_AXIS_VALUE;
         private int m_x = 0;
@@ -47,6 +49,11 @@ namespace JoystickVisualizer {
 
         public PovHat() {
             InitializeComponent();
+
+            if (this.Enabled) {
+                // Setup class members
+                this.ResizeRedraw = true;
+            }
         }
 
         private void PovHat_Paint(object sender, PaintEventArgs e) {
@@ -54,9 +61,11 @@ namespace JoystickVisualizer {
                 // Calculate the line endpoint and store in m_x, m_y
                 CalculateLineEndpoint(out m_x, out m_y);
 
-                // Draw the POV line
-                e.Graphics.DrawLine(Globals.povHatPen, Width / 2, Height / 2, m_x, m_y);
-                //e.Graphics.FillEllipse(Globals.dotBrush, MapValueToRange(m_Value) + 1, 0, this.Height - 2, this.Height - 2);
+                if (m_Value != -1) {
+                    // Draw the POV line
+                    e.Graphics.DrawLine(Globals.povHatPen, Width / 2, Height / 2, m_x, m_y);
+                    e.Graphics.FillEllipse(Globals.dotBrush, m_x - PovDotSize / 2, m_y - PovDotSize / 2, PovDotSize, PovDotSize);
+                }
 
                 // Update the tooltip
                 ToolTip = $"('{this.Name}': '{Value}')";
@@ -71,37 +80,34 @@ namespace JoystickVisualizer {
                     y = 0;
                     break;
                 case 4500:
-                    x = Width / 2;
-                    y = Height / 2;
+                    x = Width;
+                    y = 0;
                     break;
                 case 9000:
                     x = Width;
                     y = Height / 2;
                     break;
                 case 13500:
-                    x = Width / 2;
-                    y = Height / 2;
+                    x = Width;
+                    y = Height;
                     break;
                 case 18000:
                     x = Width / 2;
                     y = Height;
                     break;
                 case 22500:
-                    x = Width / 2;
-                    y = Height / 2;
+                    x = 0;
+                    y = Height;
                     break;
                 case 27000:
                     x = 0;
                     y = Height / 2;
                     break;
                 case 31500:
-                    x = Width / 2;
-                    y = Height / 2;
+                    x = 0;
+                    y = 0;
                     break;
                 case -1:
-                    x = Width / 2;
-                    y = Height / 2;
-                    break;
                 default:
                     x = Width / 2;
                     y = Height / 2;
