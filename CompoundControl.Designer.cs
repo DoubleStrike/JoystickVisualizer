@@ -134,14 +134,13 @@
             // 
             // povHat1
             // 
-            this.povHat1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.squareTableLayout.SetColumnSpan(this.povHat1, 2);
-            this.povHat1.Location = new System.Drawing.Point(284, 11);
+            this.povHat1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.povHat1.Location = new System.Drawing.Point(277, 3);
             this.povHat1.Name = "povHat1";
-            this.povHat1.Size = new System.Drawing.Size(50, 50);
+            this.povHat1.Size = new System.Drawing.Size(64, 67);
             this.povHat1.TabIndex = 7;
-            this.povHat1.ToolTip = "";
-            this.povHat1.Value = -1;
+            this.povHat1.ToolTip = "(\'PovHat\': \'-1\')";
             // 
             // PollingTimer
             // 
