@@ -23,10 +23,7 @@ namespace JoystickVisualizer {
         // Access object for DirectInput
         public static readonly DirectInput directInput = new DirectInput();
 
-        // VKB's device names - complete with weird extra spaces
-        //public const string GLADIATOR_LEFT_NAME = " VKBsim Gladiator EVO  L  ";
-        //public const string GLADIATOR_RIGHT_NAME = " VKBsim Gladiator EVO  R  ";
-        //public const string GLADIATOR_RIGHT_SEM_NAME = " VKBsim Gladiator EVO  R SEM ";
+        // VKB's device name prefixes, with words glommed together and lowercased
         public const string GLADIATOR_L_GLOMMED = "vkbsimgladiatorevol";
         public const string GLADIATOR_R_GLOMMED = "vkbsimgladiatorevor";
 
@@ -203,19 +200,6 @@ namespace JoystickVisualizer {
                 } else {
                     //Debug.WriteLine("Unplanned extra device found.");
                 }
-
-                //if (thisDevice.InstanceName == GLADIATOR_LEFT_NAME) {
-                //    joystickLFound = true;
-                //    joystickLGuid = thisDevice.InstanceGuid;
-                //} else if (thisDevice.InstanceName == GLADIATOR_RIGHT_NAME) {
-                //    joystickRFound = true;
-                //    joystickRGuid = thisDevice.InstanceGuid;
-                //} else if (thisDevice.InstanceName == GLADIATOR_RIGHT_SEM_NAME) {
-                //    joystickRFound = true;
-                //    joystickRGuid = thisDevice.InstanceGuid;
-                //} else {
-                //    //Debug.WriteLine("Unplanned extra device found.");
-                //}
             }
 
             return (joystickLFound || joystickRFound);
