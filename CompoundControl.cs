@@ -40,7 +40,7 @@ namespace JoystickVisualizer {
         public void SetDotSize(int sizeInPixels) {
             if (sizeInPixels == 0) return;
 
-            int scaledSize = (int) (sizeInPixels / 3);
+            int scaledSize = (int)(sizeInPixels / 3);
 
             axisXY.SetDotSize(sizeInPixels);
             axisRotXRotY.SetDotSize(scaledSize);
@@ -76,7 +76,7 @@ namespace JoystickVisualizer {
             axisRotXRotY.TextLabel = "RX+RY";
             axisZ.TextLabel = "Z";
             axisXY.TextLabel = "X+Y";
-            axisSlider0.TextLabel= "S0";
+            axisSlider0.TextLabel = "S0";
             axisSlider1.TextLabel = "S1";
             axisRotZ.TextLabel = "RZ";
         }
@@ -145,7 +145,7 @@ namespace JoystickVisualizer {
                             break;
                     }
 
-                    //Debug.WriteLine($"Right: '{state}'");
+                    //Debug.WriteLine($"Received state: '{state}'");
                 }
             }
         }
