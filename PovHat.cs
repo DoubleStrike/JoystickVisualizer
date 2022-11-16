@@ -13,10 +13,12 @@ using static System.Windows.Forms.AxHost;
 
 namespace JoystickVisualizer {
     public partial class PovHat : UserControl {
-        private const int PovDotSize = 20;
+        private const int POV_DOT_SIZE = 20;
 
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
         private int m_Value = Globals.DEFAULT_AXIS_VALUE;
+        private int m_centerX = 0;
+        private int m_centerY = 0;
         private int m_x = 0;
         private int m_y = 0;
 
@@ -43,9 +45,6 @@ namespace JoystickVisualizer {
         }
         #endregion Public Properties
 
-        #region Public functions
-        #endregion Public functions
-
 
         public PovHat() {
             InitializeComponent();
@@ -61,10 +60,14 @@ namespace JoystickVisualizer {
                 // Calculate the line endpoint and store in m_x, m_y
                 CalculateLineEndpoint(out m_x, out m_y);
 
+                // Recalculate the centerpoints
+                m_centerX = Width / 2;
+                m_centerY = Height / 2;
+
                 if (m_Value != -1) {
                     // Draw the POV line
-                    e.Graphics.DrawLine(Globals.povHatPen, Width / 2, Height / 2, m_x, m_y);
-                    e.Graphics.FillEllipse(Globals.dotBrush, m_x - PovDotSize / 2, m_y - PovDotSize / 2, PovDotSize, PovDotSize);
+                    e.Graphics.DrawLine(Globals.povHatPen, m_centerX, m_centerY, m_x, m_y);
+                    e.Graphics.FillEllipse(Globals.dotBrush, m_x - POV_DOT_SIZE / 2, m_y - POV_DOT_SIZE / 2, POV_DOT_SIZE, POV_DOT_SIZE);
                 }
 
                 // Update the tooltip
@@ -76,7 +79,7 @@ namespace JoystickVisualizer {
             // Hide/show the image as needed
             switch (m_Value) {
                 case 0:
-                    x = Width / 2;
+                    x = m_centerX;
                     y = 0;
                     break;
                 case 4500:
@@ -85,14 +88,14 @@ namespace JoystickVisualizer {
                     break;
                 case 9000:
                     x = Width;
-                    y = Height / 2;
+                    y = m_centerY;
                     break;
                 case 13500:
                     x = Width;
                     y = Height;
                     break;
                 case 18000:
-                    x = Width / 2;
+                    x = m_centerX;
                     y = Height;
                     break;
                 case 22500:
@@ -101,7 +104,7 @@ namespace JoystickVisualizer {
                     break;
                 case 27000:
                     x = 0;
-                    y = Height / 2;
+                    y = m_centerY;
                     break;
                 case 31500:
                     x = 0;
@@ -109,8 +112,8 @@ namespace JoystickVisualizer {
                     break;
                 case -1:
                 default:
-                    x = Width / 2;
-                    y = Height / 2;
+                    x = m_centerX;
+                    y = m_centerY;
                     break;
             }
         }
