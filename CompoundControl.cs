@@ -54,7 +54,12 @@ namespace JoystickVisualizer {
         }
 
         public void StartPolling() {
-            if (m_joystickToUse != null) PollingTimer.Enabled = true;
+            if (m_joystickToUse != null) {
+                SetCurrentState();
+
+                // Start the polling timer
+                PollingTimer.Enabled = true;
+            }
         }
 
         public void UpdatePollingInterval(int milliseconds) {
@@ -82,6 +87,21 @@ namespace JoystickVisualizer {
 
         private void CompoundControl_Resize(object sender, EventArgs e) {
             KeepSticksSquare();
+        }
+
+        private void SetCurrentState() {
+            // Read current axis values
+            JoystickState state = m_joystickToUse.GetCurrentState();
+
+            if (state != null) {
+                axisXY.XValue = state.X;
+                axisXY.YValue = state.Y;
+                axisZ.Value = Globals.MAX_AXIS_VALUE - state.Z;
+                axisRotXRotY.XValue = state.RotationX;
+                axisRotXRotY.YValue = Globals.MAX_AXIS_VALUE - state.RotationY;
+                axisRotZ.Value = state.RotationZ;
+                axisSlider0.Value = Globals.MAX_AXIS_VALUE - state.Sliders[0];
+            }
         }
 
         private void KeepGridSquare() {
