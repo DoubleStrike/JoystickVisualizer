@@ -4,6 +4,9 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
+using JoystickVisualizer.Properties;
+
+
 namespace JoystickVisualizer {
     #region Enums
     public enum CrosshairDirection {
@@ -72,6 +75,15 @@ namespace JoystickVisualizer {
         #endregion External Calls
 
         #region Methods
+        /// <summary>
+        /// Static constructor - currently only used for setting load
+        /// </summary>
+        static Globals() {
+            System.Diagnostics.Debug.Print("Loading settings...");
+            LoadSettings();
+            System.Diagnostics.Debug.Print("...settings loaded.");
+        }
+
         #region User Interface and Rendering
         /// <summary>
         /// Draws a set of center and dot-width crosshairs
@@ -246,6 +258,12 @@ namespace JoystickVisualizer {
         #endregion Joystick Management
 
         #region Utilities
+        public static void LoadSettings() {
+            // TODO: Add setting loading code below - replace the following dummy block
+            if (Settings.Default.Timer_PollingIntervalMs > 0) {
+            }
+        }
+
         public static bool NearlyEquals(double x, double y, double tolerance = 0.01d) {
             var diff = Math.Abs(x - y);
             return diff <= tolerance ||
