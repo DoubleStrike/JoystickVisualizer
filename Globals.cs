@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq.Expressions;
 
 namespace JoystickVisualizer {
     #region Enums
@@ -151,30 +152,34 @@ namespace JoystickVisualizer {
         /// Instantiates Joystick objects given proper GUIDs, sets buffer sizes, and performs Acquire() on the sticks.  Only call after BindJoysticks().
         /// </summary>
         public static bool ActivateJoysticks() {
-            if (joystickLFound) {
+            if (joystickLFound && !joystickLAcquired) {
                 // Instantiate the joystick
                 joystickL = new Joystick(directInput, joystickLGuid);
                 //Debug.WriteLine($"Found Left Joystick/Gamepad with GUID: '{joystickLGuid}'");
 
                 // Set BufferSize in order to use buffered data
-                joystickL.Properties.BufferSize = 128;
+                joystickL.Properties.BufferSize = 1024;
 
                 // Acquire the joystick
-                joystickL.Acquire();
-                joystickLAcquired = true;
+                try {
+                    joystickL.Acquire();
+                    joystickLAcquired = true;
+                } catch { }
             }
 
-            if (joystickRFound) {
+            if (joystickRFound && !joystickRAcquired) {
                 // Instantiate the joystick
                 joystickR = new Joystick(directInput, joystickRGuid);
                 //Debug.WriteLine($"Found Right Joystick/Gamepad with GUID: '{joystickRGuid}'");
 
                 // Set BufferSize in order to use buffered data
-                joystickR.Properties.BufferSize = 128;
+                joystickR.Properties.BufferSize = 1024;
 
                 // Acquire the joystick
-                joystickR.Acquire();
-                joystickRAcquired = true;
+                try {
+                    joystickR.Acquire();
+                    joystickRAcquired = true;
+                } catch { }
             }
 
             return joystickLAcquired || joystickRAcquired;
@@ -236,24 +241,32 @@ namespace JoystickVisualizer {
         public static JoystickUpdate[] PollJoystick(Joystick stickToPoll) {
             if (stickToPoll == null) return null;
 
-            stickToPoll.Poll();
-            return stickToPoll.GetBufferedData();
+            try {
+                stickToPoll.Poll();
+                return stickToPoll.GetBufferedData();
+            } catch {
+                return null;
+            }
         }
 
         public static void UnacquireJoysticks() {
             // Unacquire any active joysticks
-            if (joystickLAcquired) joystickL.Unacquire();
-            if (joystickRAcquired) joystickR.Unacquire();
+            UnacquireSingleJoystick(JoystickSelection.Left);
+            UnacquireSingleJoystick(JoystickSelection.Right);
         }
 
         public static void UnacquireSingleJoystick(JoystickSelection StickToRelease) {
             // Unacquire the selected joystick, if it is active
             if (StickToRelease == JoystickSelection.Left && joystickLAcquired) {
-                joystickL.Unacquire();
-                joystickLAcquired = false;
+                try {
+                    joystickL.Unacquire();
+                    joystickLAcquired = false;
+                } catch { }
             } else if (StickToRelease == JoystickSelection.Right && joystickRAcquired) {
-                joystickR.Unacquire();
-                joystickRAcquired = false;
+                try {
+                    joystickR.Unacquire();
+                    joystickRAcquired = false;
+                } catch { }
             }
         }
         #endregion Joystick Management
