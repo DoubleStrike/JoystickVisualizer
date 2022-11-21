@@ -22,7 +22,6 @@ namespace JoystickVisualizer {
             }
 
             ScaleDots();
-
             SetDarkMode();
 
             txtPollingTime.Text = Globals.POLLING_INTERVAL_MS.ToString();
@@ -131,7 +130,9 @@ namespace JoystickVisualizer {
 
         private void SetDarkMode() {
             if (Globals.GetSystemDarkMode()) {
+                // Darken UI elements as needed
                 this.BackColor = SystemColors.ControlDarkDark;
+
                 lblTitle.ForeColor = SystemColors.Info;
                 chkKeepOnTop.ForeColor = SystemColors.Info;
                 lblPollingTime.ForeColor = SystemColors.Info;
@@ -139,7 +140,12 @@ namespace JoystickVisualizer {
                 LeftStick.SetDarkMode(true);
                 RightStick.SetDarkMode(true);
             } else {
-                // TODO: Add light mode code here if needed
+                // Lighten UI elements as needed
+                Globals.dotBrush.Color = SystemColors.ControlDarkDark;
+                Globals.frameBrush.Color = SystemColors.ControlDarkDark;
+
+                Globals.crosshairsPen.Color = SystemColors.ControlText;
+                Globals.framePen.Color = SystemColors.ControlText;
             }
         }
     }
