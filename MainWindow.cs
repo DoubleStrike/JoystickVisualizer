@@ -63,7 +63,7 @@ namespace JoystickVisualizer {
                 if (Globals.joystickLAcquired) {
                     LeftStick.SetJoystickToUse(JoystickSelection.Left);
                     LeftStick.StartPolling();
-                    LeftStick.SetDarkMode();
+                    LeftStick.SetDarkMode(true);
                 } else {
                     LeftStick.Enabled = false;
                 }
@@ -82,13 +82,14 @@ namespace JoystickVisualizer {
                 if (Globals.joystickRAcquired) {
                     RightStick.SetJoystickToUse(JoystickSelection.Right);
                     RightStick.StartPolling();
-                    RightStick.SetDarkMode();
+                    RightStick.SetDarkMode(true);
                 } else {
                     RightStick.Enabled = false;
                 }
             }
         }
 
+#if false
         private void BindAndActivateSticks() {
             // Try to bind the joysticks, else throw an error and exit
             if (!Globals.BindJoysticks()) {
@@ -100,7 +101,7 @@ namespace JoystickVisualizer {
                 if (Globals.joystickRAcquired) {
                     RightStick.SetJoystickToUse(JoystickSelection.Right);
                     RightStick.StartPolling();
-                    RightStick.SetDarkMode();
+                    RightStick.SetDarkMode(true);
                 } else {
                     RightStick.Enabled = false;
                 }
@@ -108,12 +109,13 @@ namespace JoystickVisualizer {
                 if (Globals.joystickLAcquired) {
                     LeftStick.SetJoystickToUse(JoystickSelection.Left);
                     LeftStick.StartPolling();
-                    LeftStick.SetDarkMode();
+                    LeftStick.SetDarkMode(true);
                 } else {
                     LeftStick.Enabled = false;
                 }
             }
         }
+#endif
 
         private void ScaleDots() {
             int smallerDimension = LeftStick.Width < LeftStick.Height ? LeftStick.Width : LeftStick.Height;

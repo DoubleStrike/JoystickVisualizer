@@ -185,6 +185,7 @@ namespace JoystickVisualizer {
             return joystickLAcquired || joystickRAcquired;
         }
 
+#if false
         /// <summary>
         /// Iterates through device instances from DirectInput and saves the left/right stick GUIDs and marks them as found
         /// </summary>
@@ -209,6 +210,7 @@ namespace JoystickVisualizer {
 
             return (joystickLFound || joystickRFound);
         }
+#endif
 
         /// <summary>
         /// Binds a single joystick to a selected device name
@@ -269,9 +271,9 @@ namespace JoystickVisualizer {
                 } catch { }
             }
         }
-        #endregion Joystick Management
+#endregion Joystick Management
 
-        #region Utilities
+#region Utilities
         public static bool NearlyEquals(double x, double y, double tolerance = 0.01d) {
             var diff = Math.Abs(x - y);
             return diff <= tolerance ||
@@ -284,7 +286,7 @@ namespace JoystickVisualizer {
         //    this.Region = System.Drawing.Region.FromHrgn(ptr);
         //    DeleteObject(ptr);
         //}
-        #endregion Utilities
-        #endregion Methods
+#endregion Utilities
+#endregion Methods
     }
 }
