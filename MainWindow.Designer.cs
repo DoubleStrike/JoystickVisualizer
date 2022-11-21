@@ -30,7 +30,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.spacer1 = new System.Windows.Forms.PictureBox();
             this.chkKeepOnTop = new System.Windows.Forms.CheckBox();
-            this.spacer2 = new System.Windows.Forms.PictureBox();
+            this.chkWide = new System.Windows.Forms.CheckBox();
             this.lblPollingTime = new System.Windows.Forms.Label();
             this.txtPollingTime = new System.Windows.Forms.TextBox();
             this.btnSet = new System.Windows.Forms.Button();
@@ -42,7 +42,6 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.FlowPanelCenter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spacer1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spacer2)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -69,7 +68,7 @@
             this.FlowPanelCenter.Controls.Add(this.cboLeftBinding);
             this.FlowPanelCenter.Controls.Add(this.cboRightBinding);
             this.FlowPanelCenter.Controls.Add(this.chkKeepOnTop);
-            this.FlowPanelCenter.Controls.Add(this.spacer2);
+            this.FlowPanelCenter.Controls.Add(this.chkWide);
             this.FlowPanelCenter.Controls.Add(this.lblPollingTime);
             this.FlowPanelCenter.Controls.Add(this.txtPollingTime);
             this.FlowPanelCenter.Controls.Add(this.btnSet);
@@ -114,14 +113,19 @@
             this.chkKeepOnTop.UseVisualStyleBackColor = true;
             this.chkKeepOnTop.CheckedChanged += new System.EventHandler(this.KeepOnTop_CheckedChanged);
             // 
-            // spacer2
+            // chkWide
             // 
-            this.spacer2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.spacer2.Location = new System.Drawing.Point(44, 214);
-            this.spacer2.Name = "spacer2";
-            this.spacer2.Size = new System.Drawing.Size(100, 30);
-            this.spacer2.TabIndex = 5;
-            this.spacer2.TabStop = false;
+            this.chkWide.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chkWide.AutoSize = true;
+            this.chkWide.Location = new System.Drawing.Point(51, 214);
+            this.chkWide.Name = "chkWide";
+            this.chkWide.Size = new System.Drawing.Size(86, 17);
+            this.chkWide.TabIndex = 6;
+            this.chkWide.Text = "Wide Layout";
+            this.toolTip.SetToolTip(this.chkWide, "Keep left and right sticks at outer edges of window to alllow placement in window" +
+        " corners");
+            this.chkWide.UseVisualStyleBackColor = true;
+            this.chkWide.CheckedChanged += new System.EventHandler(this.Wide_CheckedChanged);
             // 
             // lblPollingTime
             // 
@@ -214,7 +218,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(630, 250);
+            this.MinimumSize = new System.Drawing.Size(630, 350);
             this.Name = "JoystickVisualizer";
             this.Text = "DirectX Joystick Visualizer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
@@ -225,7 +229,6 @@
             this.FlowPanelCenter.ResumeLayout(false);
             this.FlowPanelCenter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spacer1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spacer2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -239,7 +242,7 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox spacer1;
         private System.Windows.Forms.CheckBox chkKeepOnTop;
-        private System.Windows.Forms.PictureBox spacer2;
+        private System.Windows.Forms.CheckBox chkWide;
         private System.Windows.Forms.Label lblPollingTime;
         private System.Windows.Forms.TextBox txtPollingTime;
         private System.Windows.Forms.Button btnSet;

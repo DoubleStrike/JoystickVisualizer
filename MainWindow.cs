@@ -23,11 +23,9 @@ namespace JoystickVisualizer {
 
             ScaleDots();
             SetDarkMode();
+            SetWideMode(false);
 
             txtPollingTime.Text = Globals.POLLING_INTERVAL_MS.ToString();
-
-            // HACK: This is sloppy as hell and needs a better solution
-            RightStick.squareTableLayout.Dock = DockStyle.Right;
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e) {
@@ -97,6 +95,10 @@ namespace JoystickVisualizer {
             txtPollingTime.Focus();
         }
 
+        private void Wide_CheckedChanged(object sender, EventArgs e) {
+            SetWideMode(chkWide.Checked);
+        }
+
 #if false
         private void BindAndActivateSticks() {
             // Try to bind the joysticks, else throw an error and exit
@@ -138,6 +140,7 @@ namespace JoystickVisualizer {
 
                 lblTitle.ForeColor = SystemColors.Info;
                 chkKeepOnTop.ForeColor = SystemColors.Info;
+                chkWide.ForeColor = SystemColors.Info;
                 lblPollingTime.ForeColor = SystemColors.Info;
 
                 LeftStick.SetDarkMode(true);
@@ -149,6 +152,18 @@ namespace JoystickVisualizer {
 
                 Globals.crosshairsPen.Color = SystemColors.ControlText;
                 Globals.framePen.Color = SystemColors.ControlText;
+            }
+        }
+
+        private void SetWideMode(bool wideModeOn) {
+            if (wideModeOn) {
+                // HACK: This is sloppy as hell and needs a better solution
+                RightStick.squareTableLayout.Dock = DockStyle.Right;
+                LeftStick.squareTableLayout.Dock = DockStyle.Left;
+            } else {
+                // HACK: This is sloppy as hell and needs a better solution
+                RightStick.squareTableLayout.Dock = DockStyle.Fill;
+                LeftStick.squareTableLayout.Dock = DockStyle.Fill;
             }
         }
     }
