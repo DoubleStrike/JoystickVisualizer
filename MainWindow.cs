@@ -3,12 +3,17 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
+using JoystickVisualizer.Properties;
+
+
 namespace JoystickVisualizer {
     public partial class MainWindow : Form {
         #region Private members
         #endregion Private members
 
         public MainWindow() {
+            Globals.LoadSettings();
+
             InitializeComponent();
         }
 
@@ -23,12 +28,15 @@ namespace JoystickVisualizer {
             SetDarkMode();
             SetWideMode(false);
 
-            txtPollingTime.Text = Globals.POLLING_INTERVAL_MS.ToString();
+            txtPollingTime.Text = Settings.Default.Timer_PollingIntervalMs.ToString();
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e) {
             // Unacquire any active joysticks
             Globals.UnacquireJoysticks();
+
+            // Save default settings on exit
+            Globals.SaveDefaultSettings();
         }
 
         private void MainWindow_Resize(object sender, EventArgs e) {
@@ -45,6 +53,8 @@ namespace JoystickVisualizer {
         private void Set_Click(object sender, EventArgs e) {
             try {
                 int parsedInput = int.Parse(txtPollingTime.Text);
+
+                Settings.Default.Timer_PollingIntervalMs = parsedInput;
 
                 LeftStick.UpdatePollingInterval(parsedInput);
                 RightStick.UpdatePollingInterval(parsedInput);
@@ -106,7 +116,7 @@ namespace JoystickVisualizer {
         private void SetDarkMode() {
             if (Globals.GetSystemDarkMode()) {
                 // Darken UI elements as needed
-                this.BackColor = Globals.DARK_MODE_BACKGROUND;
+                this.BackColor = Settings.Default.UI_DarkModeBackground;
 
                 lblTitle.ForeColor = SystemColors.Info;
                 chkKeepOnTop.ForeColor = SystemColors.Info;

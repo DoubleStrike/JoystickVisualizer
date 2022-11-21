@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("DirectX Joystick Visualizer")]
 [assembly: AssemblyDescription("A tool to see the current position of multiple joystick axes")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DoubleStrike Consulting, LLC")]
+[assembly: AssemblyCompany("DoubleStrike Consulting LLC")]
 [assembly: AssemblyProduct("JoystickVisualizer")]
 [assembly: AssemblyCopyright("Copyright © 2022 DoubleStrike Consulting, LLC. All rights reserved.")]
 [assembly: AssemblyTrademark("")]

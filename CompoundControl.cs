@@ -4,6 +4,9 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
+using JoystickVisualizer.Properties;
+
+
 namespace JoystickVisualizer {
     public partial class CompoundControl : UserControl {
         #region Private members
@@ -28,7 +31,7 @@ namespace JoystickVisualizer {
         #region Public functions
         public void SetDarkMode(bool darkModeOn = true) {
             if (darkModeOn) {
-                squareTableLayout.BackColor = Globals.DARK_MODE_BACKGROUND;
+                squareTableLayout.BackColor = Settings.Default.UI_DarkModeBackground;
             } else {
                 squareTableLayout.BackColor = SystemColors.Control;
             }
@@ -72,7 +75,7 @@ namespace JoystickVisualizer {
         private void CompoundControl_Load(object sender, EventArgs e) {
             KeepSticksSquare();
 
-            PollingTimer.Interval = Globals.POLLING_INTERVAL_MS;
+            PollingTimer.Interval = Settings.Default.Timer_PollingIntervalMs;
 
             // Setup labels
             axisRotXRotY.TextLabel = "RX+RY";

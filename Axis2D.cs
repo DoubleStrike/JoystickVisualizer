@@ -3,10 +3,13 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
+using JoystickVisualizer.Properties;
+
+
 namespace JoystickVisualizer {
     public partial class Axis2D : UserControl {
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
-        private int m_DotSize = Globals.DEFAULT_2D_DOT_SIZE;
+        private int m_DotSize = Settings.Default.UI_Default_2dDotSize;
         private int m_XValue = Globals.DEFAULT_AXIS_VALUE;
         private int m_YValue = Globals.DEFAULT_AXIS_VALUE;
         private bool m_RenderFrame = true;

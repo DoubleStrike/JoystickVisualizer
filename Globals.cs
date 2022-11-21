@@ -26,24 +26,11 @@ namespace JoystickVisualizer {
         // Access object for DirectInput
         public static readonly DirectInput directInput = new DirectInput();
 
-        // Polling timeout
-        public const int POLLING_INTERVAL_MS = 50;
-
         // Axis values
         public const int DEFAULT_AXIS_VALUE = 32768;
         public const int MAX_AXIS_VALUE = 65535;
 
         // Visual style
-        public const int BORDER_THICKNESS = 4;
-        public const int CROSSHAIR_THICKNESS = 1;
-        public const int DEFAULT_2D_DOT_SIZE = 20;
-        public const int POV_LINE_THICKNESS = 8;
-        public readonly static Color DARK_MODE_BACKGROUND = Color.FromArgb(0x1e, 0x1e, 0x1e);
-        public readonly static Color DEFAULT_DOT_COLOR = SystemColors.GradientInactiveCaption;
-        public readonly static Color DEFAULT_FRAME_COLOR = SystemColors.Info;
-        public readonly static Color POV_LINE_COLOR = Color.Red;
-        public readonly static DashStyle CenterLineDashStyle = DashStyle.DashDot;
-        public readonly static DashStyle DotWidthLineDashStyle = DashStyle.Dot;
         public readonly static float[] CenterDashValues = { 5, 10 };
         public readonly static float[] DotWidthDashValues = { 1, 2 };
         #endregion Constants
@@ -64,11 +51,11 @@ namespace JoystickVisualizer {
         public static Joystick joystickR;
 
         // Visual style
-        public static SolidBrush dotBrush = new SolidBrush(Globals.DEFAULT_DOT_COLOR);
-        public static SolidBrush frameBrush = new SolidBrush(Globals.DEFAULT_FRAME_COLOR);
-        public static Pen framePen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.BORDER_THICKNESS);
-        public static Pen crosshairsPen = new Pen(Globals.DEFAULT_FRAME_COLOR, Globals.CROSSHAIR_THICKNESS);
-        public static Pen povHatPen = new Pen(POV_LINE_COLOR, POV_LINE_THICKNESS);
+        public static SolidBrush dotBrush;
+        public static SolidBrush frameBrush;
+        public static Pen framePen;
+        public static Pen crosshairsPen;
+        public static Pen povHatPen;
         #endregion Variables
 
         #region External Calls
@@ -102,13 +89,13 @@ namespace JoystickVisualizer {
             switch (direction) {
                 case CrosshairDirection.Vertical:
                     if (drawCenterLine) {
-                        pen.DashStyle = CenterLineDashStyle;
+                        pen.DashStyle = Settings.Default.UI_CenterLineDashStyle;
                         drawingSurface.DrawLine(pen, width / 2, 0, width / 2, height);
                     }
 
                     // In this case, use the height to determine offset
                     if (drawDotWidthLines) {
-                        pen.DashStyle = DotWidthLineDashStyle;
+                        pen.DashStyle = Settings.Default.UI_DotWidthLineDashStyle;
                         drawingSurface.DrawLine(pen, (width - height) / 2, 0, (width - height) / 2, height);
                         drawingSurface.DrawLine(pen, (width + height) / 2, 0, (width + height) / 2, height);
                     }
@@ -116,13 +103,13 @@ namespace JoystickVisualizer {
                     break;
                 case CrosshairDirection.Horizontal:
                     if (drawCenterLine) {
-                        pen.DashStyle = CenterLineDashStyle;
+                        pen.DashStyle = Settings.Default.UI_CenterLineDashStyle;
                         drawingSurface.DrawLine(pen, 0, height / 2, width, height / 2);
                     }
 
                     // In this case, use the width to determine offset
                     if (drawDotWidthLines) {
-                        pen.DashStyle = DotWidthLineDashStyle;
+                        pen.DashStyle = Settings.Default.UI_DotWidthLineDashStyle;
                         drawingSurface.DrawLine(pen, 0, (height - width) / 2, width, (height - width) / 2);
                         drawingSurface.DrawLine(pen, 0, (height + width) / 2, width, (height + width) / 2);
                     }
@@ -259,9 +246,22 @@ namespace JoystickVisualizer {
 
         #region Utilities
         public static void LoadSettings() {
-            // TODO: Add setting loading code below - replace the following dummy block
             if (Settings.Default.Timer_PollingIntervalMs > 0) {
+                if (dotBrush == null)
+                    dotBrush = new SolidBrush(Settings.Default.UI_DefaultDotColor);
+                if (frameBrush == null)
+                    frameBrush = new SolidBrush(Settings.Default.UI_DefaultFrameColor);
+                if (framePen == null)
+                    framePen = new Pen(Settings.Default.UI_DefaultFrameColor, Settings.Default.UI_BorderThickness);
+                if (crosshairsPen == null)
+                    crosshairsPen = new Pen(Settings.Default.UI_DefaultFrameColor, Settings.Default.UI_CrosshairThickness);
+                if (povHatPen == null)
+                    povHatPen = new Pen(Settings.Default.UI_PovLineColor, Settings.Default.UI_PovLineThickness);
             }
+        }
+
+        public static void SaveDefaultSettings() {
+            Settings.Default.Save();
         }
 
         public static bool NearlyEquals(double x, double y, double tolerance = 0.01d) {

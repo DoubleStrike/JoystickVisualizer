@@ -2,43 +2,43 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="JoystickVisualizer.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Timer_PollingIntervalMs" Type="System.Int32" Scope="Application">
+    <Setting Name="Timer_PollingIntervalMs" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">50</Value>
     </Setting>
-    <Setting Name="Axis_DefaultValue" Type="System.Int32" Scope="Application">
+    <Setting Name="Axis_DefaultValue" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">32768</Value>
     </Setting>
-    <Setting Name="Axis_MaxValue" Type="System.String" Scope="Application">
+    <Setting Name="Axis_MaxValue" Type="System.String" Scope="User">
       <Value Profile="(Default)">65535</Value>
     </Setting>
-    <Setting Name="UI_BorderThickness" Type="System.Int32" Scope="Application">
+    <Setting Name="UI_BorderThickness" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">4</Value>
     </Setting>
-    <Setting Name="UI_CrosshairThickness" Type="System.Int32" Scope="Application">
+    <Setting Name="UI_CrosshairThickness" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="UI_Default_2dDotSize" Type="System.Int32" Scope="Application">
+    <Setting Name="UI_Default_2dDotSize" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">20</Value>
     </Setting>
-    <Setting Name="UI_PovLineThickness" Type="System.Int32" Scope="Application">
+    <Setting Name="UI_PovLineThickness" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">8</Value>
     </Setting>
-    <Setting Name="UI_DarkModeBackground" Type="System.Drawing.Color" Scope="Application">
+    <Setting Name="UI_DarkModeBackground" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">30, 30, 30</Value>
     </Setting>
-    <Setting Name="UI_DefaultDotColor" Type="System.Drawing.Color" Scope="Application">
+    <Setting Name="UI_DefaultDotColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">GradientInactiveCaption</Value>
     </Setting>
-    <Setting Name="UI_DefaultFrameColor" Type="System.Drawing.Color" Scope="Application">
+    <Setting Name="UI_DefaultFrameColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Info</Value>
     </Setting>
-    <Setting Name="UI_PovLineColor" Type="System.Drawing.Color" Scope="Application">
+    <Setting Name="UI_PovLineColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Red</Value>
     </Setting>
-    <Setting Name="UI_CenterLineDashStyle" Type="System.Drawing.Drawing2D.DashStyle" Scope="Application">
+    <Setting Name="UI_CenterLineDashStyle" Type="System.Drawing.Drawing2D.DashStyle" Scope="User">
       <Value Profile="(Default)">DashDot</Value>
     </Setting>
-    <Setting Name="UI_DotWidthLineDashStyle" Type="System.Drawing.Drawing2D.DashStyle" Scope="Application">
+    <Setting Name="UI_DotWidthLineDashStyle" Type="System.Drawing.Drawing2D.DashStyle" Scope="User">
       <Value Profile="(Default)">Dot</Value>
     </Setting>
   </Settings>
