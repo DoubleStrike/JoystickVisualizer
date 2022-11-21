@@ -1,9 +1,9 @@
-# JoystickVisualizer
-A program to display the state of up to 8 joystick axes for a pair of left-handed/right-handed VKB Gladiator joysticks.
+# DirectX Joystick Visualizer
+A program to display the state of up to 8 joystick axes for a pair of left-handed/right-handed joysticks.  This was initially limited to the VKB Gladiator hardware but now allows selection of any 2 DirectInput controllers.
 
-![JV_MainWindow](https://user-images.githubusercontent.com/17889466/202076873-2f4a374a-f8af-49b6-bc4d-61c440cb2804.png)
+![dxv](https://user-images.githubusercontent.com/17889466/203134426-900522d9-51fb-438a-aaf1-6dc8d92dde8d.png)
 
-This program shows up to 8 axes per device, the maximum for the DirectInput part of DirectX.  The axes are aligned to the default configuration of the VKB Gladiator.  The left panel is for the left handed grip and the right panel is for the right handed grip.
+This program shows up to 8 axes per device, the maximum for the DirectInput part of DirectX.  The axes are aligned to the default configuration of most setups.  The left panel is for the left handed grip and the right panel is for the right handed grip.  All axes are labeled in the program:
 - Main Joystick
   - The **main stick** movement uses **X + Y** and is shown in the large 2-D display.
   - The **stick twist** uses **RotationZ** and is shown in the horizontal 1-D display.
