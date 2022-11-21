@@ -17,9 +17,9 @@ This program shows up to 8 axes per device, the maximum for the DirectInput part
 
 
 ### Install
-Download latest build from https://github.com/DoubleStrike/JoystickVisualizer/releases (once they are available).  In the interim, you can grab the repo and build it with VS 2022.
+Download latest build from https://github.com/DoubleStrike/JoystickVisualizer/releases.  In the interim, you can grab the repo and build it with VS 2022.
 
-Run the executable.  Note that .NET Framework 6 is required.
+Run the executable.  Note that [.NET Framework 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) and [DirectX](https://www.microsoft.com/en-us/download/details.aspx?id=35) is required.  Use a web search to figure out how to install those if your PC skills are low.
 
 ### Usage
 The program can be run and set up refresh at a defined interval in milliseconds.  It can be set to stay on top of other windows if needed.
@@ -29,12 +29,16 @@ The program can be run and set up refresh at a defined interval in milliseconds.
 - By checking the box at the center labeled "Keep on Top" the window will stay above other windows, useful to keep it visible while gaming or streaming.
 
 ### To-Do
-- The UI needs a lot of work.  It resizes to fit the window while leaving the 2 display panels square, but the spacing and alignment is wacky as hell.
-- The pseudo half-assed dark mode is lame and it needs a proper light and dark mode, preferably one that can respect the system setting.
+- A way to hide/show the center panel will be a requirement for streaming.
+- A better settings UI (perhaps one based on right-click menus) will be good.
+- Needs to allow axis inversion on a per-axis basis.  Currently, inversion is based on VKB Gladiator NXT + SEM module layout.
+- Needs to allow for setting axis minima/maxima on a per-axis basis.  Currently, values are 0-65535 per axis, with 32768 at center.  A good way to do this would be to center an axis and have an option to set that value as center (and set the max to 2x the center value).
 
 ### Changelog
 Please see commit history for detailed logs.  Major changes will be listed here in YYYY-MM-DD format.
 
 | Version  | Date  | Comments  |
 |---|---|---|
-| 0.1.0  | 2022-11-15  | Initial code upload for public use.  This is specific to a Gladiator with Left grip and one with Right grip.  |
+| 0.0.1  | 2022-11-15  | Initial code upload for public use.  This is specific to a Gladiator with Left grip and one with Right grip.  |
+| 0.1.0  | 2022-11-21  | Initial public binary release.  Now generalized for any joystick device.  |
+| 0.2.0  | 2022-11-21  | Better resizing with new normal and wide modes.  |
