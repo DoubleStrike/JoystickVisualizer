@@ -215,8 +215,8 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(630, 250);
-            this.Name = "MainWindow";
-            this.Text = "MainWindow";
+            this.Name = "JoystickVisualizer";
+            this.Text = "DirectX Joystick Visualizer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
