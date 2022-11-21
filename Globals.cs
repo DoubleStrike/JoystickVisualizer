@@ -206,6 +206,29 @@ namespace JoystickVisualizer {
         }
 
         /// <summary>
+        /// Binds a single joystick to a selected device name
+        /// </summary>
+        /// <param name="DeviceName">The string of the DeviceInstance.DeviceName to bind to</param>
+        /// <param name="StickToBind">A selection of which stick to bind</param>
+        /// <returns></returns>
+        public static bool BindSingleJoystick(string DeviceName, JoystickSelection StickToBind) {
+            foreach (DeviceInstance thisDevice in directInput.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AllDevices)) {
+                if (thisDevice.ProductName == DeviceName) {
+                    if (StickToBind == JoystickSelection.Left) {
+                        joystickLFound = true;
+                        joystickLGuid = thisDevice.InstanceGuid;
+                        return true;
+                    } else {
+                        joystickRFound = true;
+                        joystickRGuid = thisDevice.InstanceGuid;
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Calls Poll() on the Joystick object and returns its buffered data
         /// </summary>
         /// <param name="stickToPoll">the Joystick object to poll</param>
@@ -221,6 +244,17 @@ namespace JoystickVisualizer {
             // Unacquire any active joysticks
             if (joystickLAcquired) joystickL.Unacquire();
             if (joystickRAcquired) joystickR.Unacquire();
+        }
+
+        public static void UnacquireSingleJoystick(JoystickSelection StickToRelease) {
+            // Unacquire the selected joystick, if it is active
+            if (StickToRelease == JoystickSelection.Left && joystickLAcquired) {
+                joystickL.Unacquire();
+                joystickLAcquired = false;
+            } else if (StickToRelease == JoystickSelection.Right && joystickRAcquired) {
+                joystickR.Unacquire();
+                joystickRAcquired = false;
+            }
         }
         #endregion Joystick Management
 
