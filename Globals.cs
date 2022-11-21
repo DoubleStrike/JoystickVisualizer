@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using SharpDX.DirectInput;
 using System;
 using System.Diagnostics;
