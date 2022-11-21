@@ -166,7 +166,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel squareTableLayout;
+        public System.Windows.Forms.TableLayoutPanel squareTableLayout;
         private Axis1DVertical axisZ;
         private Axis1DVertical axisSlider0;
         private Axis1DVertical axisSlider1;

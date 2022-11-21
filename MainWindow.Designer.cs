@@ -112,7 +112,7 @@
             this.chkKeepOnTop.Text = "Keep On Top";
             this.toolTip.SetToolTip(this.chkKeepOnTop, "Keep this window on top of others");
             this.chkKeepOnTop.UseVisualStyleBackColor = true;
-            this.chkKeepOnTop.CheckedChanged += new System.EventHandler(this.chkKeepOnTop_CheckedChanged);
+            this.chkKeepOnTop.CheckedChanged += new System.EventHandler(this.KeepOnTop_CheckedChanged);
             // 
             // spacer2
             // 
@@ -152,7 +152,7 @@
             this.btnSet.Text = "Set";
             this.toolTip.SetToolTip(this.btnSet, "Set the polling time in the box above");
             this.btnSet.UseVisualStyleBackColor = true;
-            this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
+            this.btnSet.Click += new System.EventHandler(this.Set_Click);
             // 
             // cboLeftBinding
             // 
@@ -166,7 +166,7 @@
             this.cboLeftBinding.TabIndex = 2;
             this.cboLeftBinding.Text = "-- SELECT LEFT DEVICE --";
             this.toolTip.SetToolTip(this.cboLeftBinding, "Select the device for the left side");
-            this.cboLeftBinding.SelectedIndexChanged += new System.EventHandler(this.cboLeftBinding_SelectedIndexChanged);
+            this.cboLeftBinding.SelectedIndexChanged += new System.EventHandler(this.LeftBinding_SelectedIndexChanged);
             // 
             // cboRightBinding
             // 
@@ -180,7 +180,7 @@
             this.cboRightBinding.TabIndex = 3;
             this.cboRightBinding.Text = "-- SELECT RIGHT DEVICE --";
             this.toolTip.SetToolTip(this.cboRightBinding, "Select the device for the right side");
-            this.cboRightBinding.SelectedIndexChanged += new System.EventHandler(this.cboRightBinding_SelectedIndexChanged);
+            this.cboRightBinding.SelectedIndexChanged += new System.EventHandler(this.RightBinding_SelectedIndexChanged);
             // 
             // LeftStick
             // 

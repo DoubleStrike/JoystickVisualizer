@@ -25,6 +25,9 @@ namespace JoystickVisualizer {
             SetDarkMode();
 
             txtPollingTime.Text = Globals.POLLING_INTERVAL_MS.ToString();
+
+            // HACK: This is sloppy as hell and needs a better solution
+            RightStick.squareTableLayout.Dock = DockStyle.Right;
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e) {
@@ -38,12 +41,12 @@ namespace JoystickVisualizer {
             ScaleDots();
         }
 
-        private void chkKeepOnTop_CheckedChanged(object sender, EventArgs e) {
+        private void KeepOnTop_CheckedChanged(object sender, EventArgs e) {
             this.TopMost = chkKeepOnTop.Checked;
             this.Focus();
         }
 
-        private void btnSet_Click(object sender, EventArgs e) {
+        private void Set_Click(object sender, EventArgs e) {
             try {
                 int parsedInput = int.Parse(txtPollingTime.Text);
 
@@ -54,7 +57,7 @@ namespace JoystickVisualizer {
             }
         }
 
-        private void cboLeftBinding_SelectedIndexChanged(object sender, EventArgs e) {
+        private void LeftBinding_SelectedIndexChanged(object sender, EventArgs e) {
             // Unacquire the stick if it is active
             Globals.UnacquireSingleJoystick(JoystickSelection.Left);
 
@@ -74,7 +77,7 @@ namespace JoystickVisualizer {
             txtPollingTime.Focus();
         }
 
-        private void cboRightBinding_SelectedIndexChanged(object sender, EventArgs e) {
+        private void RightBinding_SelectedIndexChanged(object sender, EventArgs e) {
             // Unacquire the stick if it is active
             Globals.UnacquireSingleJoystick(JoystickSelection.Right);
 
