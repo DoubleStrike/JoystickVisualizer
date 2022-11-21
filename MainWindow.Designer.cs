@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.FlowPanelCenter = new System.Windows.Forms.FlowLayoutPanel();
@@ -37,6 +38,7 @@
             this.cboRightBinding = new System.Windows.Forms.ComboBox();
             this.LeftStick = new JoystickVisualizer.CompoundControl();
             this.RightStick = new JoystickVisualizer.CompoundControl();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.FlowPanelCenter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spacer1)).BeginInit();
@@ -108,6 +110,7 @@
             this.chkKeepOnTop.Size = new System.Drawing.Size(90, 17);
             this.chkKeepOnTop.TabIndex = 1;
             this.chkKeepOnTop.Text = "Keep On Top";
+            this.toolTip.SetToolTip(this.chkKeepOnTop, "Keep this window on top of others");
             this.chkKeepOnTop.UseVisualStyleBackColor = true;
             this.chkKeepOnTop.CheckedChanged += new System.EventHandler(this.chkKeepOnTop_CheckedChanged);
             // 
@@ -137,6 +140,7 @@
             this.txtPollingTime.Name = "txtPollingTime";
             this.txtPollingTime.Size = new System.Drawing.Size(100, 20);
             this.txtPollingTime.TabIndex = 5;
+            this.toolTip.SetToolTip(this.txtPollingTime, "How often to update device positions. Lower time is faster and takes more CPU");
             // 
             // btnSet
             // 
@@ -146,6 +150,7 @@
             this.btnSet.Size = new System.Drawing.Size(75, 23);
             this.btnSet.TabIndex = 6;
             this.btnSet.Text = "Set";
+            this.toolTip.SetToolTip(this.btnSet, "Set the polling time in the box above");
             this.btnSet.UseVisualStyleBackColor = true;
             this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
             // 
@@ -159,7 +164,8 @@
             this.cboLeftBinding.Name = "cboLeftBinding";
             this.cboLeftBinding.Size = new System.Drawing.Size(167, 21);
             this.cboLeftBinding.TabIndex = 7;
-            this.cboLeftBinding.Text = "-- SELECT DEVICE --";
+            this.cboLeftBinding.Text = "-- SELECT LEFT DEVICE --";
+            this.toolTip.SetToolTip(this.cboLeftBinding, "Select the device for the left side");
             this.cboLeftBinding.SelectedIndexChanged += new System.EventHandler(this.cboLeftBinding_SelectedIndexChanged);
             // 
             // cboRightBinding
@@ -172,7 +178,8 @@
             this.cboRightBinding.Name = "cboRightBinding";
             this.cboRightBinding.Size = new System.Drawing.Size(167, 21);
             this.cboRightBinding.TabIndex = 8;
-            this.cboRightBinding.Text = "-- SELECT DEVICE --";
+            this.cboRightBinding.Text = "-- SELECT RIGHT DEVICE --";
+            this.toolTip.SetToolTip(this.cboRightBinding, "Select the device for the right side");
             this.cboRightBinding.SelectedIndexChanged += new System.EventHandler(this.cboRightBinding_SelectedIndexChanged);
             // 
             // LeftStick
@@ -238,5 +245,6 @@
         private System.Windows.Forms.Button btnSet;
         private System.Windows.Forms.ComboBox cboLeftBinding;
         private System.Windows.Forms.ComboBox cboRightBinding;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
