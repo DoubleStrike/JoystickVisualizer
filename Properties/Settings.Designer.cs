@@ -178,5 +178,29 @@ namespace JoystickVisualizer.Properties {
                 this["UI_DotWidthLineDashStyle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Main_WideLayout {
+            get {
+                return ((bool)(this["Main_WideLayout"]));
+            }
+            set {
+                this["Main_WideLayout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Main_KeepOnTop {
+            get {
+                return ((bool)(this["Main_KeepOnTop"]));
+            }
+            set {
+                this["Main_KeepOnTop"] = value;
+            }
+        }
     }
 }

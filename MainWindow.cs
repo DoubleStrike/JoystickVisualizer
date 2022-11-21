@@ -26,8 +26,10 @@ namespace JoystickVisualizer {
 
             ScaleDots();
             SetDarkMode();
-            SetWideMode(false);
+            SetWideMode(Settings.Default.Main_WideLayout);
 
+            chkKeepOnTop.Checked = Settings.Default.Main_KeepOnTop;
+            chkWide.Checked = Settings.Default.Main_WideLayout;
             txtPollingTime.Text = Settings.Default.Timer_PollingIntervalMs.ToString();
         }
 
@@ -46,6 +48,8 @@ namespace JoystickVisualizer {
         }
 
         private void KeepOnTop_CheckedChanged(object sender, EventArgs e) {
+            Settings.Default.Main_KeepOnTop = chkKeepOnTop.Checked;
+
             this.TopMost = chkKeepOnTop.Checked;
             this.Focus();
         }
@@ -136,6 +140,8 @@ namespace JoystickVisualizer {
         }
 
         private void SetWideMode(bool wideModeOn) {
+            Settings.Default.Main_WideLayout = wideModeOn;
+
             if (wideModeOn) {
                 // HACK: This is sloppy as hell and needs a better solution
                 RightStick.squareTableLayout.Dock = DockStyle.Right;

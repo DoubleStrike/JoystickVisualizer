@@ -2,7 +2,6 @@ using Microsoft.Win32;
 using SharpDX.DirectInput;
 using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 
 using JoystickVisualizer.Properties;
 

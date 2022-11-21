@@ -41,5 +41,11 @@
     <Setting Name="UI_DotWidthLineDashStyle" Type="System.Drawing.Drawing2D.DashStyle" Scope="User">
       <Value Profile="(Default)">Dot</Value>
     </Setting>
+    <Setting Name="Main_WideLayout" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Main_KeepOnTop" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
