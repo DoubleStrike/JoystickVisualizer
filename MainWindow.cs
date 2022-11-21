@@ -1,4 +1,5 @@
-﻿using SharpDX.DirectInput;
+﻿using Microsoft.Win32;
+using SharpDX.DirectInput;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -21,7 +22,8 @@ namespace JoystickVisualizer {
             }
 
             ScaleDots();
-            SetDarkMode(true);
+
+            SetDarkMode();
 
             txtPollingTime.Text = Globals.POLLING_INTERVAL_MS.ToString();
         }
@@ -65,11 +67,12 @@ namespace JoystickVisualizer {
                 if (Globals.joystickLAcquired) {
                     LeftStick.SetJoystickToUse(JoystickSelection.Left);
                     LeftStick.StartPolling();
-                    LeftStick.SetDarkMode(true);
                 } else {
                     LeftStick.Enabled = false;
                 }
             }
+
+            txtPollingTime.Focus();
         }
 
         private void cboRightBinding_SelectedIndexChanged(object sender, EventArgs e) {
@@ -84,11 +87,12 @@ namespace JoystickVisualizer {
                 if (Globals.joystickRAcquired) {
                     RightStick.SetJoystickToUse(JoystickSelection.Right);
                     RightStick.StartPolling();
-                    RightStick.SetDarkMode(true);
                 } else {
                     RightStick.Enabled = false;
                 }
             }
+
+            txtPollingTime.Focus();
         }
 
 #if false
@@ -125,12 +129,17 @@ namespace JoystickVisualizer {
             RightStick.SetDotSize(smallerDimension / 7);
         }
 
-        private void SetDarkMode(bool darkModeOn = true) {
-            if (darkModeOn) {
+        private void SetDarkMode() {
+            if (Globals.GetSystemDarkMode()) {
                 this.BackColor = SystemColors.ControlDarkDark;
                 lblTitle.ForeColor = SystemColors.Info;
                 chkKeepOnTop.ForeColor = SystemColors.Info;
                 lblPollingTime.ForeColor = SystemColors.Info;
+
+                LeftStick.SetDarkMode(true);
+                RightStick.SetDarkMode(true);
+            } else {
+                // TODO: Add light mode code here if needed
             }
         }
     }

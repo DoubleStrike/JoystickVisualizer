@@ -1,9 +1,9 @@
-﻿using SharpDX.DirectInput;
+﻿using Microsoft.Win32;
+using SharpDX.DirectInput;
 using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq.Expressions;
 
 namespace JoystickVisualizer {
     #region Enums
@@ -145,6 +145,17 @@ namespace JoystickVisualizer {
                     break;
             }
         }
+
+        public static bool GetSystemDarkMode() {
+            // Check for dark mode
+            int AppsUseLightTheme = 1;
+            try {
+                RegistryKey WinPersonalizeSettings = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", false);
+                AppsUseLightTheme = int.Parse(WinPersonalizeSettings.GetValue("AppsUseLightTheme").ToString());
+            } catch { }
+
+            return AppsUseLightTheme == 0;
+        }
         #endregion User Interface and Rendering
 
         #region Joystick Management
@@ -271,9 +282,9 @@ namespace JoystickVisualizer {
                 } catch { }
             }
         }
-#endregion Joystick Management
+        #endregion Joystick Management
 
-#region Utilities
+        #region Utilities
         public static bool NearlyEquals(double x, double y, double tolerance = 0.01d) {
             var diff = Math.Abs(x - y);
             return diff <= tolerance ||
@@ -286,7 +297,7 @@ namespace JoystickVisualizer {
         //    this.Region = System.Drawing.Region.FromHrgn(ptr);
         //    DeleteObject(ptr);
         //}
-#endregion Utilities
-#endregion Methods
+        #endregion Utilities
+        #endregion Methods
     }
 }
