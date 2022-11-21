@@ -83,6 +83,7 @@ namespace JoystickVisualizer {
             axisSlider0.TextLabel = "S0";
             axisSlider1.TextLabel = "S1";
             axisRotZ.TextLabel = "RZ";
+            povHat1.TextLabel = "POV";
         }
 
         private void CompoundControl_Resize(object sender, EventArgs e) {

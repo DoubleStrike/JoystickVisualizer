@@ -21,8 +21,19 @@ namespace JoystickVisualizer {
         private int m_centerY = 0;
         private int m_x = 0;
         private int m_y = 0;
+        private string m_Label = "";
+        private Font labelFont = SystemFonts.DefaultFont;
 
         #region Public Properties
+        public string TextLabel {
+            get {
+                return m_Label;
+            }
+            set {
+                m_Label = value;
+            }
+        }
+
         public string ToolTip {
             get {
                 return toolTip.GetToolTip(this);
@@ -69,6 +80,9 @@ namespace JoystickVisualizer {
                     e.Graphics.DrawLine(Globals.povHatPen, m_centerX, m_centerY, m_x, m_y);
                     e.Graphics.FillEllipse(Globals.dotBrush, m_x - POV_DOT_SIZE / 2, m_y - POV_DOT_SIZE / 2, POV_DOT_SIZE, POV_DOT_SIZE);
                 }
+
+                // Draw the text label
+                e.Graphics.DrawString(m_Label, labelFont, Globals.frameBrush, 2, 1);
 
                 // Update the tooltip
                 ToolTip = $"('{this.Name}': '{Value}')";
