@@ -98,7 +98,7 @@
             this.spacer1.Location = new System.Drawing.Point(44, 101);
             this.spacer1.Name = "spacer1";
             this.spacer1.Size = new System.Drawing.Size(100, 30);
-            this.spacer1.TabIndex = 2;
+            this.spacer1.TabIndex = 1;
             this.spacer1.TabStop = false;
             // 
             // chkKeepOnTop
@@ -108,7 +108,7 @@
             this.chkKeepOnTop.Location = new System.Drawing.Point(49, 191);
             this.chkKeepOnTop.Name = "chkKeepOnTop";
             this.chkKeepOnTop.Size = new System.Drawing.Size(90, 17);
-            this.chkKeepOnTop.TabIndex = 1;
+            this.chkKeepOnTop.TabIndex = 4;
             this.chkKeepOnTop.Text = "Keep On Top";
             this.toolTip.SetToolTip(this.chkKeepOnTop, "Keep this window on top of others");
             this.chkKeepOnTop.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@
             this.spacer2.Location = new System.Drawing.Point(44, 214);
             this.spacer2.Name = "spacer2";
             this.spacer2.Size = new System.Drawing.Size(100, 30);
-            this.spacer2.TabIndex = 3;
+            this.spacer2.TabIndex = 5;
             this.spacer2.TabStop = false;
             // 
             // lblPollingTime
@@ -130,7 +130,7 @@
             this.lblPollingTime.Location = new System.Drawing.Point(53, 247);
             this.lblPollingTime.Name = "lblPollingTime";
             this.lblPollingTime.Size = new System.Drawing.Size(82, 13);
-            this.lblPollingTime.TabIndex = 4;
+            this.lblPollingTime.TabIndex = 6;
             this.lblPollingTime.Text = "Polling time (ms)";
             // 
             // txtPollingTime
@@ -139,7 +139,7 @@
             this.txtPollingTime.Location = new System.Drawing.Point(44, 263);
             this.txtPollingTime.Name = "txtPollingTime";
             this.txtPollingTime.Size = new System.Drawing.Size(100, 20);
-            this.txtPollingTime.TabIndex = 5;
+            this.txtPollingTime.TabIndex = 7;
             this.toolTip.SetToolTip(this.txtPollingTime, "How often to update device positions. Lower time is faster and takes more CPU");
             // 
             // btnSet
@@ -148,7 +148,7 @@
             this.btnSet.Location = new System.Drawing.Point(56, 289);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(75, 23);
-            this.btnSet.TabIndex = 6;
+            this.btnSet.TabIndex = 8;
             this.btnSet.Text = "Set";
             this.toolTip.SetToolTip(this.btnSet, "Set the polling time in the box above");
             this.btnSet.UseVisualStyleBackColor = true;
@@ -163,7 +163,7 @@
             this.cboLeftBinding.Location = new System.Drawing.Point(10, 137);
             this.cboLeftBinding.Name = "cboLeftBinding";
             this.cboLeftBinding.Size = new System.Drawing.Size(167, 21);
-            this.cboLeftBinding.TabIndex = 7;
+            this.cboLeftBinding.TabIndex = 2;
             this.cboLeftBinding.Text = "-- SELECT LEFT DEVICE --";
             this.toolTip.SetToolTip(this.cboLeftBinding, "Select the device for the left side");
             this.cboLeftBinding.SelectedIndexChanged += new System.EventHandler(this.cboLeftBinding_SelectedIndexChanged);
@@ -177,7 +177,7 @@
             this.cboRightBinding.Location = new System.Drawing.Point(10, 164);
             this.cboRightBinding.Name = "cboRightBinding";
             this.cboRightBinding.Size = new System.Drawing.Size(167, 21);
-            this.cboRightBinding.TabIndex = 8;
+            this.cboRightBinding.TabIndex = 3;
             this.cboRightBinding.Text = "-- SELECT RIGHT DEVICE --";
             this.toolTip.SetToolTip(this.cboRightBinding, "Select the device for the right side");
             this.cboRightBinding.SelectedIndexChanged += new System.EventHandler(this.cboRightBinding_SelectedIndexChanged);
