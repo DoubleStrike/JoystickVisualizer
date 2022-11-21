@@ -1,7 +1,5 @@
-﻿using Microsoft.Win32;
-using SharpDX.DirectInput;
+﻿using SharpDX.DirectInput;
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -98,34 +96,6 @@ namespace JoystickVisualizer {
         private void Wide_CheckedChanged(object sender, EventArgs e) {
             SetWideMode(chkWide.Checked);
         }
-
-#if false
-        private void BindAndActivateSticks() {
-            // Try to bind the joysticks, else throw an error and exit
-            if (!Globals.BindJoysticks()) {
-                MessageBox.Show("No joystick/Gamepad found.", "No devices", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Environment.Exit(1);
-            }
-
-            if (Globals.ActivateJoysticks()) {
-                if (Globals.joystickRAcquired) {
-                    RightStick.SetJoystickToUse(JoystickSelection.Right);
-                    RightStick.StartPolling();
-                    RightStick.SetDarkMode(true);
-                } else {
-                    RightStick.Enabled = false;
-                }
-
-                if (Globals.joystickLAcquired) {
-                    LeftStick.SetJoystickToUse(JoystickSelection.Left);
-                    LeftStick.StartPolling();
-                    LeftStick.SetDarkMode(true);
-                } else {
-                    LeftStick.Enabled = false;
-                }
-            }
-        }
-#endif
 
         private void ScaleDots() {
             int smallerDimension = LeftStick.Width < LeftStick.Height ? LeftStick.Width : LeftStick.Height;

@@ -1,10 +1,8 @@
 ﻿using SharpDX.DirectInput;
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-using static JoystickVisualizer.Globals;
 
 namespace JoystickVisualizer {
     public partial class CompoundControl : UserControl {

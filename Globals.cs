@@ -1,7 +1,6 @@
 using Microsoft.Win32;
 using SharpDX.DirectInput;
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
@@ -23,10 +22,6 @@ namespace JoystickVisualizer {
         #region Constants and read-only
         // Access object for DirectInput
         public static readonly DirectInput directInput = new DirectInput();
-
-        // VKB's device name prefixes, with words glommed together and lowercased
-        public const string GLADIATOR_L_GLOMMED = "vkbsimgladiatorevol";
-        public const string GLADIATOR_R_GLOMMED = "vkbsimgladiatorevor";
 
         // Polling timeout
         public const int POLLING_INTERVAL_MS = 50;
@@ -74,12 +69,6 @@ namespace JoystickVisualizer {
         #endregion Variables
 
         #region External Calls
-        [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        private static extern System.IntPtr CreateRoundRectRgn
-         (int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
-
-        [System.Runtime.InteropServices.DllImport("gdi32.dll", EntryPoint = "DeleteObject")]
-        private static extern bool DeleteObject(System.IntPtr hObject);
         #endregion External Calls
 
         #region Methods
@@ -167,7 +156,6 @@ namespace JoystickVisualizer {
             if (joystickLFound && !joystickLAcquired) {
                 // Instantiate the joystick
                 joystickL = new Joystick(directInput, joystickLGuid);
-                //Debug.WriteLine($"Found Left Joystick/Gamepad with GUID: '{joystickLGuid}'");
 
                 // Set BufferSize in order to use buffered data
                 joystickL.Properties.BufferSize = 1024;
@@ -182,7 +170,6 @@ namespace JoystickVisualizer {
             if (joystickRFound && !joystickRAcquired) {
                 // Instantiate the joystick
                 joystickR = new Joystick(directInput, joystickRGuid);
-                //Debug.WriteLine($"Found Right Joystick/Gamepad with GUID: '{joystickRGuid}'");
 
                 // Set BufferSize in order to use buffered data
                 joystickR.Properties.BufferSize = 1024;
@@ -196,33 +183,6 @@ namespace JoystickVisualizer {
 
             return joystickLAcquired || joystickRAcquired;
         }
-
-#if false
-        /// <summary>
-        /// Iterates through device instances from DirectInput and saves the left/right stick GUIDs and marks them as found
-        /// </summary>
-        /// <returns>true if at least one joystick was bound successfully</returns>
-        public static bool BindJoysticks() {
-            foreach (DeviceInstance thisDevice in directInput.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AllDevices)) {
-                Debug.WriteLine($"Device instance found: '{thisDevice.InstanceName}'");
-
-                // Glom the words together and force lowercase to allow more flexible device selection
-                string glommedName = thisDevice.InstanceName.Replace(" ", "").ToLower();
-
-                if (glommedName.StartsWith(GLADIATOR_L_GLOMMED)) {
-                    joystickLFound = true;
-                    joystickLGuid = thisDevice.InstanceGuid;
-                } else if (glommedName.StartsWith(GLADIATOR_R_GLOMMED)) {
-                    joystickRFound = true;
-                    joystickRGuid = thisDevice.InstanceGuid;
-                } else {
-                    //Debug.WriteLine("Unplanned extra device found.");
-                }
-            }
-
-            return (joystickLFound || joystickRFound);
-        }
-#endif
 
         /// <summary>
         /// Binds a single joystick to a selected device name
@@ -291,13 +251,6 @@ namespace JoystickVisualizer {
             return diff <= tolerance ||
                    diff <= Math.Max(Math.Abs(x), Math.Abs(y)) * tolerance;
         }
-
-        // For rounded corners, call this function on form Paint
-        //private void Form_Paint(object sender, PaintEventArgs e) {
-        //    System.IntPtr ptr = CreateRoundRectRgn(0, 0, this.Width, this.Height, CornerRadius, CornerRadius);
-        //    this.Region = System.Drawing.Region.FromHrgn(ptr);
-        //    DeleteObject(ptr);
-        //}
         #endregion Utilities
         #endregion Methods
     }
