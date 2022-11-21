@@ -1,6 +1,7 @@
 ﻿using SharpDX.DirectInput;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace JoystickVisualizer {
@@ -20,6 +21,7 @@ namespace JoystickVisualizer {
             }
 
             ScaleDots();
+            SetDarkMode(true);
 
             txtPollingTime.Text = Globals.POLLING_INTERVAL_MS.ToString();
         }
@@ -121,6 +123,15 @@ namespace JoystickVisualizer {
             int smallerDimension = LeftStick.Width < LeftStick.Height ? LeftStick.Width : LeftStick.Height;
             LeftStick.SetDotSize(smallerDimension / 7);
             RightStick.SetDotSize(smallerDimension / 7);
+        }
+
+        private void SetDarkMode(bool darkModeOn = true) {
+            if (darkModeOn) {
+                this.BackColor = SystemColors.ControlDarkDark;
+                lblTitle.ForeColor = SystemColors.Info;
+                chkKeepOnTop.ForeColor = SystemColors.Info;
+                lblPollingTime.ForeColor = SystemColors.Info;
+            }
         }
     }
 }

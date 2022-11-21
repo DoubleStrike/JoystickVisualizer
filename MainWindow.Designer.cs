@@ -31,7 +31,7 @@
             this.spacer1 = new System.Windows.Forms.PictureBox();
             this.chkKeepOnTop = new System.Windows.Forms.CheckBox();
             this.spacer2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPollingTime = new System.Windows.Forms.Label();
             this.txtPollingTime = new System.Windows.Forms.TextBox();
             this.btnSet = new System.Windows.Forms.Button();
             this.cboLeftBinding = new System.Windows.Forms.ComboBox();
@@ -70,7 +70,7 @@
             this.FlowPanelCenter.Controls.Add(this.cboRightBinding);
             this.FlowPanelCenter.Controls.Add(this.chkKeepOnTop);
             this.FlowPanelCenter.Controls.Add(this.spacer2);
-            this.FlowPanelCenter.Controls.Add(this.label1);
+            this.FlowPanelCenter.Controls.Add(this.lblPollingTime);
             this.FlowPanelCenter.Controls.Add(this.txtPollingTime);
             this.FlowPanelCenter.Controls.Add(this.btnSet);
             this.FlowPanelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -123,15 +123,15 @@
             this.spacer2.TabIndex = 3;
             this.spacer2.TabStop = false;
             // 
-            // label1
+            // lblPollingTime
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 247);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Polling time (ms)";
+            this.lblPollingTime.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblPollingTime.AutoSize = true;
+            this.lblPollingTime.Location = new System.Drawing.Point(53, 247);
+            this.lblPollingTime.Name = "lblPollingTime";
+            this.lblPollingTime.Size = new System.Drawing.Size(82, 13);
+            this.lblPollingTime.TabIndex = 4;
+            this.lblPollingTime.Text = "Polling time (ms)";
             // 
             // txtPollingTime
             // 
@@ -240,7 +240,7 @@
         private System.Windows.Forms.PictureBox spacer1;
         private System.Windows.Forms.CheckBox chkKeepOnTop;
         private System.Windows.Forms.PictureBox spacer2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPollingTime;
         private System.Windows.Forms.TextBox txtPollingTime;
         private System.Windows.Forms.Button btnSet;
         private System.Windows.Forms.ComboBox cboLeftBinding;
