@@ -33,6 +33,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPollingTime = new System.Windows.Forms.TextBox();
             this.btnSet = new System.Windows.Forms.Button();
+            this.cboLeftBinding = new System.Windows.Forms.ComboBox();
+            this.cboRightBinding = new System.Windows.Forms.ComboBox();
             this.LeftStick = new JoystickVisualizer.CompoundControl();
             this.RightStick = new JoystickVisualizer.CompoundControl();
             this.tableLayoutPanel1.SuspendLayout();
@@ -62,6 +64,8 @@
             // 
             this.FlowPanelCenter.Controls.Add(this.lblTitle);
             this.FlowPanelCenter.Controls.Add(this.spacer1);
+            this.FlowPanelCenter.Controls.Add(this.cboLeftBinding);
+            this.FlowPanelCenter.Controls.Add(this.cboRightBinding);
             this.FlowPanelCenter.Controls.Add(this.chkKeepOnTop);
             this.FlowPanelCenter.Controls.Add(this.spacer2);
             this.FlowPanelCenter.Controls.Add(this.label1);
@@ -99,7 +103,7 @@
             // 
             this.chkKeepOnTop.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chkKeepOnTop.AutoSize = true;
-            this.chkKeepOnTop.Location = new System.Drawing.Point(49, 137);
+            this.chkKeepOnTop.Location = new System.Drawing.Point(49, 191);
             this.chkKeepOnTop.Name = "chkKeepOnTop";
             this.chkKeepOnTop.Size = new System.Drawing.Size(90, 17);
             this.chkKeepOnTop.TabIndex = 1;
@@ -110,7 +114,7 @@
             // spacer2
             // 
             this.spacer2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.spacer2.Location = new System.Drawing.Point(44, 160);
+            this.spacer2.Location = new System.Drawing.Point(44, 214);
             this.spacer2.Name = "spacer2";
             this.spacer2.Size = new System.Drawing.Size(100, 30);
             this.spacer2.TabIndex = 3;
@@ -120,7 +124,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 193);
+            this.label1.Location = new System.Drawing.Point(53, 247);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 4;
@@ -129,7 +133,7 @@
             // txtPollingTime
             // 
             this.txtPollingTime.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPollingTime.Location = new System.Drawing.Point(44, 209);
+            this.txtPollingTime.Location = new System.Drawing.Point(44, 263);
             this.txtPollingTime.Name = "txtPollingTime";
             this.txtPollingTime.Size = new System.Drawing.Size(100, 20);
             this.txtPollingTime.TabIndex = 5;
@@ -137,7 +141,7 @@
             // btnSet
             // 
             this.btnSet.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSet.Location = new System.Drawing.Point(56, 235);
+            this.btnSet.Location = new System.Drawing.Point(56, 289);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(75, 23);
             this.btnSet.TabIndex = 6;
@@ -145,9 +149,38 @@
             this.btnSet.UseVisualStyleBackColor = true;
             this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
             // 
+            // cboLeftBinding
+            // 
+            this.cboLeftBinding.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cboLeftBinding.DropDownWidth = 400;
+            this.cboLeftBinding.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboLeftBinding.FormattingEnabled = true;
+            this.cboLeftBinding.Location = new System.Drawing.Point(10, 137);
+            this.cboLeftBinding.Name = "cboLeftBinding";
+            this.cboLeftBinding.Size = new System.Drawing.Size(167, 21);
+            this.cboLeftBinding.TabIndex = 7;
+            this.cboLeftBinding.Text = "-- SELECT DEVICE --";
+            this.cboLeftBinding.SelectedIndexChanged += new System.EventHandler(this.cboLeftBinding_SelectedIndexChanged);
+            // 
+            // cboRightBinding
+            // 
+            this.cboRightBinding.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cboRightBinding.DropDownWidth = 400;
+            this.cboRightBinding.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboRightBinding.FormattingEnabled = true;
+            this.cboRightBinding.Location = new System.Drawing.Point(10, 164);
+            this.cboRightBinding.Name = "cboRightBinding";
+            this.cboRightBinding.Size = new System.Drawing.Size(167, 21);
+            this.cboRightBinding.TabIndex = 8;
+            this.cboRightBinding.Text = "-- SELECT DEVICE --";
+            this.cboRightBinding.SelectedIndexChanged += new System.EventHandler(this.cboRightBinding_SelectedIndexChanged);
+            // 
             // LeftStick
             // 
+            this.LeftStick.AutoSize = true;
+            this.LeftStick.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.LeftStick.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LeftStick.InternalTableAnchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.LeftStick.Location = new System.Drawing.Point(3, 3);
             this.LeftStick.MinimumSize = new System.Drawing.Size(200, 200);
             this.LeftStick.Name = "LeftStick";
@@ -156,7 +189,10 @@
             // 
             // RightStick
             // 
+            this.RightStick.AutoSize = true;
+            this.RightStick.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.RightStick.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RightStick.InternalTableAnchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.RightStick.Location = new System.Drawing.Point(675, 3);
             this.RightStick.MinimumSize = new System.Drawing.Size(200, 200);
             this.RightStick.Name = "RightStick";
@@ -169,6 +205,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1144, 467);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(630, 250);
             this.Name = "MainWindow";
@@ -199,5 +236,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPollingTime;
         private System.Windows.Forms.Button btnSet;
+        private System.Windows.Forms.ComboBox cboLeftBinding;
+        private System.Windows.Forms.ComboBox cboRightBinding;
     }
 }

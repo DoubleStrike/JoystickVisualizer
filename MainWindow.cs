@@ -13,7 +13,12 @@ namespace JoystickVisualizer {
         }
 
         private void MainWindow_Load(object sender, EventArgs e) {
-            BindAndActivateSticks();
+            //BindAndActivateSticks();
+            foreach (DeviceInstance thisDevice in Globals.directInput.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AllDevices)) {
+                cboLeftBinding.Items.Add(thisDevice.ProductName);
+                cboRightBinding.Items.Add(thisDevice.ProductName);
+            }
+
             ScaleDots();
 
             txtPollingTime.Text = Globals.POLLING_INTERVAL_MS.ToString();
@@ -25,20 +30,6 @@ namespace JoystickVisualizer {
         }
 
         private void MainWindow_Resize(object sender, EventArgs e) {
-
-#if false
-            if (LeftStick.ClientSize.Width != LeftStick.ClientSize.Height) {
-                tableLayoutPanel1.ColumnStyles[0].SizeType = SizeType.Absolute;
-                tableLayoutPanel1.ColumnStyles[1].SizeType = SizeType.AutoSize;
-                tableLayoutPanel1.ColumnStyles[2].SizeType = SizeType.Absolute;
-
-                tableLayoutPanel1.ColumnStyles[0].Width = LeftStick.ClientSize.Height;
-                tableLayoutPanel1.ColumnStyles[2].Width = LeftStick.ClientSize.Height;
-
-                LeftStick.InternalTableAnchor = AnchorStyles.Left | AnchorStyles.Top;
-                RightStick.InternalTableAnchor = AnchorStyles.Right | AnchorStyles.Top;
-            }
-#endif
 
             this.Text = lblTitle.Text;
             ScaleDots();
@@ -57,6 +48,44 @@ namespace JoystickVisualizer {
                 RightStick.UpdatePollingInterval(parsedInput);
             } catch (Exception) {
                 MessageBox.Show("Enter a valid numeric value in milliseconds");
+            }
+        }
+
+        private void cboLeftBinding_SelectedIndexChanged(object sender, EventArgs e) {
+            // Unacquire the stick if it is active
+            Globals.UnacquireSingleJoystick(JoystickSelection.Left);
+
+            // Bind the selected stick
+            Globals.BindSingleJoystick(cboLeftBinding.SelectedItem.ToString(), JoystickSelection.Left);
+
+            // Activate the stick and the related control
+            if (Globals.ActivateJoysticks()) {
+                if (Globals.joystickLAcquired) {
+                    LeftStick.SetJoystickToUse(JoystickSelection.Left);
+                    LeftStick.StartPolling();
+                    LeftStick.SetDarkMode();
+                } else {
+                    LeftStick.Enabled = false;
+                }
+            }
+        }
+
+        private void cboRightBinding_SelectedIndexChanged(object sender, EventArgs e) {
+            // Unacquire the stick if it is active
+            Globals.UnacquireSingleJoystick(JoystickSelection.Left);
+
+            // Bind the selected stick
+            Globals.BindSingleJoystick(cboRightBinding.SelectedItem.ToString(), JoystickSelection.Right);
+
+            // Activate the stick and the related control
+            if (Globals.ActivateJoysticks()) {
+                if (Globals.joystickRAcquired) {
+                    RightStick.SetJoystickToUse(JoystickSelection.Right);
+                    RightStick.StartPolling();
+                    RightStick.SetDarkMode();
+                } else {
+                    RightStick.Enabled = false;
+                }
             }
         }
 
