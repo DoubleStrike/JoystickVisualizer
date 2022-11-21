@@ -72,7 +72,7 @@ namespace JoystickVisualizer {
 
         private void cboRightBinding_SelectedIndexChanged(object sender, EventArgs e) {
             // Unacquire the stick if it is active
-            Globals.UnacquireSingleJoystick(JoystickSelection.Left);
+            Globals.UnacquireSingleJoystick(JoystickSelection.Right);
 
             // Bind the selected stick
             Globals.BindSingleJoystick(cboRightBinding.SelectedItem.ToString(), JoystickSelection.Right);
