@@ -30,7 +30,7 @@ namespace JoystickVisualizer {
         #region Public functions
         public void SetDarkMode(bool darkModeOn = true) {
             if (darkModeOn) {
-                squareTableLayout.BackColor = SystemColors.ControlDarkDark;
+                squareTableLayout.BackColor = Globals.DARK_MODE_BACKGROUND;
             } else {
                 squareTableLayout.BackColor = SystemColors.Control;
             }
