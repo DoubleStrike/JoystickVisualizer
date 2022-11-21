@@ -131,7 +131,7 @@ namespace JoystickVisualizer {
         private void SetDarkMode() {
             if (Globals.GetSystemDarkMode()) {
                 // Darken UI elements as needed
-                this.BackColor = SystemColors.ControlDarkDark;
+                this.BackColor = Globals.DARK_MODE_BACKGROUND;
 
                 lblTitle.ForeColor = SystemColors.Info;
                 chkKeepOnTop.ForeColor = SystemColors.Info;

@@ -40,6 +40,7 @@ namespace JoystickVisualizer {
         public const int CROSSHAIR_THICKNESS = 1;
         public const int DEFAULT_2D_DOT_SIZE = 20;
         public const int POV_LINE_THICKNESS = 8;
+        public readonly static Color DARK_MODE_BACKGROUND = Color.FromArgb(32, 32, 32);
         public readonly static Color DEFAULT_DOT_COLOR = SystemColors.GradientInactiveCaption;
         public readonly static Color DEFAULT_FRAME_COLOR = SystemColors.Info;
         public readonly static Color POV_LINE_COLOR = Color.Red;
