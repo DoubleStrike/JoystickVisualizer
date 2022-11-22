@@ -88,13 +88,13 @@ namespace JoystickVisualizer {
             switch (direction) {
                 case CrosshairDirection.Vertical:
                     if (drawCenterLine) {
-                        pen.DashStyle = Settings.Default.UI_CenterLineDashStyle;
+                        pen.DashPattern = CenterDashValues;
                         drawingSurface.DrawLine(pen, width / 2, 0, width / 2, height);
                     }
 
                     // In this case, use the height to determine offset
                     if (drawDotWidthLines) {
-                        pen.DashStyle = Settings.Default.UI_DotWidthLineDashStyle;
+                        pen.DashPattern = DotWidthDashValues;
                         drawingSurface.DrawLine(pen, (width - height) / 2, 0, (width - height) / 2, height);
                         drawingSurface.DrawLine(pen, (width + height) / 2, 0, (width + height) / 2, height);
                     }
@@ -102,13 +102,13 @@ namespace JoystickVisualizer {
                     break;
                 case CrosshairDirection.Horizontal:
                     if (drawCenterLine) {
-                        pen.DashStyle = Settings.Default.UI_CenterLineDashStyle;
+                        pen.DashPattern = CenterDashValues;
                         drawingSurface.DrawLine(pen, 0, height / 2, width, height / 2);
                     }
 
                     // In this case, use the width to determine offset
                     if (drawDotWidthLines) {
-                        pen.DashStyle = Settings.Default.UI_DotWidthLineDashStyle;
+                        pen.DashPattern = DotWidthDashValues;
                         drawingSurface.DrawLine(pen, 0, (height - width) / 2, width, (height - width) / 2);
                         drawingSurface.DrawLine(pen, 0, (height + width) / 2, width, (height + width) / 2);
                     }

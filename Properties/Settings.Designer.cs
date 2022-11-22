@@ -124,24 +124,6 @@ namespace JoystickVisualizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DashDot")]
-        public global::System.Drawing.Drawing2D.DashStyle UI_CenterLineDashStyle {
-            get {
-                return ((global::System.Drawing.Drawing2D.DashStyle)(this["UI_CenterLineDashStyle"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Dot")]
-        public global::System.Drawing.Drawing2D.DashStyle UI_DotWidthLineDashStyle {
-            get {
-                return ((global::System.Drawing.Drawing2D.DashStyle)(this["UI_DotWidthLineDashStyle"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool Main_WideLayout {
             get {

@@ -35,12 +35,6 @@
     <Setting Name="UI_PovLineColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">Red</Value>
     </Setting>
-    <Setting Name="UI_CenterLineDashStyle" Type="System.Drawing.Drawing2D.DashStyle" Scope="Application">
-      <Value Profile="(Default)">DashDot</Value>
-    </Setting>
-    <Setting Name="UI_DotWidthLineDashStyle" Type="System.Drawing.Drawing2D.DashStyle" Scope="Application">
-      <Value Profile="(Default)">Dot</Value>
-    </Setting>
     <Setting Name="Main_WideLayout" Type="System.Boolean" Scope="Application">
       <Value Profile="(Default)">False</Value>
     </Setting>
