@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 using JoystickVisualizer.Properties;
+using System.Reflection;
 
 namespace JoystickVisualizer {
     public partial class MainWindow : Form {
@@ -19,7 +20,6 @@ namespace JoystickVisualizer {
 
         #region Event Handlers
         private void MainWindow_Load(object sender, EventArgs e) {
-            //BindAndActivateSticks();
             foreach (DeviceInstance thisDevice in Globals.directInput.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AllDevices)) {
                 cboLeftBinding.Items.Add(thisDevice.ProductName);
                 cboRightBinding.Items.Add(thisDevice.ProductName);
@@ -29,6 +29,7 @@ namespace JoystickVisualizer {
             SetDarkMode();
             SetWideMode(Settings.Default.Main_WideLayout);
 
+            this.Text = this.Text + " v" + Application.ProductVersion;
             chkKeepOnTop.Checked = Settings.Default.Main_KeepOnTop;
             chkWide.Checked = Settings.Default.Main_WideLayout;
             txtPollingTime.Text = Settings.Default.Timer_PollingIntervalMs.ToString();
