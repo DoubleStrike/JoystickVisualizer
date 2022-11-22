@@ -1,10 +1,10 @@
 ﻿using SharpDX.DirectInput;
 using System;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 using JoystickVisualizer.Properties;
-
 
 namespace JoystickVisualizer {
     public partial class MainWindow : Form {
@@ -17,6 +17,7 @@ namespace JoystickVisualizer {
             InitializeComponent();
         }
 
+        #region Event Handlers
         private void MainWindow_Load(object sender, EventArgs e) {
             //BindAndActivateSticks();
             foreach (DeviceInstance thisDevice in Globals.directInput.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AllDevices)) {
@@ -106,7 +107,9 @@ namespace JoystickVisualizer {
         private void Wide_CheckedChanged(object sender, EventArgs e) {
             SetWideMode(chkWide.Checked);
         }
+        #endregion Event Handlers
 
+        #region Private Methods
         private void ScaleDots() {
             int smallerDimension = LeftStick.Width < LeftStick.Height ? LeftStick.Width : LeftStick.Height;
             LeftStick.SetDotSize(smallerDimension / 7);
@@ -146,5 +149,98 @@ namespace JoystickVisualizer {
                 LeftStick.squareTableLayout.Dock = DockStyle.Fill;
             }
         }
+
+        private void Form_MouseEnter(object sender, EventArgs e) {
+            if (!mouseHasEnteredForm) {
+                FlowPanelCenter.Visible = true;
+                mouseHasEnteredForm = true;
+            }
+        }
+
+        private void Form_MouseLeave(object sender, EventArgs e) {
+            IntPtr hWnd = WindowFromPoint(new POINTSTRUCT(Cursor.Position));
+            if ((this.Handle != hWnd) && !IsChildWindow(this.Handle, hWnd)) {
+                FlowPanelCenter.Visible = false;
+                mouseHasEnteredForm = false;
+            }
+        }
+        #endregion Private Methods
+
+        #region MouseOver stuff
+        /*
+         * Credit to Calle Mellergardh for this one.  This uses WndProc subclassing from the Win32 API to grab raw mouse events.
+         * Grabbed from https://social.msdn.microsoft.com/Forums/windows/en-US/3b143c44-a523-4e60-a76f-f010058750b9/event-bubbling-mousehover-event-for-child-controls
+         */
+
+        private bool trackingNonClientArea;
+        private bool mouseHasEnteredForm;
+
+        private const int WM_NCMOUSEMOVE = 0x0a0;
+        private const int WM_NCMOUSELEAVE = 0x02a2;
+        private const int WM_MOUSELEAVE = 0x02a3;
+
+#if DEBUG
+        private const int TME_HOVER = 0x00000001;
+        private const int TME_LEAVE = 0x00000002;
+        private const int TME_NONCLIENT = 0x00000010;
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern int TrackMouseEvent(ref TRACKMOUSEEVENT lpEventTrack);
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct TRACKMOUSEEVENT {
+            public int cbSize;
+            public int dwFlags;
+            public IntPtr hwndTrack;
+            public int dwHoverTime;
+        }
+#endif
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr WindowFromPoint(POINTSTRUCT lpPoint);
+
+        [DllImport("user32.dll", EntryPoint = "IsChild")]
+        private static extern bool IsChildWindow(IntPtr hWndParent, IntPtr hwnd);
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct POINTSTRUCT {
+            public int x;
+            public int y;
+
+            public POINTSTRUCT(Point fromPoint) {
+                this.x = fromPoint.X;
+                this.y = fromPoint.Y;
+            }
+        }
+
+        protected override void WndProc(ref Message m) {
+            if (m.Msg == WM_NCMOUSEMOVE) {
+                if (!this.trackingNonClientArea) {
+                    this.TrackNonClientMouse();
+                    this.Form_MouseEnter(this, EventArgs.Empty);
+                }
+            } else if (m.Msg == WM_NCMOUSELEAVE || m.Msg == WM_MOUSELEAVE) {
+                this.trackingNonClientArea = false;
+                this.Form_MouseLeave(this, EventArgs.Empty);
+            }
+
+            base.WndProc(ref m);
+        }
+
+        private void TrackNonClientMouse() {
+            this.trackingNonClientArea = true;
+
+#if DEBUG
+            TRACKMOUSEEVENT tme = new TRACKMOUSEEVENT {
+                cbSize = Marshal.SizeOf(typeof(TRACKMOUSEEVENT)),
+                dwFlags = TME_NONCLIENT | TME_HOVER | TME_LEAVE,
+                dwHoverTime = 100,
+                hwndTrack = this.Handle
+            };
+
+            System.Diagnostics.Debug.Assert(TrackMouseEvent(ref tme) != 0);
+#endif
+        }
+#endregion MouseOver stuff
     }
 }

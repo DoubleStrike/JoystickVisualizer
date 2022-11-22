@@ -1,4 +1,6 @@
-﻿namespace JoystickVisualizer {
+﻿using System;
+
+namespace JoystickVisualizer {
     partial class MainWindow {
         /// <summary>
         /// Required designer variable.
@@ -224,6 +226,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
+            this.MouseEnter += new System.EventHandler(Form_MouseEnter);
+            this.MouseLeave += new System.EventHandler(Form_MouseLeave);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.FlowPanelCenter.ResumeLayout(false);
