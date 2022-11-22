@@ -8,7 +8,7 @@
     <Setting Name="Axis_CenterValue" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">32768</Value>
     </Setting>
-    <Setting Name="Axis_MaxValue" Type="System.String" Scope="Application">
+    <Setting Name="Axis_MaxValue" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">65535</Value>
     </Setting>
     <Setting Name="UI_BorderThickness" Type="System.Int32" Scope="Application">

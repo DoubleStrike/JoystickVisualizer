@@ -44,9 +44,9 @@ namespace JoystickVisualizer.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("65535")]
-        public string Axis_MaxValue {
+        public int Axis_MaxValue {
             get {
-                return ((string)(this["Axis_MaxValue"]));
+                return ((int)(this["Axis_MaxValue"]));
             }
         }
         
