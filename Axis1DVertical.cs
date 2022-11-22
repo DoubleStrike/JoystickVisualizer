@@ -64,6 +64,7 @@ namespace JoystickVisualizer {
             strF.Alignment = StringAlignment.Far;
         }
 
+        #region Event Handlers
         private void Form_Paint(object sender, PaintEventArgs e) {
             if (this.Enabled) {
                 // Draw the frame
@@ -91,7 +92,9 @@ namespace JoystickVisualizer {
         private void Form_Resize(object sender, EventArgs e) {
             //if (this.Enabled) this.Refresh();
         }
+        #endregion Event Handlers
 
+        #region Private Methods
         private float MapValueToRange(int InputValue) {
             int MaxBottomPosition = this.Height - this.Width;
 
@@ -101,5 +104,6 @@ namespace JoystickVisualizer {
             float positionExact = MaxBottomPosition * InputValue / Globals.MAX_AXIS_VALUE;
             return positionExact;
         }
+        #endregion Private Methods
     }
 }

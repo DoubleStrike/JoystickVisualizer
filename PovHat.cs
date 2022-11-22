@@ -66,6 +66,7 @@ namespace JoystickVisualizer {
             }
         }
 
+        #region Event Handlers
         private void PovHat_Paint(object sender, PaintEventArgs e) {
             if (this.Enabled) {
                 // Calculate the line endpoint and store in m_x, m_y
@@ -88,7 +89,9 @@ namespace JoystickVisualizer {
                 ToolTip = $"('{this.Name}': '{Value}')";
             }
         }
+        #endregion Event Handlers
 
+        #region Private Methods
         private void CalculateLineEndpoint(out int x, out int y) {
             // Hide/show the image as needed
             switch (m_Value) {
@@ -131,5 +134,6 @@ namespace JoystickVisualizer {
                     break;
             }
         }
+        #endregion Private Methods
     }
 }

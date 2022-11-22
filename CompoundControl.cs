@@ -72,6 +72,7 @@ namespace JoystickVisualizer {
             InitializeComponent();
         }
 
+        #region Event Handlers
         private void CompoundControl_Load(object sender, EventArgs e) {
             KeepSticksSquare();
 
@@ -89,51 +90,6 @@ namespace JoystickVisualizer {
 
         private void CompoundControl_Resize(object sender, EventArgs e) {
             KeepSticksSquare();
-        }
-
-        private void SetCurrentState() {
-            // Read current axis values
-            JoystickState state = m_joystickToUse.GetCurrentState();
-
-            if (state != null) {
-                axisXY.XValue = state.X;
-                axisXY.YValue = state.Y;
-                axisZ.Value = Globals.MAX_AXIS_VALUE - state.Z;
-                axisRotXRotY.XValue = state.RotationX;
-                axisRotXRotY.YValue = Globals.MAX_AXIS_VALUE - state.RotationY;
-                axisRotZ.Value = state.RotationZ;
-                axisSlider0.Value = Globals.MAX_AXIS_VALUE - state.Sliders[0];
-            }
-        }
-
-        private void KeepGridSquare() {
-            // Size of the Axis2D control
-            int tableWidth = squareTableLayout.Width;
-            int tableHeight = squareTableLayout.Height;
-
-            // Size of the control
-            int interiorWidth = this.ClientSize.Width;
-            int interiorHeight = this.ClientSize.Height;
-
-            if (interiorHeight > interiorWidth) {
-                tableHeight = tableWidth = interiorWidth;
-            } else if (interiorWidth > interiorHeight) {
-                tableHeight = tableWidth = interiorHeight;
-            }
-
-            squareTableLayout.Size = new Size(tableWidth, tableHeight);
-        }
-
-        private void KeepMinistickSquare() {
-            // Size of the XY grid
-            int ministickSize = (int)(this.axisXY.Height * (2.0f / 7.0f));
-
-            axisRotXRotY.Size = new Size(ministickSize, ministickSize);
-        }
-
-        private void KeepSticksSquare() {
-            KeepGridSquare();
-            KeepMinistickSquare();
         }
 
         private void PollingTimer_Tick(object sender, EventArgs e) {
@@ -188,5 +144,53 @@ namespace JoystickVisualizer {
                 }
             }
         }
+        #endregion Event Handlers
+
+        #region Private Methods
+        private void SetCurrentState() {
+            // Read current axis values
+            JoystickState state = m_joystickToUse.GetCurrentState();
+
+            if (state != null) {
+                axisXY.XValue = state.X;
+                axisXY.YValue = state.Y;
+                axisZ.Value = Globals.MAX_AXIS_VALUE - state.Z;
+                axisRotXRotY.XValue = state.RotationX;
+                axisRotXRotY.YValue = Globals.MAX_AXIS_VALUE - state.RotationY;
+                axisRotZ.Value = state.RotationZ;
+                axisSlider0.Value = Globals.MAX_AXIS_VALUE - state.Sliders[0];
+            }
+        }
+
+        private void KeepGridSquare() {
+            // Size of the Axis2D control
+            int tableWidth = squareTableLayout.Width;
+            int tableHeight = squareTableLayout.Height;
+
+            // Size of the control
+            int interiorWidth = this.ClientSize.Width;
+            int interiorHeight = this.ClientSize.Height;
+
+            if (interiorHeight > interiorWidth) {
+                tableHeight = tableWidth = interiorWidth;
+            } else if (interiorWidth > interiorHeight) {
+                tableHeight = tableWidth = interiorHeight;
+            }
+
+            squareTableLayout.Size = new Size(tableWidth, tableHeight);
+        }
+
+        private void KeepMinistickSquare() {
+            // Size of the XY grid
+            int ministickSize = (int)(this.axisXY.Height * (2.0f / 7.0f));
+
+            axisRotXRotY.Size = new Size(ministickSize, ministickSize);
+        }
+
+        private void KeepSticksSquare() {
+            KeepGridSquare();
+            KeepMinistickSquare();
+        }
+        #endregion Private Methods
     }
 }
