@@ -158,8 +158,7 @@ namespace JoystickVisualizer {
         }
 
         private void Form_MouseLeave(object sender, EventArgs e) {
-            IntPtr hWnd = WindowFromPoint(new POINTSTRUCT(Cursor.Position));
-            if ((this.Handle != hWnd) && !IsChildWindow(this.Handle, hWnd)) {
+            if (MouseIsOverOtherWindow()) {
                 FlowPanelCenter.Visible = false;
                 mouseHasEnteredForm = false;
             }
@@ -178,23 +177,6 @@ namespace JoystickVisualizer {
         private const int WM_NCMOUSEMOVE = 0x0a0;
         private const int WM_NCMOUSELEAVE = 0x02a2;
         private const int WM_MOUSELEAVE = 0x02a3;
-
-#if DEBUG
-        private const int TME_HOVER = 0x00000001;
-        private const int TME_LEAVE = 0x00000002;
-        private const int TME_NONCLIENT = 0x00000010;
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern int TrackMouseEvent(ref TRACKMOUSEEVENT lpEventTrack);
-
-        [StructLayout(LayoutKind.Sequential)]
-        private struct TRACKMOUSEEVENT {
-            public int cbSize;
-            public int dwFlags;
-            public IntPtr hwndTrack;
-            public int dwHoverTime;
-        }
-#endif
 
         [DllImport("user32.dll")]
         private static extern IntPtr WindowFromPoint(POINTSTRUCT lpPoint);
@@ -229,18 +211,12 @@ namespace JoystickVisualizer {
 
         private void TrackNonClientMouse() {
             this.trackingNonClientArea = true;
-
-#if DEBUG
-            TRACKMOUSEEVENT tme = new TRACKMOUSEEVENT {
-                cbSize = Marshal.SizeOf(typeof(TRACKMOUSEEVENT)),
-                dwFlags = TME_NONCLIENT | TME_HOVER | TME_LEAVE,
-                dwHoverTime = 100,
-                hwndTrack = this.Handle
-            };
-
-            System.Diagnostics.Debug.Assert(TrackMouseEvent(ref tme) != 0);
-#endif
         }
-#endregion MouseOver stuff
+
+        private bool MouseIsOverOtherWindow() {
+            IntPtr hWnd = WindowFromPoint(new POINTSTRUCT(Cursor.Position));
+            return ((this.Handle != hWnd) && !IsChildWindow(this.Handle, hWnd));
+        }
+        #endregion MouseOver stuff
     }
 }
