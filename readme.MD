@@ -29,8 +29,7 @@ The program can be run and set up refresh at a defined interval in milliseconds.
 - By checking the box at the center labeled "Keep on Top" the window will stay above other windows, useful to keep it visible while gaming or streaming.
 
 ### To-Do
-- A way to hide/show the center panel will be a requirement for streaming.
-- A better settings UI (perhaps one based on right-click menus) will be good.
+- A better settings UI (perhaps one based on right-click menus) will be good.  (Not sure if still needed with hidable center panel.)
 - Needs to allow axis inversion on a per-axis basis.  Currently, inversion is based on VKB Gladiator NXT + SEM module layout.
 - Needs to allow for setting axis minima/maxima on a per-axis basis.  Currently, values are 0-65535 per axis, with 32768 at center.  A good way to do this would be to center an axis and have an option to set that value as center (and set the max to 2x the center value).
 
@@ -42,3 +41,6 @@ Please see commit history for detailed logs.  Major changes will be listed here 
 | 0.0.1  | 2022-11-15  | Initial code upload for public use.  This is specific to a Gladiator with Left grip and one with Right grip.  |
 | 0.1.0  | 2022-11-21  | Initial public binary release.  Now generalized for any joystick device.  |
 | 0.2.0  | 2022-11-21  | Better resizing with new normal and wide modes.  |
+| 0.3.0  | 2022-11-21  | Settings are now loaded from a config file.  |
+| 0.4.0  | 2022-11-22  | The center panel now autohides when you move your mouse away.  |
+
