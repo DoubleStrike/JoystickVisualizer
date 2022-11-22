@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
+﻿using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.AxHost;
+
+using JoystickVisualizer.Properties;
+
 
 namespace JoystickVisualizer {
     public partial class PovHat : UserControl {
         private const int POV_DOT_SIZE = 20;
 
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
-        private int m_Value = Globals.DEFAULT_AXIS_VALUE;
+        private int m_Value = Settings.Default.Axis_CenterValue;
         private int m_centerX = 0;
         private int m_centerY = 0;
         private int m_x = 0;

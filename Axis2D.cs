@@ -9,13 +9,13 @@ using JoystickVisualizer.Properties;
 namespace JoystickVisualizer {
     public partial class Axis2D : UserControl {
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
-        private int m_AxisCenterX = Globals.DEFAULT_AXIS_VALUE;
-        private int m_AxisCenterY = Globals.DEFAULT_AXIS_VALUE;
-        private int m_AxisMaximumX = Globals.MAX_AXIS_VALUE;
-        private int m_AxisMaximumY = Globals.MAX_AXIS_VALUE;
+        private int m_AxisCenterX = Settings.Default.Axis_CenterValue;
+        private int m_AxisCenterY = Settings.Default.Axis_CenterValue;
+        private int m_AxisMaximumX = Settings.Default.Axis_MaxValue;
+        private int m_AxisMaximumY = Settings.Default.Axis_MaxValue;
         private int m_DotSize = Settings.Default.UI_Default_2dDotSize;
-        private int m_XValue = Globals.DEFAULT_AXIS_VALUE;
-        private int m_YValue = Globals.DEFAULT_AXIS_VALUE;
+        private int m_XValue = Settings.Default.Axis_CenterValue;
+        private int m_YValue = Settings.Default.Axis_CenterValue;
         private bool m_RenderFrame = true;
         private string m_Label = "";
         private Font labelFont = SystemFonts.DefaultFont;

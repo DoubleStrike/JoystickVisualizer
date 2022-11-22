@@ -3,12 +3,15 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
+using JoystickVisualizer.Properties;
+
+
 namespace JoystickVisualizer {
     public partial class Axis1DVertical : UserControl {
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
-        private int m_AxisCenter = Globals.DEFAULT_AXIS_VALUE;
-        private int m_AxisMaximum = Globals.MAX_AXIS_VALUE;
-        private int m_Value = Globals.DEFAULT_AXIS_VALUE;
+        private int m_AxisCenter = Settings.Default.Axis_CenterValue;
+        private int m_AxisMaximum = Settings.Default.Axis_MaxValue;
+        private int m_Value = Settings.Default.Axis_CenterValue;
         private bool m_RenderFrame = true;
         private string m_Label = "";
         private StringFormat strF = new StringFormat();

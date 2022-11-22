@@ -25,10 +25,6 @@ namespace JoystickVisualizer {
         // Access object for DirectInput
         public static readonly DirectInput directInput = new DirectInput();
 
-        // Axis values
-        public const int DEFAULT_AXIS_VALUE = 32768;
-        public const int MAX_AXIS_VALUE = 65535;
-
         // Visual style
         public readonly static float[] CenterDashValues = { 5, 10 };
         public readonly static float[] DotWidthDashValues = { 1, 2 };
