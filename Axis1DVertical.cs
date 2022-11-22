@@ -6,12 +6,30 @@ using System.Windows.Forms;
 namespace JoystickVisualizer {
     public partial class Axis1DVertical : UserControl {
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
+        private int m_AxisCenter = Globals.DEFAULT_AXIS_VALUE;
+        private int m_AxisMaximum = Globals.MAX_AXIS_VALUE;
         private int m_Value = Globals.DEFAULT_AXIS_VALUE;
         private bool m_RenderFrame = true;
         private string m_Label = "";
         private StringFormat strF = new StringFormat();
 
         #region Public Properties
+        public int AxisCenter {
+            get { return m_AxisCenter; }
+            set {
+                m_AxisCenter = value;
+                this.Refresh();
+            }
+        }
+
+        public int AxisMaximum {
+            get { return m_AxisMaximum; }
+            set {
+                m_AxisMaximum = value;
+                this.Refresh();
+            }
+        }
+
         public string TextLabel {
             get {
                 return m_Label;
@@ -101,7 +119,7 @@ namespace JoystickVisualizer {
             // Formula to map input range to output range
             //   output = output_start + ((output_end - output_start) / (input_end - input_start)) * (value - input_start)
 
-            float positionExact = MaxBottomPosition * InputValue / Globals.MAX_AXIS_VALUE;
+            float positionExact = MaxBottomPosition * InputValue / m_AxisMaximum;
             return positionExact;
         }
         #endregion Private Methods

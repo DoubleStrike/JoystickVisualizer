@@ -9,6 +9,10 @@ using JoystickVisualizer.Properties;
 namespace JoystickVisualizer {
     public partial class Axis2D : UserControl {
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
+        private int m_AxisCenterX = Globals.DEFAULT_AXIS_VALUE;
+        private int m_AxisCenterY = Globals.DEFAULT_AXIS_VALUE;
+        private int m_AxisMaximumX = Globals.MAX_AXIS_VALUE;
+        private int m_AxisMaximumY = Globals.MAX_AXIS_VALUE;
         private int m_DotSize = Settings.Default.UI_Default_2dDotSize;
         private int m_XValue = Globals.DEFAULT_AXIS_VALUE;
         private int m_YValue = Globals.DEFAULT_AXIS_VALUE;
@@ -17,6 +21,38 @@ namespace JoystickVisualizer {
         private Font labelFont = SystemFonts.DefaultFont;
 
         #region Public Properties
+        public int AxisCenterX {
+            get { return m_AxisCenterX; }
+            set {
+                m_AxisCenterX = value;
+                this.Refresh();
+            }
+        }
+
+        public int AxisCenterY {
+            get { return m_AxisCenterY; }
+            set {
+                m_AxisCenterY = value;
+                this.Refresh();
+            }
+        }
+
+        public int AxisMaximumX {
+            get { return m_AxisMaximumX; }
+            set {
+                m_AxisMaximumX = value;
+                this.Refresh();
+            }
+        }
+
+        public int AxisMaximumY {
+            get { return m_AxisMaximumY; }
+            set {
+                m_AxisMaximumY = value;
+                this.Refresh();
+            }
+        }
+
         public string TextLabel {
             get {
                 return m_Label;
@@ -136,7 +172,7 @@ namespace JoystickVisualizer {
             // Formula to map input range to output range
             //   output = output_start + ((output_end - output_start) / (input_end - input_start)) * (value - input_start)
 
-            float positionExact = MaxRightPosition * InputValue / Globals.MAX_AXIS_VALUE;
+            float positionExact = MaxRightPosition * InputValue / m_AxisMaximumX;
             return positionExact;
         }
 
@@ -146,7 +182,7 @@ namespace JoystickVisualizer {
             // Formula to map input range to output range
             //   output = output_start + ((output_end - output_start) / (input_end - input_start)) * (value - input_start)
 
-            float positionExact = MaxBottomPosition * InputValue / Globals.MAX_AXIS_VALUE;
+            float positionExact = MaxBottomPosition * InputValue / m_AxisMaximumY;
             return positionExact;
         }
         #endregion Private Methods

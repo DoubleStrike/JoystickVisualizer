@@ -109,19 +109,19 @@ namespace JoystickVisualizer {
                                 axisXY.YValue = state.Value;
                                 break;
                             case JoystickOffset.Z:
-                                axisZ.Value = Globals.MAX_AXIS_VALUE - state.Value;
+                                axisZ.Value = axisZ.AxisMaximum - state.Value;
                                 break;
                             case JoystickOffset.RotationX:
                                 axisRotXRotY.XValue = state.Value;
                                 break;
                             case JoystickOffset.RotationY:
-                                axisRotXRotY.YValue = Globals.MAX_AXIS_VALUE - state.Value;
+                                axisRotXRotY.YValue = axisRotXRotY.AxisMaximumY - state.Value;
                                 break;
                             case JoystickOffset.RotationZ:
                                 axisRotZ.Value = state.Value;
                                 break;
                             case JoystickOffset.Sliders0:
-                                axisSlider0.Value = Globals.MAX_AXIS_VALUE - state.Value;
+                                axisSlider0.Value = axisSlider0.AxisMaximum - state.Value;
                                 break;
                         }
                         #endregion Input is an Axis event ----------------------------------
@@ -154,11 +154,11 @@ namespace JoystickVisualizer {
             if (state != null) {
                 axisXY.XValue = state.X;
                 axisXY.YValue = state.Y;
-                axisZ.Value = Globals.MAX_AXIS_VALUE - state.Z;
+                axisZ.Value = axisZ.AxisMaximum - state.Z;
                 axisRotXRotY.XValue = state.RotationX;
-                axisRotXRotY.YValue = Globals.MAX_AXIS_VALUE - state.RotationY;
+                axisRotXRotY.YValue = axisRotXRotY.AxisMaximumY - state.RotationY;
                 axisRotZ.Value = state.RotationZ;
-                axisSlider0.Value = Globals.MAX_AXIS_VALUE - state.Sliders[0];
+                axisSlider0.Value = axisSlider0.AxisMaximum - state.Sliders[0];
             }
         }
 
