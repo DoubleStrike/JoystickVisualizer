@@ -48,8 +48,6 @@ namespace JoystickVisualizer {
         }
 
         private void KeepOnTop_CheckedChanged(object sender, EventArgs e) {
-            Settings.Default.Main_KeepOnTop = chkKeepOnTop.Checked;
-
             this.TopMost = chkKeepOnTop.Checked;
             this.Focus();
         }
@@ -57,8 +55,6 @@ namespace JoystickVisualizer {
         private void Set_Click(object sender, EventArgs e) {
             try {
                 int parsedInput = int.Parse(txtPollingTime.Text);
-
-                Settings.Default.Timer_PollingIntervalMs = parsedInput;
 
                 LeftStick.UpdatePollingInterval(parsedInput);
                 RightStick.UpdatePollingInterval(parsedInput);
@@ -140,8 +136,6 @@ namespace JoystickVisualizer {
         }
 
         private void SetWideMode(bool wideModeOn) {
-            Settings.Default.Main_WideLayout = wideModeOn;
-
             if (wideModeOn) {
                 // HACK: This is sloppy as hell and needs a better solution
                 RightStick.squareTableLayout.Dock = DockStyle.Right;
