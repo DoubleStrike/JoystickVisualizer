@@ -9,12 +9,12 @@ using JoystickVisualizer.Properties;
 
 namespace JoystickVisualizer.UserControls {
     public partial class Buttons : UserControl {
-        private const int GRID_SIZE = 4;
-
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
         private int m_SectionHeight = 0;
         private int m_SectionWidth = 0;
         private int m_bitMask = 0;
+        private int m_GridCols = 1;
+        private int m_GridRows = 1;
         private string m_Label = "B";
 
         private SolidBrush boxBrush;
@@ -40,7 +40,7 @@ namespace JoystickVisualizer.UserControls {
 
         public JoystickUpdate CurrentEvent {
             set {
-                // Calculate button offset and exit if over 15
+                // Calculate button offset and exit if over 15, since grid can be a max of 16 cells
                 int buttonOffset = (int)value.Offset - 48;
                 if (buttonOffset > 15) return;
 
@@ -58,8 +58,12 @@ namespace JoystickVisualizer.UserControls {
         public Buttons() {
             InitializeComponent();
 
-            Debug.Assert(GRID_SIZE <= 4, "Grid size too large - grids up to 4x4 are supported.");
             boxBrush = new SolidBrush(Settings.Default.UI_ButtonColor);
+
+            // Ensure grid is no greater than 16 cells since bitmask is max of 16-bit integer
+            m_GridCols = Settings.Default.Button_GridCols;
+            m_GridRows = Settings.Default.Button_GridRows;
+            if (m_GridCols * m_GridRows > 16) { m_GridCols = m_GridRows = 4; }
         }
 
         #region Event Handlers
@@ -69,12 +73,12 @@ namespace JoystickVisualizer.UserControls {
                 e.Graphics.DrawString(m_Label, SystemFonts.DefaultFont, Globals.frameBrush, 2, 1);
 
                 // Calculate width of each grid section based on current size
-                m_SectionWidth = this.Width / GRID_SIZE;
+                m_SectionWidth = this.Width / m_GridCols;
                 // Calculate height of each grid section based on current size
-                m_SectionHeight = this.Height / GRID_SIZE;
+                m_SectionHeight = this.Height / m_GridRows;
 
                 // Draw the sections as needed
-                for (int j = 0; j < GRID_SIZE * GRID_SIZE; j++) {
+                for (int j = 0; j < m_GridCols * m_GridRows; j++) {
                     if ((m_bitMask & (int)Math.Pow(2, j)) == (int)Math.Pow(2, j)) FillInGridSection(j, ref e);
                 }
 
@@ -95,13 +99,13 @@ namespace JoystickVisualizer.UserControls {
         }
 
         private int RectStartingPointX(int ButtonPosition) {
-            // Use integer modulo and division to calculate column/row offsets
-            return (ButtonPosition % GRID_SIZE) * m_SectionWidth;
+            // Use integer modulo to calculate column/row offsets
+            return (ButtonPosition % m_GridCols) * m_SectionWidth;
         }
 
         private int RectStartingPointY(int ButtonPosition) {
-            // Use integer modulo and division to calculate column/row offsets
-            return (ButtonPosition / GRID_SIZE) * m_SectionHeight;
+            // Use integer division to calculate column/row offsets6
+            return (ButtonPosition / m_GridCols) * m_SectionHeight;
         }
         #endregion Private Methods
     }

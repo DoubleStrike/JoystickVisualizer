@@ -17,6 +17,12 @@
     <Setting Name="Axis_MaxValue" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">65535</Value>
     </Setting>
+    <Setting Name="Button_GridCols" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="Button_GridRows" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
     <Setting Name="UI_BorderThickness" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">4</Value>
     </Setting>
