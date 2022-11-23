@@ -104,15 +104,15 @@ namespace JoystickVisualizer.UserControls {
                 m_SectionHeight = this.Height / GRID_SIZE;
 
                 // Draw the 9 sections as needed
-                if (m_Button0Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(0), RectStartingPointY(0), m_SectionWidth, m_SectionHeight);
-                if (m_Button1Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(1), RectStartingPointY(1), m_SectionWidth, m_SectionHeight);
-                if (m_Button2Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(2), RectStartingPointY(2), m_SectionWidth, m_SectionHeight);
-                if (m_Button3Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(3), RectStartingPointY(3), m_SectionWidth, m_SectionHeight);
-                if (m_Button4Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(4), RectStartingPointY(4), m_SectionWidth, m_SectionHeight);
-                if (m_Button5Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(5), RectStartingPointY(5), m_SectionWidth, m_SectionHeight);
-                if (m_Button6Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(6), RectStartingPointY(6), m_SectionWidth, m_SectionHeight);
-                if (m_Button7Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(7), RectStartingPointY(7), m_SectionWidth, m_SectionHeight);
-                if (m_Button8Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(8), RectStartingPointY(8), m_SectionWidth, m_SectionHeight);
+                if (m_Button0Down) FillInGridSection(0, ref e);
+                if (m_Button1Down) FillInGridSection(1, ref e);
+                if (m_Button2Down) FillInGridSection(2, ref e);
+                if (m_Button3Down) FillInGridSection(3, ref e);
+                if (m_Button4Down) FillInGridSection(4, ref e);
+                if (m_Button5Down) FillInGridSection(5, ref e);
+                if (m_Button6Down) FillInGridSection(6, ref e);
+                if (m_Button7Down) FillInGridSection(7, ref e);
+                if (m_Button8Down) FillInGridSection(8, ref e);
 
                 // Update the tooltip
                 ToolTip = $"('{this.Name}': B0='{m_Button0Down}', B2='{m_Button1Down}', B3='{m_Button2Down}', B4='{m_Button3Down}')";
@@ -125,6 +125,11 @@ namespace JoystickVisualizer.UserControls {
         #endregion Event Handlers
 
         #region Private Methods
+        private void FillInGridSection(int buttonNumber, ref PaintEventArgs e) {
+            e.Graphics.FillRectangle(boxBrush, RectStartingPointX(buttonNumber), RectStartingPointY(buttonNumber), m_SectionWidth, m_SectionHeight);
+            e.Graphics.DrawString(buttonNumber.ToString(), SystemFonts.DefaultFont, Globals.frameBrush, RectStartingPointX(buttonNumber) + 1, RectStartingPointY(buttonNumber) + 1);
+        }
+
         private int RectStartingPointX(int ButtonPosition) {
             // Use integer modulo and division to calculate column/row offsets
             return (ButtonPosition % GRID_SIZE) * m_SectionWidth;
