@@ -120,7 +120,7 @@ namespace JoystickVisualizer.UserControls {
         }
 
         private void Form_Resize(object sender, EventArgs e) {
-            //if (this.Enabled) this.Refresh();
+            if (this.Enabled) this.Refresh();
         }
         #endregion Event Handlers
 
