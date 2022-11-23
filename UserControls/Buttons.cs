@@ -14,15 +14,15 @@ namespace JoystickVisualizer.UserControls {
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
         private int m_SectionHeight = 0;
         private int m_SectionWidth = 0;
-        private bool m_Button1On = false;
-        private bool m_Button2On = false;
-        private bool m_Button3On = false;
-        private bool m_Button4On = false;
-        private bool m_Button5On = false;
-        private bool m_Button6On = false;
-        private bool m_Button7On = false;
-        private bool m_Button8On = false;
-        private bool m_Button9On = false;
+        private bool m_Button0Down = false;
+        private bool m_Button1Down = false;
+        private bool m_Button2Down = false;
+        private bool m_Button3Down = false;
+        private bool m_Button4Down = false;
+        private bool m_Button5Down = false;
+        private bool m_Button6Down = false;
+        private bool m_Button7Down = false;
+        private bool m_Button8Down = false;
         private string m_Label = "Buttons";
 
         private SolidBrush boxBrush;
@@ -50,31 +50,31 @@ namespace JoystickVisualizer.UserControls {
             set {
                 switch (value.Offset) {
                     case JoystickOffset.Buttons0:
-                        m_Button1On = value.Value == 128;
+                        m_Button0Down = value.Value == 128;
                         break;
                     case JoystickOffset.Buttons1:
-                        m_Button2On = value.Value == 128;
+                        m_Button1Down = value.Value == 128;
                         break;
                     case JoystickOffset.Buttons2:
-                        m_Button3On = value.Value == 128;
+                        m_Button2Down = value.Value == 128;
                         break;
                     case JoystickOffset.Buttons3:
-                        m_Button4On = value.Value == 128;
+                        m_Button3Down = value.Value == 128;
                         break;
                     case JoystickOffset.Buttons4:
-                        m_Button5On = value.Value == 128;
+                        m_Button4Down = value.Value == 128;
                         break;
                     case JoystickOffset.Buttons5:
-                        m_Button6On = value.Value == 128;
+                        m_Button5Down = value.Value == 128;
                         break;
                     case JoystickOffset.Buttons6:
-                        m_Button7On = value.Value == 128;
+                        m_Button6Down = value.Value == 128;
                         break;
                     case JoystickOffset.Buttons7:
-                        m_Button8On = value.Value == 128;
+                        m_Button7Down = value.Value == 128;
                         break;
                     case JoystickOffset.Buttons8:
-                        m_Button9On = value.Value == 128;
+                        m_Button8Down = value.Value == 128;
                         break;
                     default:
                         break;
@@ -104,18 +104,18 @@ namespace JoystickVisualizer.UserControls {
                 m_SectionHeight = this.Height / GRID_SIZE;
 
                 // Draw the 9 sections as needed
-                if (m_Button1On) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(0), RectStartingPointY(0), m_SectionWidth, m_SectionHeight);
-                if (m_Button2On) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(1), RectStartingPointY(1), m_SectionWidth, m_SectionHeight);
-                if (m_Button3On) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(2), RectStartingPointY(2), m_SectionWidth, m_SectionHeight);
-                if (m_Button4On) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(3), RectStartingPointY(3), m_SectionWidth, m_SectionHeight);
-                if (m_Button5On) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(4), RectStartingPointY(4), m_SectionWidth, m_SectionHeight);
-                if (m_Button6On) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(5), RectStartingPointY(5), m_SectionWidth, m_SectionHeight);
-                if (m_Button7On) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(6), RectStartingPointY(6), m_SectionWidth, m_SectionHeight);
-                if (m_Button8On) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(7), RectStartingPointY(7), m_SectionWidth, m_SectionHeight);
-                if (m_Button9On) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(8), RectStartingPointY(8), m_SectionWidth, m_SectionHeight);
+                if (m_Button0Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(0), RectStartingPointY(0), m_SectionWidth, m_SectionHeight);
+                if (m_Button1Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(1), RectStartingPointY(1), m_SectionWidth, m_SectionHeight);
+                if (m_Button2Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(2), RectStartingPointY(2), m_SectionWidth, m_SectionHeight);
+                if (m_Button3Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(3), RectStartingPointY(3), m_SectionWidth, m_SectionHeight);
+                if (m_Button4Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(4), RectStartingPointY(4), m_SectionWidth, m_SectionHeight);
+                if (m_Button5Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(5), RectStartingPointY(5), m_SectionWidth, m_SectionHeight);
+                if (m_Button6Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(6), RectStartingPointY(6), m_SectionWidth, m_SectionHeight);
+                if (m_Button7Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(7), RectStartingPointY(7), m_SectionWidth, m_SectionHeight);
+                if (m_Button8Down) e.Graphics.FillRectangle(boxBrush, RectStartingPointX(8), RectStartingPointY(8), m_SectionWidth, m_SectionHeight);
 
                 // Update the tooltip
-                ToolTip = $"('{this.Name}': B0='{m_Button1On}', B2='{m_Button2On}', B3='{m_Button3On}', B4='{m_Button4On}')";
+                ToolTip = $"('{this.Name}': B0='{m_Button0Down}', B2='{m_Button1Down}', B3='{m_Button2Down}', B4='{m_Button3Down}')";
             }
         }
 
