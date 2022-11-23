@@ -9,7 +9,7 @@ using SharpDX.DirectInput;
 
 namespace JoystickVisualizer.UserControls {
     public partial class Buttons : UserControl {
-        private const int GRID_SIZE = 3;
+        private const int GRID_SIZE = 4;
 
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
         private int m_SectionHeight = 0;
