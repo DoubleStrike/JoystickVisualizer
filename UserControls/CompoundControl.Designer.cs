@@ -68,8 +68,8 @@
             this.axisZ.Size = new System.Drawing.Size(28, 250);
             this.axisZ.TabIndex = 0;
             this.axisZ.TextLabel = "";
-            this.axisZ.ToolTip = "(\'Axis1DVertical\': \'32768\')";
-            this.axisZ.Value = 32768;
+            this.axisZ.ToolTip = "(\'Axis1DVertical\': \'32767\')";
+            this.axisZ.Value = 32767;
             // 
             // axisSlider0
             // 
@@ -80,8 +80,8 @@
             this.axisSlider0.Size = new System.Drawing.Size(28, 250);
             this.axisSlider0.TabIndex = 1;
             this.axisSlider0.TextLabel = "";
-            this.axisSlider0.ToolTip = "(\'Axis1DVertical\': \'32768\')";
-            this.axisSlider0.Value = 32768;
+            this.axisSlider0.ToolTip = "(\'Axis1DVertical\': \'32767\')";
+            this.axisSlider0.Value = 32767;
             // 
             // axisSlider1
             // 
@@ -92,8 +92,8 @@
             this.axisSlider1.Size = new System.Drawing.Size(30, 250);
             this.axisSlider1.TabIndex = 2;
             this.axisSlider1.TextLabel = "";
-            this.axisSlider1.ToolTip = "(\'Axis1DVertical\': \'32768\')";
-            this.axisSlider1.Value = 32768;
+            this.axisSlider1.ToolTip = "(\'Axis1DVertical\': \'32767\')";
+            this.axisSlider1.Value = 32767;
             // 
             // axisRotZ
             // 
@@ -104,8 +104,8 @@
             this.axisRotZ.Size = new System.Drawing.Size(234, 32);
             this.axisRotZ.TabIndex = 3;
             this.axisRotZ.TextLabel = "";
-            this.axisRotZ.ToolTip = "(\'Axis1DHorizontal\': \'32768\')";
-            this.axisRotZ.Value = 32768;
+            this.axisRotZ.ToolTip = "(\'Axis1DHorizontal\': \'32767\')";
+            this.axisRotZ.Value = 32767;
             // 
             // axisXY
             // 
@@ -115,9 +115,9 @@
             this.axisXY.Size = new System.Drawing.Size(234, 250);
             this.axisXY.TabIndex = 5;
             this.axisXY.TextLabel = "";
-            this.axisXY.ToolTip = "\'Axis2D\': (\'32768\',\'32768\')";
-            this.axisXY.XValue = 32768;
-            this.axisXY.YValue = 32768;
+            this.axisXY.ToolTip = "\'Axis2D\': (\'32767\',\'32767\')";
+            this.axisXY.XValue = 32767;
+            this.axisXY.YValue = 32767;
             // 
             // axisRotXRotY
             // 
@@ -128,9 +128,9 @@
             this.axisRotXRotY.Size = new System.Drawing.Size(54, 54);
             this.axisRotXRotY.TabIndex = 6;
             this.axisRotXRotY.TextLabel = "";
-            this.axisRotXRotY.ToolTip = "\'Axis2D\': (\'32768\',\'32768\')";
-            this.axisRotXRotY.XValue = 32768;
-            this.axisRotXRotY.YValue = 32768;
+            this.axisRotXRotY.ToolTip = "\'Axis2D\': (\'32767\',\'32767\')";
+            this.axisRotXRotY.XValue = 32767;
+            this.axisRotXRotY.YValue = 32767;
             // 
             // povHat1
             // 

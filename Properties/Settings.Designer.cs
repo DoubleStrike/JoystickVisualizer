@@ -34,7 +34,7 @@ namespace JoystickVisualizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("32768")]
+        [global::System.Configuration.DefaultSettingValueAttribute("32767")]
         public int Axis_CenterValue {
             get {
                 return ((int)(this["Axis_CenterValue"]));

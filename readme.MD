@@ -33,7 +33,7 @@ The program can be run and set up refresh at a defined interval in milliseconds.
 ### To-Do
 - A better settings UI (perhaps one based on right-click menus) will be good.  (Not sure if still needed with hidable center panel.)
 - Needs to allow axis inversion on a per-axis basis.  Currently, inversion is based on VKB Gladiator NXT + SEM module layout.
-- Needs to allow for setting axis minima/maxima on a per-axis basis.  Currently, values are 0-65535 per axis, with 32768 at center.  A good way to do this would be to center an axis and have an option to set that value as center (and set the max to 2x the center value).
+- Needs to allow for setting axis minima/maxima on a per-axis basis.  Currently, values are 0-65535 per axis, with 32767 at center.  A good way to do this would be to center an axis and have an option to set that value as center (and set the max to 2x the center value).
 
 ### Changelog
 Please see commit history for detailed logs.  Major changes will be listed here in YYYY-MM-DD format.
