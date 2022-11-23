@@ -1,11 +1,11 @@
-﻿using System;
+﻿using SharpDX.DirectInput;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
 using JoystickVisualizer.Properties;
-using SharpDX.DirectInput;
 
 namespace JoystickVisualizer.UserControls {
     public partial class Buttons : UserControl {
@@ -14,16 +14,8 @@ namespace JoystickVisualizer.UserControls {
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
         private int m_SectionHeight = 0;
         private int m_SectionWidth = 0;
-        private bool m_Button0Down = false;
-        private bool m_Button1Down = false;
-        private bool m_Button2Down = false;
-        private bool m_Button3Down = false;
-        private bool m_Button4Down = false;
-        private bool m_Button5Down = false;
-        private bool m_Button6Down = false;
-        private bool m_Button7Down = false;
-        private bool m_Button8Down = false;
-        private string m_Label = "Buttons";
+        private int m_bitMask = 0;
+        private string m_Label = "B";
 
         private SolidBrush boxBrush;
 
@@ -48,37 +40,14 @@ namespace JoystickVisualizer.UserControls {
 
         public JoystickUpdate CurrentEvent {
             set {
-                switch (value.Offset) {
-                    case JoystickOffset.Buttons0:
-                        m_Button0Down = value.Value == 128;
-                        break;
-                    case JoystickOffset.Buttons1:
-                        m_Button1Down = value.Value == 128;
-                        break;
-                    case JoystickOffset.Buttons2:
-                        m_Button2Down = value.Value == 128;
-                        break;
-                    case JoystickOffset.Buttons3:
-                        m_Button3Down = value.Value == 128;
-                        break;
-                    case JoystickOffset.Buttons4:
-                        m_Button4Down = value.Value == 128;
-                        break;
-                    case JoystickOffset.Buttons5:
-                        m_Button5Down = value.Value == 128;
-                        break;
-                    case JoystickOffset.Buttons6:
-                        m_Button6Down = value.Value == 128;
-                        break;
-                    case JoystickOffset.Buttons7:
-                        m_Button7Down = value.Value == 128;
-                        break;
-                    case JoystickOffset.Buttons8:
-                        m_Button8Down = value.Value == 128;
-                        break;
-                    default:
-                        break;
-                }
+                // Calculate button offset and exit if over 15
+                int buttonOffset = (int)value.Offset - 48;
+                if (buttonOffset > 15) return;
+
+                // Apply the offset to the bitmask:
+                //      if the button is pressed (its value==128) we add the value to the mask
+                //      if the button is released (its value==0) we subtract the value from the mask
+                m_bitMask = (value.Value == 128) ? m_bitMask + (int)Math.Pow(2, buttonOffset) : m_bitMask - (int)Math.Pow(2, buttonOffset);
 
                 this.Refresh();
             }
@@ -89,6 +58,7 @@ namespace JoystickVisualizer.UserControls {
         public Buttons() {
             InitializeComponent();
 
+            Debug.Assert(GRID_SIZE <= 4, "Grid size too large - grids up to 4x4 are supported.");
             boxBrush = new SolidBrush(Settings.Default.UI_ButtonColor);
         }
 
@@ -103,19 +73,13 @@ namespace JoystickVisualizer.UserControls {
                 // Calculate height of each grid section based on current size
                 m_SectionHeight = this.Height / GRID_SIZE;
 
-                // Draw the 9 sections as needed
-                if (m_Button0Down) FillInGridSection(0, ref e);
-                if (m_Button1Down) FillInGridSection(1, ref e);
-                if (m_Button2Down) FillInGridSection(2, ref e);
-                if (m_Button3Down) FillInGridSection(3, ref e);
-                if (m_Button4Down) FillInGridSection(4, ref e);
-                if (m_Button5Down) FillInGridSection(5, ref e);
-                if (m_Button6Down) FillInGridSection(6, ref e);
-                if (m_Button7Down) FillInGridSection(7, ref e);
-                if (m_Button8Down) FillInGridSection(8, ref e);
+                // Draw the sections as needed
+                for (int j = 0; j < GRID_SIZE * GRID_SIZE; j++) {
+                    if ((m_bitMask & (int)Math.Pow(2, j)) == (int)Math.Pow(2, j)) FillInGridSection(j, ref e);
+                }
 
                 // Update the tooltip
-                ToolTip = $"('{this.Name}': B0='{m_Button0Down}', B2='{m_Button1Down}', B3='{m_Button2Down}', B4='{m_Button3Down}')";
+                ToolTip = $"('{this.Name}': BitMask='{m_bitMask}')";
             }
         }
 
