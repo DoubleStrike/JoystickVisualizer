@@ -1,11 +1,11 @@
 ﻿using SharpDX.DirectInput;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
 using JoystickVisualizer.Properties;
-
 
 namespace JoystickVisualizer {
     public partial class CompoundControl : UserControl {
@@ -90,6 +90,7 @@ namespace JoystickVisualizer {
 
         private void CompoundControl_Resize(object sender, EventArgs e) {
             KeepSticksSquare();
+            buttons1.Size = axisRotXRotY.Size;
         }
 
         private void PollingTimer_Tick(object sender, EventArgs e) {
@@ -131,12 +132,16 @@ namespace JoystickVisualizer {
                         #endregion Input is a POV Hat event --------------------------------
                     } else if ((int)state.Offset >= 48 && (int)state.Offset <= 150) {
                         #region Input is a button event ---------------------------------
+                        buttons1.CurrentEvent = state;
+
+#if false
                         if (state.Value == 128) {
-                            //Debug.WriteLine($"Button press:   '{state}'");
+                            Debug.WriteLine($"Button press:   '{state}'");
                         } else if (state.Value == 0) {
-                            //Debug.WriteLine($"Button release: '{state}'");
+                            Debug.WriteLine($"Button release: '{state}'");
                         }
-                        #endregion Input is a button events --------------------------------
+#endif
+#endregion Input is a button events --------------------------------
                     }
 
 

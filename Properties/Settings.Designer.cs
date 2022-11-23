@@ -34,6 +34,24 @@ namespace JoystickVisualizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Main_WideLayout {
+            get {
+                return ((bool)(this["Main_WideLayout"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Main_KeepOnTop {
+            get {
+                return ((bool)(this["Main_KeepOnTop"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("32767")]
         public int Axis_CenterValue {
             get {
@@ -61,6 +79,15 @@ namespace JoystickVisualizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DarkRed")]
+        public global::System.Drawing.Color UI_ButtonColor {
+            get {
+                return ((global::System.Drawing.Color)(this["UI_ButtonColor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public int UI_CrosshairThickness {
             get {
@@ -70,28 +97,19 @@ namespace JoystickVisualizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public int UI_Default_2dDotSize {
-            get {
-                return ((int)(this["UI_Default_2dDotSize"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8")]
-        public int UI_PovLineThickness {
-            get {
-                return ((int)(this["UI_PovLineThickness"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("30, 30, 30")]
         public global::System.Drawing.Color UI_DarkModeBackground {
             get {
                 return ((global::System.Drawing.Color)(this["UI_DarkModeBackground"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int UI_Default_2dDotSize {
+            get {
+                return ((int)(this["UI_Default_2dDotSize"]));
             }
         }
         
@@ -124,19 +142,10 @@ namespace JoystickVisualizer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Main_WideLayout {
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public int UI_PovLineThickness {
             get {
-                return ((bool)(this["Main_WideLayout"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Main_KeepOnTop {
-            get {
-                return ((bool)(this["Main_KeepOnTop"]));
+                return ((int)(this["UI_PovLineThickness"]));
             }
         }
     }

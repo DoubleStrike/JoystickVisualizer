@@ -64,6 +64,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="UserControls\Axis1DHorizontal.cs">
@@ -83,6 +84,12 @@
     </Compile>
     <Compile Include="UserControls\Axis2D.Designer.cs">
       <DependentUpon>Axis2D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Buttons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Buttons.Designer.cs">
+      <DependentUpon>Buttons.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\CompoundControl.cs">
       <SubType>UserControl</SubType>
@@ -115,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Axis2D.resx">
       <DependentUpon>Axis2D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Buttons.resx">
+      <DependentUpon>Buttons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CompoundControl.resx">
       <DependentUpon>CompoundControl.cs</DependentUpon>

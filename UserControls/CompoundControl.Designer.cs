@@ -33,6 +33,7 @@
             this.axisRotXRotY = new JoystickVisualizer.Axis2D();
             this.povHat1 = new JoystickVisualizer.PovHat();
             this.PollingTimer = new System.Windows.Forms.Timer(this.components);
+            this.buttons1 = new JoystickVisualizer.UserControls.Buttons();
             this.squareTableLayout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,12 +148,23 @@
             // 
             this.PollingTimer.Tick += new System.EventHandler(this.PollingTimer_Tick);
             // 
+            // buttons1
+            // 
+            this.buttons1.Location = new System.Drawing.Point(0, 0);
+            this.buttons1.Margin = new System.Windows.Forms.Padding(0);
+            this.buttons1.Name = "buttons1";
+            this.buttons1.Size = new System.Drawing.Size(75, 75);
+            this.buttons1.TabIndex = 1;
+            this.buttons1.TextLabel = "B";
+            this.buttons1.ToolTip = "(\'B\': B0=\'False\', B2=\'False\', B3=\'False\', B4=\'False\')";
+            // 
             // CompoundControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Controls.Add(this.buttons1);
             this.Controls.Add(this.squareTableLayout);
             this.MinimumSize = new System.Drawing.Size(200, 200);
             this.Name = "CompoundControl";
@@ -175,5 +187,6 @@
         private Axis2D axisRotXRotY;
         private System.Windows.Forms.Timer PollingTimer;
         private PovHat povHat1;
+        private UserControls.Buttons buttons1;
     }
 }
