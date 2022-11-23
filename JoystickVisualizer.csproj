@@ -66,28 +66,28 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Axis1DHorizontal.cs">
+    <Compile Include="UserControls\Axis1DHorizontal.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Axis1DHorizontal.Designer.cs">
+    <Compile Include="UserControls\Axis1DHorizontal.Designer.cs">
       <DependentUpon>Axis1DHorizontal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Axis1DVertical.cs">
+    <Compile Include="UserControls\Axis1DVertical.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Axis1DVertical.Designer.cs">
+    <Compile Include="UserControls\Axis1DVertical.Designer.cs">
       <DependentUpon>Axis1DVertical.cs</DependentUpon>
     </Compile>
-    <Compile Include="Axis2D.cs">
+    <Compile Include="UserControls\Axis2D.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Axis2D.Designer.cs">
+    <Compile Include="UserControls\Axis2D.Designer.cs">
       <DependentUpon>Axis2D.cs</DependentUpon>
     </Compile>
-    <Compile Include="CompoundControl.cs">
+    <Compile Include="UserControls\CompoundControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CompoundControl.Designer.cs">
+    <Compile Include="UserControls\CompoundControl.Designer.cs">
       <DependentUpon>CompoundControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
@@ -97,33 +97,33 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="PovHat.cs">
+    <Compile Include="UserControls\PovHat.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PovHat.Designer.cs">
+    <Compile Include="UserControls\PovHat.Designer.cs">
       <DependentUpon>PovHat.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
-    <EmbeddedResource Include="Axis1DHorizontal.resx">
+    <EmbeddedResource Include="UserControls\Axis1DHorizontal.resx">
       <DependentUpon>Axis1DHorizontal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Axis1DVertical.resx">
+    <EmbeddedResource Include="UserControls\Axis1DVertical.resx">
       <DependentUpon>Axis1DVertical.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Axis2D.resx">
+    <EmbeddedResource Include="UserControls\Axis2D.resx">
       <DependentUpon>Axis2D.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CompoundControl.resx">
+    <EmbeddedResource Include="UserControls\CompoundControl.resx">
       <DependentUpon>CompoundControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="PovHat.resx">
+    <EmbeddedResource Include="UserControls\PovHat.resx">
       <DependentUpon>PovHat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
