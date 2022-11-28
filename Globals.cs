@@ -259,11 +259,12 @@ namespace JoystickVisualizer {
             Settings.Default.Save();
         }
 
-        public static bool NearlyEquals(double x, double y, double tolerance = 0.01d) {
-            var diff = Math.Abs(x - y);
-            return diff <= tolerance ||
-                   diff <= Math.Max(Math.Abs(x), Math.Abs(y)) * tolerance;
-        }
+        /// <summary>
+        /// Returns true if two doubles are within 0.001 of each other
+        /// </summary>
+        public static Func<double, double, bool> NearlyEquals = (x, y) =>
+            Math.Abs(x - y) <= 0.001d || Math.Abs(x - y) <= Math.Max(Math.Abs(x), Math.Abs(y)) * 0.001d;
+
         #endregion Utilities
         #endregion Methods
     }
