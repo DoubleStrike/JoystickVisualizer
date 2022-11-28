@@ -40,13 +40,12 @@ namespace JoystickVisualizer.UserControls {
 
         public JoystickUpdate CurrentEvent {
             set {
-                // Calculate button offset and exit if over 15, since grid can be a max of 16 cells
+                // Calculate button offset (JoystickOffset.Buttons0 is enum value of 48)
                 int buttonOffset = (int)value.Offset - 48;
-                if (buttonOffset > 15) return;
 
                 // Set the button pressed state:
-                //      TRUE if the button is pressed (its value==128)
-                //      FALSE if the button is released (its value==0)
+                //      TRUE if the button is pressed (its value == 128)
+                //      FALSE if the button is released (its value == 0)
                 m_buttonPressedState[buttonOffset] = value.Value == 128;
 
                 this.Refresh();
@@ -60,10 +59,9 @@ namespace JoystickVisualizer.UserControls {
 
             boxBrush = new SolidBrush(Settings.Default.UI_ButtonColor);
 
-            // Ensure grid is no greater than 16 cells since bitmask is max of 16-bit integer
+            // Load grid count from settings
             m_GridCols = Settings.Default.Button_GridCols;
             m_GridRows = Settings.Default.Button_GridRows;
-            if (m_GridCols * m_GridRows > 16) { m_GridCols = m_GridRows = 4; }
 
             // Setup boolean array for button pressed states
             m_buttonPressedState = new bool[m_GridCols * m_GridRows];
