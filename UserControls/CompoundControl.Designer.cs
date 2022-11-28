@@ -33,7 +33,7 @@
             this.axisRotXRotY = new JoystickVisualizer.Axis2D();
             this.povHat1 = new JoystickVisualizer.PovHat();
             this.PollingTimer = new System.Windows.Forms.Timer(this.components);
-            this.buttons1 = new JoystickVisualizer.UserControls.Buttons();
+            this.buttons1 = new JoystickVisualizer.Buttons();
             this.squareTableLayout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -187,6 +187,6 @@
         private Axis2D axisRotXRotY;
         private System.Windows.Forms.Timer PollingTimer;
         private PovHat povHat1;
-        private UserControls.Buttons buttons1;
+        private Buttons buttons1;
     }
 }

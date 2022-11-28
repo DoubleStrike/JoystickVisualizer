@@ -1,4 +1,4 @@
-﻿namespace JoystickVisualizer.UserControls {
+﻿namespace JoystickVisualizer {
     partial class Buttons {
         /// <summary> 
         /// Required designer variable.

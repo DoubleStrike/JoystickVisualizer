@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 using JoystickVisualizer.Properties;
 
-namespace JoystickVisualizer.UserControls {
+namespace JoystickVisualizer {
     public partial class Buttons : UserControl {
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
         private int m_SectionHeight = 0;
