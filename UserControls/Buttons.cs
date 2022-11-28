@@ -12,10 +12,10 @@ namespace JoystickVisualizer.UserControls {
         private ToolTip toolTip = new System.Windows.Forms.ToolTip();
         private int m_SectionHeight = 0;
         private int m_SectionWidth = 0;
-        private int m_bitMask = 0;
         private int m_GridCols = 1;
         private int m_GridRows = 1;
         private string m_Label = "B";
+        private bool[] m_buttonPressedState;
 
         private SolidBrush boxBrush;
 
@@ -44,10 +44,10 @@ namespace JoystickVisualizer.UserControls {
                 int buttonOffset = (int)value.Offset - 48;
                 if (buttonOffset > 15) return;
 
-                // Apply the offset to the bitmask:
-                //      if the button is pressed (its value==128) we add the value to the mask
-                //      if the button is released (its value==0) we subtract the value from the mask
-                m_bitMask = (value.Value == 128) ? m_bitMask + (int)Math.Pow(2, buttonOffset) : m_bitMask - (int)Math.Pow(2, buttonOffset);
+                // Set the button pressed state:
+                //      TRUE if the button is pressed (its value==128)
+                //      FALSE if the button is released (its value==0)
+                m_buttonPressedState[buttonOffset] = value.Value == 128;
 
                 this.Refresh();
             }
@@ -64,6 +64,9 @@ namespace JoystickVisualizer.UserControls {
             m_GridCols = Settings.Default.Button_GridCols;
             m_GridRows = Settings.Default.Button_GridRows;
             if (m_GridCols * m_GridRows > 16) { m_GridCols = m_GridRows = 4; }
+
+            // Setup boolean array for button pressed states
+            m_buttonPressedState = new bool[m_GridCols * m_GridRows];
         }
 
         #region Event Handlers
@@ -79,11 +82,11 @@ namespace JoystickVisualizer.UserControls {
 
                 // Draw the sections as needed
                 for (int j = 0; j < m_GridCols * m_GridRows; j++) {
-                    if ((m_bitMask & (int)Math.Pow(2, j)) == (int)Math.Pow(2, j)) FillInGridSection(j, ref e);
+                    if (m_buttonPressedState[j]) FillInGridSection(j, ref e);
                 }
 
                 // Update the tooltip
-                ToolTip = $"({this.Name}: BitMask={m_bitMask})";
+                ToolTip = $"({this.Name}: Button states 0-{m_GridCols * m_GridRows})";
             }
         }
 
