@@ -44,7 +44,7 @@ namespace JoystickVisualizer {
                 int buttonOffset = (int)value.Offset - 48;
 
                 // Exit if the button number is greater than our grid count
-                if (buttonOffset > m_GridCols * m_GridRows) return;
+                if (buttonOffset >= m_GridCols * m_GridRows) return;
 
                 // Set the button pressed state:
                 //      TRUE if the button is pressed (its value == 128)
