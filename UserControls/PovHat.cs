@@ -80,7 +80,7 @@ namespace JoystickVisualizer {
                 e.Graphics.DrawString(m_Label, labelFont, Globals.frameBrush, 2, 1);
 
                 // Update the tooltip
-                ToolTip = $"('{this.Name}': '{Value}')";
+                ToolTip = $"({this.Name}: {Value})";
             }
         }
         #endregion Event Handlers

@@ -106,7 +106,7 @@ namespace JoystickVisualizer {
                 e.Graphics.DrawString(m_Label, SystemFonts.DefaultFont, Globals.frameBrush, 2, 1);
 
                 // Update the tooltip
-                ToolTip = $"('{this.Name}': '{Value}')";
+                ToolTip = $"({this.Name}: {Value})";
             }
         }
 

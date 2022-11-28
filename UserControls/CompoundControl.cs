@@ -136,16 +136,16 @@ namespace JoystickVisualizer {
 
 #if false
                         if (state.Value == 128) {
-                            Debug.WriteLine($"Button press:   '{state}'");
+                            Debug.WriteLine($"Button press:   {state}");
                         } else if (state.Value == 0) {
-                            Debug.WriteLine($"Button release: '{state}'");
+                            Debug.WriteLine($"Button release: {state}");
                         }
 #endif
 #endregion Input is a button events --------------------------------
                     }
 
 
-                    //Debug.WriteLine($"Received state: '{state}'");
+                    //Debug.WriteLine($"Received state: {state}");
                 }
             }
         }

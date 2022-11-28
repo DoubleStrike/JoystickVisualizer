@@ -83,7 +83,7 @@ namespace JoystickVisualizer.UserControls {
                 }
 
                 // Update the tooltip
-                ToolTip = $"('{this.Name}': BitMask='{m_bitMask}')";
+                ToolTip = $"({this.Name}: BitMask={m_bitMask})";
             }
         }
 
