@@ -84,10 +84,10 @@ namespace JoystickVisualizer {
                 // Draw the text label
                 e.Graphics.DrawString(m_Label, SystemFonts.DefaultFont, Globals.frameBrush, 2, 1);
 
-                // Calculate width of each grid section based on current size
-                m_SectionWidth = this.Width / m_GridCols;
-                // Calculate height of each grid section based on current size
-                m_SectionHeight = this.Height / m_GridRows;
+                // Calculate width of each grid section based on current size (add 1 to account for border)
+                m_SectionWidth = (this.Width + 1) / m_GridCols;
+                // Calculate height of each grid section based on current size (add 1 to account for border)
+                m_SectionHeight = (this.Height + 1) / m_GridRows;
 
                 // Draw the sections as needed
                 for (int j = 0; j < m_GridCols * m_GridRows; j++) {
