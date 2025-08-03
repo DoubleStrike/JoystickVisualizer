@@ -15,6 +15,7 @@ namespace JoystickVisualizer {
         private int m_centerY = 0;
         private int m_x = 0;
         private int m_y = 0;
+        private bool m_RenderFrame = true;
         private string m_Label = "";
         private Font labelFont = SystemFonts.DefaultFont;
 
@@ -63,6 +64,13 @@ namespace JoystickVisualizer {
         #region Event Handlers
         private void PovHat_Paint(object sender, PaintEventArgs e) {
             if (this.Enabled) {
+                // Draw the frame
+                if (m_RenderFrame)
+                {
+                    //e.Graphics.FillRectangle(frameBrush, 0, 0, this.Width, this.Height);
+                    e.Graphics.DrawRectangle(Globals.framePen, 0, 0, this.Width, this.Height);
+                }
+
                 // Calculate the line endpoint and store in m_x, m_y
                 CalculateLineEndpoint(out m_x, out m_y);
 

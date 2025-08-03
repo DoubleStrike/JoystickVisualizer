@@ -14,6 +14,7 @@ namespace JoystickVisualizer {
         private int m_SectionWidth = 0;
         private int m_GridCols = 1;
         private int m_GridRows = 1;
+        private bool m_RenderFrame = true;
         private string m_Label = "B";
         private bool[] m_buttonPressedState;
 
@@ -73,6 +74,13 @@ namespace JoystickVisualizer {
         #region Event Handlers
         private void Form_Paint(object sender, PaintEventArgs e) {
             if (this.Enabled) {
+                // Draw the frame
+                if (m_RenderFrame)
+                {
+                    //e.Graphics.FillRectangle(frameBrush, 0, 0, this.Width, this.Height);
+                    e.Graphics.DrawRectangle(Globals.framePen, 0, 0, this.Width, this.Height);
+                }
+
                 // Draw the text label
                 e.Graphics.DrawString(m_Label, SystemFonts.DefaultFont, Globals.frameBrush, 2, 1);
 
