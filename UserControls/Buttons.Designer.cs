@@ -29,10 +29,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "Buttons";
-            this.Size = new System.Drawing.Size(75, 75);
+            this.Size = new System.Drawing.Size(50, 50);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form_Paint);
             this.Resize += new System.EventHandler(this.Form_Resize);
             this.ResumeLayout(false);
