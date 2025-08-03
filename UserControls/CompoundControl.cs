@@ -186,15 +186,24 @@ namespace JoystickVisualizer {
         }
 
         private void KeepMinistickSquare() {
-            // Size of the XY grid
-            int ministickSize = (int)(this.axisXY.Height * (2.0f / 7.0f));
+            // Height of top row
+            int topRowHeight = topTableSection.GetRowHeights()[0];
+            topTableSection.ColumnStyles[2].SizeType = SizeType.Absolute;
+            topTableSection.ColumnStyles[2].Width = topRowHeight;
+        }
 
-            axisRotXRotY.Size = new Size(ministickSize, ministickSize);
+        private void KeepPOVSquare()
+        {
+            // Height of top row
+            int topRowHeight = topTableSection.GetRowHeights()[0];
+            topTableSection.ColumnStyles[4].SizeType = SizeType.Absolute;
+            topTableSection.ColumnStyles[4].Width = topRowHeight;
         }
 
         private void KeepSticksSquare() {
             KeepGridSquare();
             KeepMinistickSquare();
+            KeepPOVSquare();
         }
         #endregion Private Methods
     }
