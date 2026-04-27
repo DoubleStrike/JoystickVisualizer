@@ -71,12 +71,12 @@ namespace JoystickVisualizer {
                     e.Graphics.DrawRectangle(Globals.framePen, 0, 0, this.Width, this.Height);
                 }
 
-                // Calculate the line endpoint and store in m_x, m_y
-                CalculateLineEndpoint(out m_x, out m_y);
-
                 // Recalculate the centerpoints
                 m_centerX = Width / 2;
                 m_centerY = Height / 2;
+
+                // Calculate the line endpoint and store in m_x, m_y
+                CalculateLineEndpoint(out m_x, out m_y);
 
                 if (m_Value != -1) {
                     // Draw the POV line
