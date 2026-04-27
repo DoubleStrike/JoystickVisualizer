@@ -84,19 +84,18 @@ namespace JoystickVisualizer {
             // lblTitle
             // 
             this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Candara", 30F);
+            this.lblTitle.Font = new System.Drawing.Font("Candara", 24F);
             this.lblTitle.Location = new System.Drawing.Point(3, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(182, 98);
+            this.lblTitle.Size = new System.Drawing.Size(191, 88);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "DirectX Visualizer";
+            this.lblTitle.Text = "DX Joystick Visualizer";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // spacer1
             // 
             this.spacer1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.spacer1.Location = new System.Drawing.Point(44, 101);
+            this.spacer1.Location = new System.Drawing.Point(48, 91);
             this.spacer1.Name = "spacer1";
             this.spacer1.Size = new System.Drawing.Size(100, 30);
             this.spacer1.TabIndex = 1;
@@ -106,7 +105,7 @@ namespace JoystickVisualizer {
             // 
             this.chkKeepOnTop.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chkKeepOnTop.AutoSize = true;
-            this.chkKeepOnTop.Location = new System.Drawing.Point(49, 191);
+            this.chkKeepOnTop.Location = new System.Drawing.Point(53, 181);
             this.chkKeepOnTop.Name = "chkKeepOnTop";
             this.chkKeepOnTop.Size = new System.Drawing.Size(90, 17);
             this.chkKeepOnTop.TabIndex = 4;
@@ -119,7 +118,7 @@ namespace JoystickVisualizer {
             // 
             this.chkWide.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chkWide.AutoSize = true;
-            this.chkWide.Location = new System.Drawing.Point(51, 214);
+            this.chkWide.Location = new System.Drawing.Point(55, 204);
             this.chkWide.Name = "chkWide";
             this.chkWide.Size = new System.Drawing.Size(86, 17);
             this.chkWide.TabIndex = 6;
@@ -133,7 +132,7 @@ namespace JoystickVisualizer {
             // 
             this.lblPollingTime.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblPollingTime.AutoSize = true;
-            this.lblPollingTime.Location = new System.Drawing.Point(53, 247);
+            this.lblPollingTime.Location = new System.Drawing.Point(57, 224);
             this.lblPollingTime.Name = "lblPollingTime";
             this.lblPollingTime.Size = new System.Drawing.Size(82, 13);
             this.lblPollingTime.TabIndex = 6;
@@ -142,7 +141,7 @@ namespace JoystickVisualizer {
             // txtPollingTime
             // 
             this.txtPollingTime.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtPollingTime.Location = new System.Drawing.Point(44, 263);
+            this.txtPollingTime.Location = new System.Drawing.Point(48, 240);
             this.txtPollingTime.Name = "txtPollingTime";
             this.txtPollingTime.Size = new System.Drawing.Size(100, 20);
             this.txtPollingTime.TabIndex = 7;
@@ -151,7 +150,7 @@ namespace JoystickVisualizer {
             // btnSet
             // 
             this.btnSet.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSet.Location = new System.Drawing.Point(56, 289);
+            this.btnSet.Location = new System.Drawing.Point(61, 266);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(75, 23);
             this.btnSet.TabIndex = 8;
@@ -222,7 +221,7 @@ namespace JoystickVisualizer {
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(630, 350);
             this.Name = "JoystickVisualizer";
-            this.Text = "DirectX Joystick Visualizer";
+            this.Text = "Joystick Visualizer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
